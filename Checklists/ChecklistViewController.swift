@@ -24,8 +24,9 @@ class ChecklistViewController: UITableViewController {
         //首先创建一个NSIndexPath对象来指出新的row，用newRowIndex变量中的row number
         //This index-path object now points to row 5(in section 0)
         let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-        //
+        //创建一个新的临时的数组来保存index-path item
         let indexPaths = [indexPath]
+        //最后告诉table view插入一个新的row
         tableView.insertRowsAtIndexPaths(indexPaths,
                                         withRowAnimation: .Automatic)
         
