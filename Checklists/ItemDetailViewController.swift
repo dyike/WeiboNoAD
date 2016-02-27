@@ -20,6 +20,16 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     //var checklistViewController: ChecklistViewController
     var itemToEdit: ChecklistItem?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let item = itemToEdit {
+            title = "编辑条目"
+            textField.text = item.text
+            doneBarButton.enabled = true
+        }
+    }
+    
     @IBOutlet weak var textField: UITextField!
     @IBAction func cancel(){
 //        dismissViewControllerAnimated(true, completion: nil)
@@ -55,16 +65,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let item = itemToEdit {
-            title = "编辑条目"
-            textField.text = item.text
-            doneBarButton.enabled = true
-        }
     }
     
     
