@@ -12,6 +12,13 @@
 		A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3EC81E097CD6009622C3 /* Main.storyboard */; };
 		A6FD3ECC1E097CD6009622C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3ECB1E097CD6009622C3 /* Assets.xcassets */; };
 		A6FD3ECF1E097CD6009622C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3ECD1E097CD6009622C3 /* LaunchScreen.storyboard */; };
+		A6FD3EE11E09FBB2009622C3 /* WeiBoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EE01E09FBB2009622C3 /* WeiBoMainViewController.swift */; };
+		A6FD3EE31E09FC2D009622C3 /* WeiBoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EE21E09FC2D009622C3 /* WeiBoNavigationController.swift */; };
+		A6FD3EE51E09FC7F009622C3 /* WeiBoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EE41E09FC7F009622C3 /* WeiBoBaseViewController.swift */; };
+		A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EE61E09FCD8009622C3 /* WeiBoHomeViewController.swift */; };
+		A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EE81E09FCFE009622C3 /* WeiBoMessageViewController.swift */; };
+		A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */; };
+		A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		A6FD3ECB1E097CD6009622C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6FD3ECE1E097CD6009622C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6FD3ED01E097CD6009622C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6FD3EE01E09FBB2009622C3 /* WeiBoMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoMainViewController.swift; sourceTree = "<group>"; };
+		A6FD3EE21E09FC2D009622C3 /* WeiBoNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNavigationController.swift; sourceTree = "<group>"; };
+		A6FD3EE41E09FC7F009622C3 /* WeiBoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoBaseViewController.swift; sourceTree = "<group>"; };
+		A6FD3EE61E09FCD8009622C3 /* WeiBoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoHomeViewController.swift; sourceTree = "<group>"; };
+		A6FD3EE81E09FCFE009622C3 /* WeiBoMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoMessageViewController.swift; sourceTree = "<group>"; };
+		A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoDiscoverViewController.swift; sourceTree = "<group>"; };
+		A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 		A6FD3EC31E097CD6009622C3 /* Weibo */ = {
 			isa = PBXGroup;
 			children = (
+				A6FD3ED61E09FB1A009622C3 /* Classes */,
 				A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */,
 				A6FD3EC61E097CD6009622C3 /* ViewController.swift */,
 				A6FD3EC81E097CD6009622C3 /* Main.storyboard */,
@@ -62,6 +77,92 @@
 				A6FD3ED01E097CD6009622C3 /* Info.plist */,
 			);
 			path = Weibo;
+			sourceTree = "<group>";
+		};
+		A6FD3ED61E09FB1A009622C3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3ED71E09FB1A009622C3 /* Model */,
+				A6FD3ED81E09FB1A009622C3 /* Tools */,
+				A6FD3ED91E09FB1A009622C3 /* View */,
+				A6FD3EDF1E09FB1A009622C3 /* ViewModel */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A6FD3ED71E09FB1A009622C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A6FD3ED81E09FB1A009622C3 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		A6FD3ED91E09FB1A009622C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EDA1E09FB1A009622C3 /* Discover */,
+				A6FD3EDB1E09FB1A009622C3 /* Home */,
+				A6FD3EDC1E09FB1A009622C3 /* Main */,
+				A6FD3EDD1E09FB1A009622C3 /* Message */,
+				A6FD3EDE1E09FB1A009622C3 /* Profile */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6FD3EDA1E09FB1A009622C3 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		A6FD3EDB1E09FB1A009622C3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EE61E09FCD8009622C3 /* WeiBoHomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A6FD3EDC1E09FB1A009622C3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EE01E09FBB2009622C3 /* WeiBoMainViewController.swift */,
+				A6FD3EE21E09FC2D009622C3 /* WeiBoNavigationController.swift */,
+				A6FD3EE41E09FC7F009622C3 /* WeiBoBaseViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A6FD3EDD1E09FB1A009622C3 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EE81E09FCFE009622C3 /* WeiBoMessageViewController.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		A6FD3EDE1E09FB1A009622C3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A6FD3EDF1E09FB1A009622C3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */,
+				A6FD3EE31E09FC2D009622C3 /* WeiBoNavigationController.swift in Sources */,
+				A6FD3EE11E09FBB2009622C3 /* WeiBoMainViewController.swift in Sources */,
+				A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */,
+				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
 				A6FD3EC71E097CD6009622C3 /* ViewController.swift in Sources */,
+				A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */,
 				A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */,
+				A6FD3EE51E09FC7F009622C3 /* WeiBoBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +405,7 @@
 				A6FD3ED51E097CD6009622C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
