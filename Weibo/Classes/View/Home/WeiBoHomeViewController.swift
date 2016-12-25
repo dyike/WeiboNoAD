@@ -15,21 +15,22 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func showFriends() {
+        print("显示好友")
+        let vc = WeiboDemoViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
-    */
 
+}
+
+// 设置界面
+extension WeiBoHomeViewController {
+    override func setupUI() {
+        super.setupUI()
+        
+        // 设置导航栏按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
+    }
 }

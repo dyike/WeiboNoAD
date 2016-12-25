@@ -19,6 +19,9 @@
 		A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */; };
 		A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */; };
 		A6FD3EF01E0A02AB009622C3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEF1E0A02AB009622C3 /* Bundle+Extension.swift */; };
+		A6FD3EFC1E0EC202009622C3 /* CreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EFB1E0EC202009622C3 /* CreateButton.swift */; };
+		A6FD3EFE1E0FF3A3009622C3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EFD1E0FF3A3009622C3 /* UIButton+Extension.swift */; };
+		A6FD3F011E100151009622C3 /* WeiboDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3F001E100151009622C3 /* WeiboDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoDiscoverViewController.swift; sourceTree = "<group>"; };
 		A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoProfileViewController.swift; sourceTree = "<group>"; };
 		A6FD3EEF1E0A02AB009622C3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		A6FD3EFB1E0EC202009622C3 /* CreateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
+		A6FD3EFD1E0FF3A3009622C3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		A6FD3F001E100151009622C3 /* WeiboDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboDemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		A6FD3ED81E09FB1A009622C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A6FD3EFA1E0EC1D9009622C3 /* Additions */,
 				A6FD3EEE1E0A0266009622C3 /* Extension */,
 			);
 			path = Tools;
@@ -135,6 +142,7 @@
 		A6FD3EDC1E09FB1A009622C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A6FD3EFF1E100125009622C3 /* Test */,
 				A6FD3EE01E09FBB2009622C3 /* WeiBoMainViewController.swift */,
 				A6FD3EE21E09FC2D009622C3 /* WeiBoNavigationController.swift */,
 				A6FD3EE41E09FC7F009622C3 /* WeiBoBaseViewController.swift */,
@@ -169,8 +177,25 @@
 			isa = PBXGroup;
 			children = (
 				A6FD3EEF1E0A02AB009622C3 /* Bundle+Extension.swift */,
+				A6FD3EFD1E0FF3A3009622C3 /* UIButton+Extension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		A6FD3EFA1E0EC1D9009622C3 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3EFB1E0EC202009622C3 /* CreateButton.swift */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		A6FD3EFF1E100125009622C3 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				A6FD3F001E100151009622C3 /* WeiboDemoViewController.swift */,
+			);
+			name = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,7 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */,
+				A6FD3EFC1E0EC202009622C3 /* CreateButton.swift in Sources */,
+				A6FD3F011E100151009622C3 /* WeiboDemoViewController.swift in Sources */,
 				A6FD3EF01E0A02AB009622C3 /* Bundle+Extension.swift in Sources */,
+				A6FD3EFE1E0FF3A3009622C3 /* UIButton+Extension.swift in Sources */,
 				A6FD3EE31E09FC2D009622C3 /* WeiBoNavigationController.swift in Sources */,
 				A6FD3EE11E09FBB2009622C3 /* WeiBoMainViewController.swift in Sources */,
 				A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */,
