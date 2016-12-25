@@ -31,6 +31,10 @@ extension WeiBoHomeViewController {
         super.setupUI()
         
         // 设置导航栏按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
+        // 无法高亮
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "tabbar_profile", title: "好友", fontSize: 16, target: self, action: #selector(showFriends))
+        
     }
 }
