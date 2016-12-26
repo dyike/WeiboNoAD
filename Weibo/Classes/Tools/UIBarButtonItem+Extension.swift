@@ -9,14 +9,21 @@
 import UIKit
 
 extension UIBarButtonItem {
-    convenience init(imageName: String, title: String, fontSize: CGFloat = 16, target: Any?, action: Selector) {
+    convenience init(title: String, fontSize: CGFloat = 16, target: Any?, action: Selector, isBack: Bool = false) {
         let btn = UIButton()
         btn.setTitle(title, for: UIControlState.normal)
         btn.setTitleColor(UIColor.black, for: UIControlState.normal)
         btn.titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
-        btn.setImage(UIImage(named: imageName), for: UIControlState.normal)
-        btn.setImage(UIImage(named: imageName + "_highlighted"), for: UIControlState.highlighted)
-        btn.sizeToFit()
+    
+        // 是否是返回按钮
+        if isBack {
+            let imageName = "navigationbar_back_withtext"
+            btn.setImage(UIImage(named: imageName), for: UIControlState(rawValue: 0))
+            btn.setImage(UIImage(named: imageName + "_highlighted"), for: .highlighted)
+            btn.sizeToFit()
+        }
+        
+        
         btn.addTarget(target, action: action, for: .touchUpInside)
         
         // 实例化

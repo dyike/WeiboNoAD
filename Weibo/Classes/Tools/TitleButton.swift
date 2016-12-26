@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextButton: UIButton {
+class TitleButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         

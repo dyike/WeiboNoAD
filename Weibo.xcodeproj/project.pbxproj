@@ -19,11 +19,10 @@
 		A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */; };
 		A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */; };
 		A6FD3EF01E0A02AB009622C3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EEF1E0A02AB009622C3 /* Bundle+Extension.swift */; };
-		A6FD3EFC1E0EC202009622C3 /* CreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EFB1E0EC202009622C3 /* CreateButton.swift */; };
 		A6FD3EFE1E0FF3A3009622C3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EFD1E0FF3A3009622C3 /* UIButton+Extension.swift */; };
 		A6FD3F011E100151009622C3 /* WeiboDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3F001E100151009622C3 /* WeiboDemoViewController.swift */; };
 		A6FD3F031E100CEE009622C3 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3F021E100CEE009622C3 /* UIBarButtonItem+Extension.swift */; };
-		A6FD3F051E101050009622C3 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3F041E101050009622C3 /* TextButton.swift */; };
+		A6FD3F051E101050009622C3 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3F041E101050009622C3 /* TitleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,11 +40,10 @@
 		A6FD3EEA1E09FD14009622C3 /* WeiBoDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoDiscoverViewController.swift; sourceTree = "<group>"; };
 		A6FD3EEC1E09FD31009622C3 /* WeiBoProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoProfileViewController.swift; sourceTree = "<group>"; };
 		A6FD3EEF1E0A02AB009622C3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
-		A6FD3EFB1E0EC202009622C3 /* CreateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
 		A6FD3EFD1E0FF3A3009622C3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		A6FD3F001E100151009622C3 /* WeiboDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboDemoViewController.swift; sourceTree = "<group>"; };
 		A6FD3F021E100CEE009622C3 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
-		A6FD3F041E101050009622C3 /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		A6FD3F041E101050009622C3 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				A6FD3ED71E09FB1A009622C3 /* Model */,
-				A6FD3ED81E09FB1A009622C3 /* Tools */,
 				A6FD3ED91E09FB1A009622C3 /* View */,
 				A6FD3EDF1E09FB1A009622C3 /* ViewModel */,
+				A6FD3ED81E09FB1A009622C3 /* Tools */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -190,8 +188,7 @@
 		A6FD3EFA1E0EC1D9009622C3 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
-				A6FD3EFB1E0EC202009622C3 /* CreateButton.swift */,
-				A6FD3F041E101050009622C3 /* TextButton.swift */,
+				A6FD3F041E101050009622C3 /* TitleButton.swift */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -277,8 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */,
-				A6FD3EFC1E0EC202009622C3 /* CreateButton.swift in Sources */,
-				A6FD3F051E101050009622C3 /* TextButton.swift in Sources */,
+				A6FD3F051E101050009622C3 /* TitleButton.swift in Sources */,
 				A6FD3F011E100151009622C3 /* WeiboDemoViewController.swift in Sources */,
 				A6FD3EF01E0A02AB009622C3 /* Bundle+Extension.swift in Sources */,
 				A6FD3EFE1E0FF3A3009622C3 /* UIButton+Extension.swift in Sources */,
@@ -410,7 +406,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Weibo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ityike.Weibo;
@@ -423,7 +418,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Weibo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ityike.Weibo;

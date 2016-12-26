@@ -31,7 +31,7 @@ extension WeiboDemoViewController {
         super.setupUI()
 
         // 设置导航栏按钮
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", style: .plain, target: self, action: #selector(showNext))
+        navItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", style: .plain, target: self, action: #selector(showNext))
     }
 
 }

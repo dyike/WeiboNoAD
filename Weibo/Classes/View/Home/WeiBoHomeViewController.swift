@@ -17,9 +17,7 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     }
     
     @objc func showFriends() {
-        print("显示好友")
         let vc = WeiboDemoViewController()
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -34,7 +32,8 @@ extension WeiBoHomeViewController {
         // 无法高亮
         //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "tabbar_profile", title: "好友", fontSize: 16, target: self, action: #selector(showFriends))
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "", fontSize: 16, target: self, action: #selector(showFriends), isBack: true)
+        
         
     }
 }
