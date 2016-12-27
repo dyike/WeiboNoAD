@@ -17,12 +17,28 @@ class WeiBoMainViewController: UITabBarController {
         setupComposeButton()
         
     }
+    
+    
+    /* 切换屏幕横竖屏
+        landscape : 横屏
+     */
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait   // 竖屏
+    }
+    
+   
     // MARK: - 监听方法
     // 撰写微博
     // private 能够保证方法私有，仅当前对象能访问
     // @objc 允许这个函数在运行时通过OC的消息机制被调用
     @objc func composeStatus() {
         print("xie weibo")
+        
+        // 测试方向旋转
+//        let vc = UIViewController()
+//        vc.view.backgroundColor = UIColor.red
+//        let nav = UINavigationController(rootViewController: vc)
+//        present(nav, animated: true, completion: nil)
     }
     
     // MARK： -私有控件
