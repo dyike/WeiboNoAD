@@ -8,19 +8,44 @@
 
 import UIKit
 
+// 定义全局常量，private修饰，否则到处可访问
+private let cellId = "cellId"
+
 class WeiBoHomeViewController: WeiBoBaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    // 微博数据数组
+    lazy var statusList = [String]()
+    
+    override func loadData() {
+        for i in 0..<10 {
+            statusList.insert(i.description, at: 0)
+        }
     }
     
+    // 显示好友
     @objc func showFriends() {
         let vc = WeiboDemoViewController()
+        // push 的动作是 nav 做的
         navigationController?.pushViewController(vc, animated: true)
     }
 
+}
+// MARK - 表格数据源方法,具体数据源方法实现，不需要super
+extension WeiBoHomeViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statusList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 1 取cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        // 2 设置cell
+        cell.textLabel?.text = statusList[indexPath.row]
+        // 3 返回cell
+        return cell
+    }
+    
 }
 
 // 设置界面
@@ -32,8 +57,9 @@ extension WeiBoHomeViewController {
         // 无法高亮
         //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
         
-        navItem.leftBarButtonItem = UIBarButtonItem(title: "", fontSize: 16, target: self, action: #selector(showFriends), isBack: true)
-        
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
+        // 注册原型 cell
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
     }
 }
