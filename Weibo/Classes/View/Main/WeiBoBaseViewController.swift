@@ -42,6 +42,9 @@ class WeiBoBaseViewController: UIViewController {
 // MARK - 设置界面
 extension WeiBoBaseViewController {
     func setupUI() {
+        // 取消自动缩进 - 如果隐藏了导航栏，会缩进20个点
+        automaticallyAdjustsScrollViewInsets = false
+        
         setupTableView()
         setupNavigationBar()
     }
@@ -53,6 +56,12 @@ extension WeiBoBaseViewController {
         // 设置数据源 & 代理 -> 目的：子类直接获取数据源方法
         tableView?.dataSource = self
         tableView?.delegate = self
+        
+        // 设置内容缩进
+        tableView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height,
+                                               left: 0,
+                                               bottom: tabBarController?.tabBar.bounds.height ?? 0,
+                                               right: 0)
     }
     
     
