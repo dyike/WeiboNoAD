@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A68C4DBD1E140CBD00CEECA4 /* WeiBoVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBC1E140CBD00CEECA4 /* WeiBoVisitorView.swift */; };
 		A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */; };
 		A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3EC81E097CD6009622C3 /* Main.storyboard */; };
 		A6FD3ECC1E097CD6009622C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3ECB1E097CD6009622C3 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A68C4DBC1E140CBD00CEECA4 /* WeiBoVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoVisitorView.swift; sourceTree = "<group>"; };
 		A6FD3EC11E097CD6009622C3 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6FD3EC91E097CD6009622C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A68C4DBB1E140C6700CEECA4 /* VisitorView */ = {
+			isa = PBXGroup;
+			children = (
+				A68C4DBC1E140CBD00CEECA4 /* WeiBoVisitorView.swift */,
+			);
+			name = VisitorView;
+			sourceTree = "<group>";
+		};
 		A6FD3EB81E097CD6009622C3 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		A6FD3EDC1E09FB1A009622C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A68C4DBB1E140C6700CEECA4 /* VisitorView */,
 				A6FD3EFF1E100125009622C3 /* Test */,
 				A6FD3F061E12B3BC009622C3 /* MainControllers */,
 				A6FD3EE41E09FC7F009622C3 /* WeiBoBaseViewController.swift */,
@@ -290,6 +301,7 @@
 				A6FD3F031E100CEE009622C3 /* UIBarButtonItem+Extension.swift in Sources */,
 				A6FD3EE31E09FC2D009622C3 /* WeiBoNavigationController.swift in Sources */,
 				A6FD3EE11E09FBB2009622C3 /* WeiBoMainViewController.swift in Sources */,
+				A68C4DBD1E140CBD00CEECA4 /* WeiBoVisitorView.swift in Sources */,
 				A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */,
 				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
 				A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */,

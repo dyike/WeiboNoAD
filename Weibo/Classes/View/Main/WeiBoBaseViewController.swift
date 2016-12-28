@@ -11,10 +11,16 @@ import UIKit
 //class WeiBoBaseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 class WeiBoBaseViewController: UIViewController {
+    // 用户登陆状态
+    var userLogon = false
+    
     // 表格视图  - 如果用户没有登陆，就不创建
     var tableView: UITableView?
     // 刷新控件
     var refreshControl: UIRefreshControl?
+    
+    // 标记是否上拉
+    var isPullUp = false
  
     // 自定义导航条
     lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64))
@@ -34,9 +40,9 @@ class WeiBoBaseViewController: UIViewController {
         }
     }
     
-    // 加载数据
+    // 加载数据  具体实现由子类负责
     func loadData() {
-        
+        refreshControl?.endRefreshing()
     }
     
 }
@@ -44,11 +50,11 @@ class WeiBoBaseViewController: UIViewController {
 // MARK - 设置界面
 extension WeiBoBaseViewController {
     func setupUI() {
+        view.backgroundColor = UIColor.white
         // 取消自动缩进 - 如果隐藏了导航栏，会缩进20个点
         automaticallyAdjustsScrollViewInsets = false
-        
-        setupTableView()
         setupNavigationBar()
+        userLogon ? setupTableView() : setupVisitorView()
     }
     
     private func setupTableView() {
@@ -74,6 +80,12 @@ extension WeiBoBaseViewController {
         
     }
     
+    // 设置访客视图
+    private func setupVisitorView() {
+        let vistiorView = WeiBoVisitorView(frame: view.bounds)
+        view.insertSubview(vistiorView, belowSubview: navigationBar)
+    }
+    
     
     private func setupNavigationBar() {
         // 添加导航条
@@ -97,6 +109,25 @@ extension WeiBoBaseViewController: UITableViewDataSource, UITableViewDelegate {
     // 子类的数据源方法不需要 super
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+    
+    // 在显示最后一行的时候，做上拉刷新
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // 1 判断indexPath是否是最后一行(indexPath.section(最大), indexPath.row(最后一行))
+        let row = indexPath.row
+        // 2 section
+        let section = tableView.numberOfSections - 1
+        if row < 0 || section < 0 {
+            return
+        }
+        // 3 行数
+        let lineCount = tableView.numberOfRows(inSection: section)
+        // 如果是最后一行，同时没有开始上来刷新
+        if row == (lineCount - 1) && !isPullUp {
+            isPullUp = true
+            // 开始刷新
+            loadData()
+        }
     }
 }
 

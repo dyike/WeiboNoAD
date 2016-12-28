@@ -18,14 +18,20 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     
     override func loadData() {
         // 模拟延时加载数据 -> dispatch_after
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
 
             for i in 0..<15 {
+                if self.isPullUp {
+                    // 将数据加载到底部
+                    self.statusList.append("上拉 \(i)")
+                }
                 self.statusList.insert(i.description, at: 0)
             }
 
             // 结束刷新
             self.refreshControl?.endRefreshing()
+            // 恢复上来刷新标记
+            self.isPullUp = false
             // 刷新表格
             self.tableView?.reloadData()
         }
