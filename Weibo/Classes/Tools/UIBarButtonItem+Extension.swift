@@ -10,9 +10,10 @@ import UIKit
 
 extension UIBarButtonItem {
     convenience init(title: String, fontSize: CGFloat = 16, target: Any?, action: Selector, isBack: Bool = false) {
-        let btn = UIButton()
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
         btn.setTitle(title, for: UIControlState.normal)
         btn.setTitleColor(UIColor.black, for: UIControlState.normal)
+        btn.setTitleColor(UIColor.orange, for: UIControlState.highlighted)
         btn.titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
     
         // 是否是返回按钮
