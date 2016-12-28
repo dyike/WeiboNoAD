@@ -13,6 +13,8 @@ import UIKit
 class WeiBoBaseViewController: UIViewController {
     // 表格视图  - 如果用户没有登陆，就不创建
     var tableView: UITableView?
+    // 刷新控件
+    var refreshControl: UIRefreshControl?
  
     // 自定义导航条
     lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64))
@@ -62,6 +64,14 @@ extension WeiBoBaseViewController {
                                                left: 0,
                                                bottom: tabBarController?.tabBar.bounds.height ?? 0,
                                                right: 0)
+        // 设置刷新控件
+        // 1 实例化控件
+        refreshControl = UIRefreshControl()
+        // 2 添加到表格视图
+        tableView?.addSubview(refreshControl!)
+        // 3 添加监听方法
+        refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        
     }
     
     

@@ -17,8 +17,17 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     lazy var statusList = [String]()
     
     override func loadData() {
-        for i in 0..<10 {
-            statusList.insert(i.description, at: 0)
+        // 模拟延时加载数据 -> dispatch_after
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+
+            for i in 0..<15 {
+                self.statusList.insert(i.description, at: 0)
+            }
+
+            // 结束刷新
+            self.refreshControl?.endRefreshing()
+            // 刷新表格
+            self.tableView?.reloadData()
         }
     }
     
