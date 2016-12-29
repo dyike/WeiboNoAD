@@ -9,11 +9,11 @@
 import UIKit
 
 class TitleButton: UIButton {
-    override init(frame: CGRect) {
+    init(frame: CGRect, imageName: String, selectedImageName: String) {
         super.init(frame: frame)
         
-        setImage(UIImage(named: "navigationbar_arrow_down"), for: UIControlState.normal)
-        setImage(UIImage(named: "navigationbar_arrow_up"), for: UIControlState.selected)
+        setImage(UIImage(named: imageName), for: UIControlState.normal)
+        setImage(UIImage(named: selectedImageName), for: UIControlState.selected)
         setTitleColor(UIColor.black, for: UIControlState.normal)
         sizeToFit()
     }
