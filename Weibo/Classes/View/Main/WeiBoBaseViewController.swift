@@ -9,7 +9,7 @@
 import UIKit
 
 class WeiBoBaseViewController: UIViewController {
-<<<<<<< HEAD
+
     // 用户登陆状态
     var userLogon = false
     
@@ -23,9 +23,7 @@ class WeiBoBaseViewController: UIViewController {
     // 标记是否上拉
     var isPullUp = false
  
-=======
 
->>>>>>> parent of 3e4b402... tableViewCell
     // 自定义导航条
     lazy var navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64))
     // 自定义导航条目 以后设置导航栏内容使用navItem
@@ -43,20 +41,19 @@ class WeiBoBaseViewController: UIViewController {
         }
     }
     
-<<<<<<< HEAD
+
     // 加载数据  具体实现由子类负责
     func loadData() {
         refreshControl?.endRefreshing()
     }
     
-=======
->>>>>>> parent of 3e4b402... tableViewCell
+
 }
 
 
 extension WeiBoBaseViewController {
     func setupUI() {
-<<<<<<< HEAD
+
         view.backgroundColor = UIColor.white
         // 取消自动缩进 - 如果隐藏了导航栏，会缩进20个点
         automaticallyAdjustsScrollViewInsets = false
@@ -97,8 +94,6 @@ extension WeiBoBaseViewController {
     
     
     private func setupNavigationBar() {
-=======
->>>>>>> parent of 3e4b402... tableViewCell
         // 添加导航条
         view.addSubview(navigationBar)
         // 将 item 设置给bar
@@ -110,7 +105,6 @@ extension WeiBoBaseViewController {
     }
 }
 
-<<<<<<< HEAD
 extension WeiBoBaseViewController: UITableViewDataSource, UITableViewDelegate {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,5 +137,3 @@ extension WeiBoBaseViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-=======
->>>>>>> parent of 3e4b402... tableViewCell

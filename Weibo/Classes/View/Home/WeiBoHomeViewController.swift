@@ -9,8 +9,6 @@
 import UIKit
 
 class WeiBoHomeViewController: WeiBoBaseViewController {
-
-<<<<<<< HEAD
     // 微博数据数组
     lazy var statusList = [String]()
     
@@ -33,12 +31,12 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
             // 刷新表格
             self.tableView?.reloadData()
         }
-=======
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
->>>>>>> parent of 3e4b402... tableViewCell
+
     }
     
     @objc func showFriends() {
