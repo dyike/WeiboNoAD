@@ -14,6 +14,8 @@ class WeiBoBaseViewController: UIViewController {
     // 用户登陆状态
     var userLogon = false
     
+    var visitorInfoDictionary: [String: String]?
+    
     // 表格视图  - 如果用户没有登陆，就不创建
     var tableView: UITableView?
     // 刷新控件
@@ -84,6 +86,8 @@ extension WeiBoBaseViewController {
     private func setupVisitorView() {
         let vistiorView = WeiBoVisitorView(frame: view.bounds)
         view.insertSubview(vistiorView, belowSubview: navigationBar)
+        // 设置访客视图信息
+        vistiorView.visitorInfo = visitorInfoDictionary
     }
     
     

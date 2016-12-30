@@ -9,6 +9,26 @@
 import UIKit
 
 class WeiBoVisitorView: UIView {
+    
+    // 访客视图的信息字典[imageName: message]
+    // 如果是首页， imageName = ""
+    var visitorInfo: [String: String]? {
+        didSet {
+            // 取字典信息
+            guard let imageName = visitorInfo?["imageName"],
+                let message = visitorInfo?["message"] else {
+                    return
+            }
+            // 设置消息
+            tipLabel.text = message
+            // 设置图象
+            if imageName == "" {
+                return
+            }
+            iconView.image = UIImage(named: imageName)
+        }
+        
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +38,8 @@ class WeiBoVisitorView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+
     
     // MARK - 私有控件
     // 图象视图

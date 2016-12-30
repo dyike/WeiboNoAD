@@ -69,16 +69,25 @@ extension WeiBoMainViewController {
     
     // 设置所有子控制器
     func setupChildControllers() {
-        let tabBarContent = [
-            ["className": "WeiBoHomeViewController", "title": "首页", "imageName": "home"],
-            ["className": "WeiBoMessageViewController", "title": "消息", "imageName": "message"],
+        let array: [[String: Any]] = [
+            ["className": "WeiBoHomeViewController", "title": "首页", "imageName": "home",
+                "visitorInfo": ["imageName": "", "message": "关注一些人，回到这里看看有什么惊喜"]
+            ],
+            ["className": "WeiBoMessageViewController", "title": "消息", "imageName": "message",
+                "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登陆后，别人评论你的微博，发给你消息，都会在这里看到"]
+            ],
             ["className": "UIViewController"],
-            ["className": "WeiBoProfileViewController", "title": "我", "imageName": "profile"],
-            ["className": "WeiBoDiscoverViewController", "title": "发现", "imageName": "discover"]
+            ["className": "WeiBoProfileViewController", "title": "我", "imageName": "profile",
+                "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登陆后，你的微博、相册、个人资料都会显示在这里，展示给别人"]
+            ],
+            ["className": "WeiBoDiscoverViewController", "title": "发现", "imageName": "discover",
+                "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登陆后，最新、最热微博尽在掌握，不再会与时事潮流擦肩而过"]
+            ]
         ]
-        
+        // 测试数据格式
+        //(array as NSArray).write(toFile: "/Users/ityike/Desktop/demo.plist", atomically: true)
         var arrayWeibo = [UIViewController]()
-        for dict in tabBarContent {
+        for dict in array {
             arrayWeibo.append(createController(dict: dict))
         }
         viewControllers = arrayWeibo
@@ -86,12 +95,13 @@ extension WeiBoMainViewController {
     
     // 使用字典创建一个子控制器
     // [className, title, imageName]
-    private func createController(dict: [String: String]) -> UIViewController {
+    private func createController(dict: [String: Any]) -> UIViewController {
         // 1 取得字典内容
-        guard let className = dict["className"],
-            let title = dict["title"],
-            let imageName = dict["imageName"],
-            let classView = NSClassFromString(Bundle.main.nameSpace + "." + className) as? UIViewController.Type else {
+        guard let className = dict["className"] as? String,
+            let title = dict["title"] as? String,
+            let imageName = dict["imageName"] as? String,
+            let classView = NSClassFromString(Bundle.main.nameSpace + "." + className) as? WeiBoBaseViewController.Type,
+            let visitorDict = dict["visitorInfo"] as? [String: String] else {
             return UIViewController()
         }
         // 2 创建视图控制器
@@ -99,6 +109,9 @@ extension WeiBoMainViewController {
         //let viewController = NSClassFromString(Bundle.main.nameSpace + "." + className) as? UIViewController.Type
         let viewController = classView.init()
         viewController.title = title
+        
+        // 设置控制器的访客字典信息
+        viewController.visitorInfoDictionary = visitorDict
         
         // 3 设置图象
         viewController.tabBarItem.image = UIImage(named: "tabbar_" + imageName)
