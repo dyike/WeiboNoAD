@@ -160,7 +160,8 @@
 			children = (
 				A68C4DBB1E140C6700CEECA4 /* VisitorView */,
 				A6FD3EFF1E100125009622C3 /* Test */,
-				A6FD3F061E12B3BC009622C3 /* MainControllers */,
+				A6FD3EE01E09FBB2009622C3 /* WeiBoMainViewController.swift */,
+				A6FD3EE21E09FC2D009622C3 /* WeiBoNavigationController.swift */,
 				A6FD3EE41E09FC7F009622C3 /* WeiBoBaseViewController.swift */,
 			);
 			path = Main;
@@ -215,15 +216,6 @@
 				A6FD3F001E100151009622C3 /* WeiboDemoViewController.swift */,
 			);
 			name = Test;
-			sourceTree = "<group>";
-		};
-		A6FD3F061E12B3BC009622C3 /* MainControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A6FD3EE01E09FBB2009622C3 /* WeiBoMainViewController.swift */,
-				A6FD3EE21E09FC2D009622C3 /* WeiBoNavigationController.swift */,
-			);
-			name = MainControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
