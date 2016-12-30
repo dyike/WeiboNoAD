@@ -40,7 +40,7 @@ class WeiBoVisitorView: UIView {
 // MARK - 设置界面
 extension WeiBoVisitorView {
     func setupUI() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor(hex: 0xEDEDED)
         // 添加控件
         addSubview(iconView)
         addSubview(maskIconView)
@@ -56,6 +56,7 @@ extension WeiBoVisitorView {
         
         let margin: CGFloat = 20.0
         // 自动布局
+        // 1> 图像视图
         addConstraint(NSLayoutConstraint(item: iconView,
                                          attribute: .centerX,
                                          relatedBy: .equal,
@@ -70,7 +71,7 @@ extension WeiBoVisitorView {
                                          attribute: .centerY,
                                          multiplier: 1.0,
                                          constant: -60))
-        
+        // 2> 小房子
         addConstraint(NSLayoutConstraint(item: houseIconView,
                                          attribute: .centerX,
                                          relatedBy: .equal,
@@ -86,6 +87,7 @@ extension WeiBoVisitorView {
                                          multiplier: 1.0,
                                          constant: 0))
         
+        // 3> 提示标签
         addConstraint(NSLayoutConstraint(item: tipLabel,
                                          attribute: .centerX,
                                          relatedBy: .equal,
@@ -100,7 +102,6 @@ extension WeiBoVisitorView {
                                          attribute: .bottom,
                                          multiplier: 1.0,
                                          constant: margin))
-        
         addConstraint(NSLayoutConstraint(item: tipLabel,
                                          attribute: .width,
                                          relatedBy: .equal,
@@ -109,6 +110,7 @@ extension WeiBoVisitorView {
                                          multiplier: 1.0,
                                          constant: 236))
         
+        // 4> 注册按钮
         addConstraint(NSLayoutConstraint(item: registerButton,
                                          attribute: .left,
                                          relatedBy: .equal,
@@ -131,6 +133,7 @@ extension WeiBoVisitorView {
                                          multiplier: 1.0,
                                          constant: 100))
         
+        // 5> 登录按钮
         addConstraint(NSLayoutConstraint(item: loginButton,
                                          attribute: .right,
                                          relatedBy: .equal,
@@ -153,22 +156,23 @@ extension WeiBoVisitorView {
                                          multiplier: 1.0,
                                          constant: 0))
         
-        // 遮罩图象
-        // view 定义VFL 中控件名称和实际名称映射关系
-        // metrics 定义 VFL 中指定的常熟映射关系
-        let viewDic = ["maskIconView": maskIconView,
-                       "registerButton": registerButton] as [String : Any]
-        let metrics = ["spacing": -20]
+        // 6> 遮罩图像
+        // views: 定义 VFL 中的控件名称和实际名称映射关系
+        // metrics: 定义 VFL 中 () 指定的常数影射关系
+        let viewDict = ["maskIconView": maskIconView,
+                        "registerButton": registerButton] as [String : Any]
+        let metrics = ["spacing": 20]
+        
         addConstraints(NSLayoutConstraint.constraints(
             withVisualFormat: "H:|-0-[maskIconView]-0-|",
             options: [],
             metrics: nil,
-            views: viewDic))
+            views: viewDict))
         addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-0-[maskIconView]-0-[registerButton]",
+            withVisualFormat: "V:|-0-[maskIconView]-(spacing)-[registerButton]",
             options: [],
             metrics: metrics,
-            views: viewDic))
+            views: viewDict))
         
         
     }
