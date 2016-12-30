@@ -22,6 +22,9 @@ class WeiBoVisitorView: UIView {
     // MARK - 私有控件
     // 图象视图
     lazy var iconView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
+    
+    lazy var maskIconView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+    
     lazy var houseIconView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
     
     lazy var tipLabel = UILabel(
@@ -40,8 +43,11 @@ extension WeiBoVisitorView {
         backgroundColor = UIColor.white
         // 添加控件
         addSubview(iconView)
+        addSubview(maskIconView)
         addSubview(houseIconView)
         addSubview(tipLabel)
+        addSubview(registerButton)
+        addSubview(loginButton)
         
         // 取消 autoresizing
         for v in subviews {
@@ -146,6 +152,23 @@ extension WeiBoVisitorView {
                                          attribute: .width,
                                          multiplier: 1.0,
                                          constant: 0))
+        
+        // 遮罩图象
+        // view 定义VFL 中控件名称和实际名称映射关系
+        // metrics 定义 VFL 中指定的常熟映射关系
+        let viewDic = ["maskIconView": maskIconView,
+                       "registerButton": registerButton] as [String : Any]
+        let metrics = ["spacing": -20]
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-0-[maskIconView]-0-|",
+            options: [],
+            metrics: nil,
+            views: viewDic))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-0-[maskIconView]-0-[registerButton]",
+            options: [],
+            metrics: metrics,
+            views: viewDic))
         
         
     }
