@@ -26,6 +26,10 @@ class WeiBoVisitorView: UIView {
                 return
             }
             iconView.image = UIImage(named: imageName)
+            
+            // 其他控制器视图访客不需要显示房子/遮罩
+            houseIconView.isHidden = true
+            maskIconView.isHidden = true
         }
         
     }
@@ -43,13 +47,13 @@ class WeiBoVisitorView: UIView {
     
     // MARK - 私有控件
     // 图象视图
-    lazy var iconView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
+    lazy var iconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_smallicon"))
     
-    lazy var maskIconView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+    lazy var maskIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
     
-    lazy var houseIconView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
+    lazy var houseIconView: UIImageView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
     
-    lazy var tipLabel = UILabel(
+    lazy var tipLabel: UILabel = UILabel(
         title: "关注一些人，回这里看看有什么惊喜",
         fontSize: 14,
         color: UIColor.darkGray)
@@ -70,6 +74,15 @@ extension WeiBoVisitorView {
         addSubview(tipLabel)
         addSubview(registerButton)
         addSubview(loginButton)
+        
+        // 文本居中
+        tipLabel.textAlignment = .center
+        // Xcode8 中文显示不全的问题 自动换行
+        tipLabel.adjustsFontForContentSizeCategory = true
+        tipLabel.numberOfLines = 0
+        tipLabel.lineBreakMode = NSLineBreakMode.byCharWrapping
+        
+        
         
         // 取消 autoresizing
         for v in subviews {
