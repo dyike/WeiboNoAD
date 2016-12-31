@@ -12,7 +12,7 @@ import UIKit
 
 class WeiBoBaseViewController: UIViewController {
     // 用户登陆状态
-    var userLogon = true
+    var userLogon = false
     
     var visitorInfoDictionary: [String: String]?
     

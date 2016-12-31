@@ -69,31 +69,20 @@ extension WeiBoMainViewController {
     
     // 设置所有子控制器
     func setupChildControllers() {
-        let array: [[String: Any]] = [
-            ["className": "WeiBoHomeViewController", "title": "首页", "imageName": "home",
-                "visitorInfo": ["imageName": "", "message": "关注一些人，回到这里看看有什么惊喜"]
-            ],
-            ["className": "WeiBoMessageViewController", "title": "消息", "imageName": "message",
-                "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登陆后，别人评论你的微博，发给你消息，都会在这里看到"]
-            ],
-            ["className": "UIViewController"],
-            ["className": "WeiBoProfileViewController", "title": "我", "imageName": "profile",
-                "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登陆后，你的微博、相册、个人资料都会显示在这里，展示给别人"]
-            ],
-            ["className": "WeiBoDiscoverViewController", "title": "发现", "imageName": "discover",
-                "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登陆后，最新、最热微博尽在掌握，不再会与时事潮流擦肩而过"]
-            ]
-        ]
-        // 测试数据格式
-        //(array as NSArray).write(toFile: "/Users/ityike/Desktop/demo.plist", atomically: true)
-        let data = try! JSONSerialization.data(withJSONObject: array, options: [.prettyPrinted])
-
-        (data as NSData).write(toFile: "/Users/ityike/Desktop/demo.json", atomically: true)
         
+        // 从bundle 加载配置的json
+        guard let path = Bundle.main.path(forResource: "main.json", ofType: nil),
+            let data = NSData(contentsOfFile: path),
+            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String: Any]] else {
+            return
+        }
+        
+        // 循环数组，循环创建控制器数组
         var arrayWeibo = [UIViewController]()
-        for dict in array {
+        for dict in array! {
             arrayWeibo.append(createController(dict: dict))
         }
+        // 设置 tabBar 的子控制器
         viewControllers = arrayWeibo
     }
     
