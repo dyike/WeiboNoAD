@@ -117,9 +117,11 @@ extension WeiBoBaseViewController {
         // 将 item 设置给bar
         navigationBar.items = [navItem]
         // 设置navBar 的渲染颜色
-        navigationBar.barTintColor = UIColor.white
+        navigationBar.barTintColor = UIColor(hex: 0xF6F6F6)
         // 设置navBar 的字体颜色
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
+        // 设置系统按钮的文字渲染颜色
+        navigationBar.tintColor = UIColor.orange
     }
 }
 
