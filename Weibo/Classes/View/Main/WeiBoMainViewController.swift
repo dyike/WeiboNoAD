@@ -86,6 +86,10 @@ extension WeiBoMainViewController {
         ]
         // 测试数据格式
         //(array as NSArray).write(toFile: "/Users/ityike/Desktop/demo.plist", atomically: true)
+        let data = try! JSONSerialization.data(withJSONObject: array, options: [.prettyPrinted])
+
+        (data as NSData).write(toFile: "/Users/ityike/Desktop/demo.json", atomically: true)
+        
         var arrayWeibo = [UIViewController]()
         for dict in array {
             arrayWeibo.append(createController(dict: dict))

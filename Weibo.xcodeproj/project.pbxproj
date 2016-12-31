@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A68C4DBD1E140CBD00CEECA4 /* WeiboVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBC1E140CBD00CEECA4 /* WeiboVisitorView.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
+		A6BE01941E17AA4B00854CE6 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = A6BE01931E17AA4B00854CE6 /* main.json */; };
 		A6C038FE1E169F64000C44E9 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C038FD1E169F64000C44E9 /* UIColor+extension.swift */; };
 		A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */; };
 		A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3EC81E097CD6009622C3 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		A68C4DBC1E140CBD00CEECA4 /* WeiboVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboVisitorView.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
+		A6BE01931E17AA4B00854CE6 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = main.json; path = ../../../../../Desktop/main.json; sourceTree = "<group>"; };
 		A6C038FD1E169F64000C44E9 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		A6FD3EC11E097CD6009622C3 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		A6FD3EDC1E09FB1A009622C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A6BE01931E17AA4B00854CE6 /* main.json */,
 				A68C4DBB1E140C6700CEECA4 /* VisitorView */,
 				A6FD3EFF1E100125009622C3 /* Test */,
 				A6FD3F061E12B3BC009622C3 /* MainControllers */,
@@ -288,6 +291,7 @@
 			files = (
 				A6FD3ECF1E097CD6009622C3 /* LaunchScreen.storyboard in Resources */,
 				A6FD3ECC1E097CD6009622C3 /* Assets.xcassets in Resources */,
+				A6BE01941E17AA4B00854CE6 /* main.json in Resources */,
 				A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

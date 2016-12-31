@@ -23,6 +23,7 @@ class WeiBoVisitorView: UIView {
             tipLabel.text = message
             // 设置图象
             if imageName == "" {
+                startAnimation()
                 return
             }
             iconView.image = UIImage(named: imageName)
@@ -41,6 +42,20 @@ class WeiBoVisitorView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // 旋转图标动画
+    private func startAnimation() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        
+        animation.toValue = 2 * M_PI
+        animation.repeatCount = MAXFLOAT
+        animation.duration = 15
+        // 每次进来都是转的，动画完成不删除，如果 iconView 被释放，动画会一起被销毁
+        animation.isRemovedOnCompletion = false
+        //将动画添加到图层
+        iconView.layer.add(animation, forKey: nil)
     }
     
 
