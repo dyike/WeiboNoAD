@@ -65,12 +65,12 @@ extension WeiBoHomeViewController {
 
 // 设置界面
 extension WeiBoHomeViewController {
-    override func setupUI() {
-        super.setupUI()
+    // 重写父类方法
+    override func setupTableView() {
+        super.setupTableView()
         
         // 设置导航栏按钮
         // 无法高亮
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
         
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         // 注册原型 cell

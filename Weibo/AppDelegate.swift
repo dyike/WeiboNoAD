@@ -26,11 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
-
 }
-
-/*
 // MARK: - 从服务器加载应用程序信息
 extension AppDelegate {
     
@@ -47,6 +43,7 @@ extension AppDelegate {
             let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
             
+            // 直接保存在沙盒，等待下一次程序启动使用
             data?.write(toFile: jsonPath, atomically: true)
             
             print("应用程序加载完毕\(jsonPath)")
@@ -54,5 +51,5 @@ extension AppDelegate {
         
     }
 }
- */
 
+ 

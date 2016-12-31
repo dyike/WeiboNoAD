@@ -10,6 +10,10 @@ import UIKit
 
 class WeiBoVisitorView: UIView {
     
+    lazy var registerButton = UIButton(title: "注册", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
+    
+    lazy var loginButton = UIButton(title: "登陆", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
+    
     // 访客视图的信息字典[imageName: message]
     // 如果是首页， imageName = ""
     var visitorInfo: [String: String]? {
@@ -72,11 +76,9 @@ class WeiBoVisitorView: UIView {
         title: "关注一些人，回这里看看有什么惊喜",
         fontSize: 14,
         color: UIColor.darkGray)
-    
-    lazy var registerButton = UIButton(title: "注册", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
-    
-    lazy var loginButton = UIButton(title: "登陆", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
+
 }
+
 
 // MARK - 设置界面
 extension WeiBoVisitorView {

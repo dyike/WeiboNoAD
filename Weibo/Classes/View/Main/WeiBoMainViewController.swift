@@ -70,10 +70,25 @@ extension WeiBoMainViewController {
     // 设置所有子控制器
     func setupChildControllers() {
         
-        // 从bundle 加载配置的json
-        guard let path = Bundle.main.path(forResource: "main.json", ofType: nil),
-            let data = NSData(contentsOfFile: path),
-            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String: Any]] else {
+        // 获取沙河json路径
+        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
+        
+        // 加载 data
+        var data = NSData(contentsOfFile: jsonPath)
+        
+        // 判断data 是否存在，如果没有，说明本地沙盒没有文件
+        
+        if data == nil {
+            let path = Bundle.main.path(forResource: "main.json", ofType: nil)
+            
+            data = NSData(contentsOfFile: path!)
+        }
+        
+        //  - data一定有一个内容
+        
+        // 反序列化
+        guard let array = try? JSONSerialization.jsonObject(with: data! as Data, options: []) as? [[String: Any]] else {
             return
         }
         
