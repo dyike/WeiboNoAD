@@ -22,12 +22,37 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
     // 第一次访问时，执行闭包，并且将结果存在shared
     static let shared = WeiBoNetWorkManager()
     
+    // 访问令牌，所有的网络请求都基于此令牌
+    var accessToken: String? = "2.00BVldmBGjEGPB41db88b702etzBAE"
+    
+    // 专门负责拼接， token 的网络请求方法
+    func tokenRequest(method: WeiBoHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) {
+        //处理tocken字典
+        // 0判断token是否为nil
+        guard let token = accessToken else {
+            completion(nil, false)
+            return
+        }
+        // 1判断参数是否存在
+        var parameters = parameters
+        if parameters == nil {
+            // 实例化字典
+            parameters = [String: AnyObject]()
+        }
+        
+        // 2 设置token字典
+        parameters!["access_token"] = token as AnyObject?
+        
+        // 调用request发起真正的请求
+        request(URLString: URLString, parameters: parameters!, completion: completion)
+    }
+    
     // 用一个函数封装get、post
     // 封装AFN 的get/post请求
-    func request(method: WeiBoHTTPMethod = .GET, URLString: String, parmaters: [String: Any], completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
+    func request(method: WeiBoHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject], completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) {
         // 成功回调
-        let success = { (dataTask: URLSessionDataTask, json: Any?) -> () in
-            completion(json, true)
+        let success = { (dataTask: URLSessionDataTask, json: Any) -> () in
+            completion(json as AnyObject?, true)
         }
         // 失败回调
         let failure = { (dataTask: URLSessionDataTask?, error: Error) -> () in
@@ -36,9 +61,9 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
         }
         
         if method == .GET {
-            get(URLString, parameters: parmaters, progress: nil, success: success, failure: failure)
+            get(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
         } else {
-            post(URLString, parameters: parmaters, progress: nil, success: success, failure: failure)
+            post(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
         }
     
     }

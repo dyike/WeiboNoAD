@@ -19,18 +19,10 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     override func loadData() {
         
         // 用网络工具加载数据
-        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
-        let params = ["access_token": "2.00BVldmBGjEGPB41db88b702etzBAE"]
-        
-//        WeiBoNetWorkManager.shared.get(urlString, parameters: params, progress: nil, success: { (_, json) in
-//            print(json)
-//        }, failure: { (_, error) in
-//            print("网络请求失败\(error)")
-//        })
-        //print("开始加载数据 \(WeiBoNetWorkManager.shared)")
-        
-        WeiBoNetWorkManager.shared.request(URLString: urlString, parmaters: params) { (json, isSuccess) in
-            print(json)
+    
+        WeiBoNetWorkManager.shared.statusList { (list, isSuccess) in
+            // 字典转模型，绑定表格数据
+            print(list)
         }
         
         
