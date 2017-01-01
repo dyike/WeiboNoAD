@@ -13,6 +13,7 @@
 		A6C039001E17DEE5000C44E9 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = A6C038FF1E17DEE5000C44E9 /* main.json */; };
 		A6C039031E189AF6000C44E9 /* WeiBoNetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C039021E189AF6000C44E9 /* WeiBoNetWorkManager.swift */; };
 		A6C039051E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C039041E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift */; };
+		A6C039071E18FD6F000C44E9 /* WeiBoStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C039061E18FD6F000C44E9 /* WeiBoStatus.swift */; };
 		A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */; };
 		A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3EC81E097CD6009622C3 /* Main.storyboard */; };
 		A6FD3ECC1E097CD6009622C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FD3ECB1E097CD6009622C3 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		A6C038FF1E17DEE5000C44E9 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		A6C039021E189AF6000C44E9 /* WeiBoNetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNetWorkManager.swift; sourceTree = "<group>"; };
 		A6C039041E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeiBoNetWorkManage+Extension.swift"; sourceTree = "<group>"; };
+		A6C039061E18FD6F000C44E9 /* WeiBoStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoStatus.swift; path = Weibo/Classes/Tools/NetWork/WeiBoStatus.swift; sourceTree = SOURCE_ROOT; };
 		A6FD3EC11E097CD6009622C3 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FD3EC41E097CD6009622C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6FD3EC91E097CD6009622C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		A6FD3ED71E09FB1A009622C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A6C039061E18FD6F000C44E9 /* WeiBoStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */,
 				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
 				A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */,
+				A6C039071E18FD6F000C44E9 /* WeiBoStatus.swift in Sources */,
 				A6C039051E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift in Sources */,
 				A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */,
 				A6FD3EE51E09FC7F009622C3 /* WeiBoBaseViewController.swift in Sources */,
