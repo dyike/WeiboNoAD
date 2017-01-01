@@ -12,31 +12,15 @@ import UIKit
 private let cellId = "cellId"
 
 class WeiBoHomeViewController: WeiBoBaseViewController {
-
+    // 列表视图模型
+    lazy var listViewModel = WeiboStatusListModel()
+    
     // 微博数据数组
-    lazy var statusList = [String]()
+//    lazy var statusList = [String]()
     
     override func loadData() {
         
-        // 用网络工具加载数据
-    
-        WeiBoNetWorkManager.shared.statusList { (list, isSuccess) in
-            // 字典转模型，绑定表格数据
-            print(list)
-        }
-        
-        
-        // 模拟延时加载数据 -> dispatch_after
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-
-            for i in 0..<15 {
-                if self.isPullUp {
-                    // 将数据加载到底部
-                    self.statusList.append("上拉 \(i)")
-                }
-                self.statusList.insert(i.description, at: 0)
-            }
-
+        listViewModel.loadStatus { (isSuccess) in
             // 结束刷新
             self.refreshControl?.endRefreshing()
             // 恢复上来刷新标记
@@ -44,6 +28,7 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
             // 刷新表格
             self.tableView?.reloadData()
         }
+        
     }
     
     // 显示好友
@@ -58,14 +43,14 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
 extension WeiBoHomeViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statusList.count
+        return listViewModel.statusList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 1 取cell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         // 2 设置cell
-        cell.textLabel?.text = statusList[indexPath.row]
+        cell.textLabel?.text = listViewModel.statusList[indexPath.row].text
         // 3 返回cell
         return cell
     }
