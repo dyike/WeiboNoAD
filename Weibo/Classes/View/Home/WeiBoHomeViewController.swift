@@ -20,7 +20,7 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     
     override func loadData() {
         
-        listViewModel.loadStatus { (isSuccess) in
+        listViewModel.loadStatus(pullup: self.isPullUp) { (isSuccess) in
             // 结束刷新
             self.refreshControl?.endRefreshing()
             // 恢复上来刷新标记
