@@ -10,6 +10,10 @@ import UIKit
 
 class WeiBoVisitorView: UIView {
     
+    lazy var registerButton = UIButton(title: "注册", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
+    
+    lazy var loginButton = UIButton(title: "登陆", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
+    
     // 访客视图的信息字典[imageName: message]
     // 如果是首页， imageName = ""
     var visitorInfo: [String: String]? {
@@ -23,6 +27,7 @@ class WeiBoVisitorView: UIView {
             tipLabel.text = message
             // 设置图象
             if imageName == "" {
+                startAnimation()
                 return
             }
             iconView.image = UIImage(named: imageName)
@@ -43,6 +48,20 @@ class WeiBoVisitorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // 旋转图标动画
+    private func startAnimation() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        
+        animation.toValue = 2 * M_PI
+        animation.repeatCount = MAXFLOAT
+        animation.duration = 15
+        // 每次进来都是转的，动画完成不删除，如果 iconView 被释放，动画会一起被销毁
+        animation.isRemovedOnCompletion = false
+        //将动画添加到图层
+        iconView.layer.add(animation, forKey: nil)
+    }
+    
 
     
     // MARK - 私有控件
@@ -57,11 +76,9 @@ class WeiBoVisitorView: UIView {
         title: "关注一些人，回这里看看有什么惊喜",
         fontSize: 14,
         color: UIColor.darkGray)
-    
-    lazy var registerButton = UIButton(title: "注册", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
-    
-    lazy var loginButton = UIButton(title: "登陆", fontSize: 16, normalColor: UIColor.orange, highlightedColor: UIColor.black, backgroundImageName: "common_button_white_disable")
+
 }
+
 
 // MARK - 设置界面
 extension WeiBoVisitorView {

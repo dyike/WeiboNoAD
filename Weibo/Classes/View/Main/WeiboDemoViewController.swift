@@ -26,12 +26,12 @@ class WeiboDemoViewController: WeiBoBaseViewController {
 // 设置界面
 extension WeiboDemoViewController {
     
-    
-    override func setupUI() {
-        super.setupUI()
-
+    // 重写父类方法
+    override func setupTableView() {
+        super.setupTableView()
         // 设置导航栏按钮
         navItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", style: .plain, target: self, action: #selector(showNext))
     }
+    
 
 }

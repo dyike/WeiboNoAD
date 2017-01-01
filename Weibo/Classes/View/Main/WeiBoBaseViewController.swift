@@ -11,7 +11,7 @@ import UIKit
 class WeiBoBaseViewController: UIViewController {
 
     // 用户登陆状态
-    var userLogon = false
+    var userLogon = true
     
     var visitorInfoDictionary: [String: String]?
     
@@ -50,7 +50,22 @@ class WeiBoBaseViewController: UIViewController {
 
 }
 
+<<<<<<< HEAD
 
+=======
+// MARK - 访客视图监听方法
+extension WeiBoBaseViewController {
+    @objc func login() {
+        print("用户登录")
+    }
+    
+    @objc func register() {
+        print("用户注册")
+    }
+}
+
+// MARK - 设置界面
+>>>>>>> dev
 extension WeiBoBaseViewController {
     func setupUI() {
 
@@ -61,7 +76,9 @@ extension WeiBoBaseViewController {
         userLogon ? setupTableView() : setupVisitorView()
     }
     
-    private func setupTableView() {
+    // 设置表格视图，用户登陆之后执行()
+    // 子类重写此方法, 因为子类不需要关心用户登陆之前的逻辑
+    func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         view.insertSubview(tableView!, belowSubview: navigationBar)
         
@@ -88,8 +105,15 @@ extension WeiBoBaseViewController {
     private func setupVisitorView() {
         let vistiorView = WeiBoVisitorView(frame: view.bounds)
         view.insertSubview(vistiorView, belowSubview: navigationBar)
-        // 设置访客视图信息
+        // 1 设置访客视图信息
         vistiorView.visitorInfo = visitorInfoDictionary
+        
+        // 2 添加访客视图的按钮的监听方法
+        vistiorView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        vistiorView.registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        // 3 设置导航条按钮
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(register))
+        navItem.rightBarButtonItem = UIBarButtonItem(title: "登陆", style: .plain, target: self, action: #selector(login))
     }
     
     
@@ -99,11 +123,14 @@ extension WeiBoBaseViewController {
         // 将 item 设置给bar
         navigationBar.items = [navItem]
         // 设置navBar 的渲染颜色
-        navigationBar.barTintColor = UIColor.white
+        navigationBar.barTintColor = UIColor(hex: 0xF6F6F6)
         // 设置navBar 的字体颜色
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.darkGray]
+        // 设置系统按钮的文字渲染颜色
+        navigationBar.tintColor = UIColor.orange
     }
 }
+
 
 extension WeiBoBaseViewController: UITableViewDataSource, UITableViewDelegate {
   
