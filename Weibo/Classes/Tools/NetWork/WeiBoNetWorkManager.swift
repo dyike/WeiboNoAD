@@ -22,7 +22,8 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
     // 第一次访问时，执行闭包，并且将结果存在shared
     static let shared = WeiBoNetWorkManager()
     
-    // 访问令牌，所有的网络请求都基于此令牌
+    // 访问令牌，所有的网络请求都基于此令牌（登录除外）
+    // 访问令牌有时限（为了保护用户安全）
     var accessToken: String? = "2.00BVldmBGjEGPB41db88b702etzBAE"
     
     // 专门负责拼接， token 的网络请求方法
@@ -30,6 +31,9 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
         //处理tocken字典
         // 0判断token是否为nil
         guard let token = accessToken else {
+            // FIXME: 发送通知，提示用户登陆
+            
+            print("没有token！需要重新登陆")
             completion(nil, false)
             return
         }
@@ -56,6 +60,12 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
         }
         // 失败回调
         let failure = { (dataTask: URLSessionDataTask?, error: Error) -> () in
+            
+            // 针对403处理用户token过期
+            if (dataTask?.response as? HTTPURLResponse)?.statusCode == 403 {
+                print("token过期")
+                // FIXME: 发送通知（本方法不知道被谁通知）
+            }
             print("网络请求错误 \(error)")
             completion(nil, false)
         }
