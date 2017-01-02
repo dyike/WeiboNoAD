@@ -24,9 +24,14 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
     
     // 访问令牌，所有的网络请求都基于此令牌（登录除外）
     // 访问令牌有时限（为了保护用户安全）
-    var accessToken: String? = "2.00BVldmBGjEGPB41db88b702etzBAE"
+    var accessToken: String? //= "2.00BVldmBGjEGPB41db88b702etzBAE"
     // 微博ID
     var uid: String? = "1634874343"
+    
+    // 用户登录标记(计算属性)
+    var userLogin: Bool {
+        return accessToken != nil
+    }
     
     // 专门负责拼接， token 的网络请求方法
     func tokenRequest(method: WeiBoHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) {

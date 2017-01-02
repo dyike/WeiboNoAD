@@ -11,8 +11,6 @@ import UIKit
 //class WeiBoBaseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 class WeiBoBaseViewController: UIViewController {
-    // 用户登陆状态
-    var userLogon = true
     
     var visitorInfoDictionary: [String: String]?
     
@@ -32,7 +30,7 @@ class WeiBoBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        loadData()
+        WeiBoNetWorkManager.shared.userLogin ? loadData() : ()
     }
     
     // 重写 title 的 didSet
@@ -67,7 +65,7 @@ extension WeiBoBaseViewController {
         // 取消自动缩进 - 如果隐藏了导航栏，会缩进20个点
         automaticallyAdjustsScrollViewInsets = false
         setupNavigationBar()
-        userLogon ? setupTableView() : setupVisitorView()
+        WeiBoNetWorkManager.shared.userLogin ? setupTableView() : setupVisitorView()
     }
     
     // 设置表格视图，用户登陆之后执行()

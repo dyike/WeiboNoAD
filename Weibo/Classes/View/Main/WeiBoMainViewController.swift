@@ -19,6 +19,8 @@ class WeiBoMainViewController: UITabBarController {
         setupComposeButton()
         
         setupTimer()
+        // 设置代理
+        delegate = self
     }
     
     deinit {
@@ -55,14 +57,50 @@ class WeiBoMainViewController: UITabBarController {
 
 }
 
+extension WeiBoMainViewController: UITabBarControllerDelegate {
+    // 将要选择 TabBarItem
+    // tabBarController: tabBarController
+    // viewController: 目标控制器
+    // returns: 是否切换到目标控制器
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print("将要切换到\(viewController)")
+        
+        // 获取控制器在数组中的索引
+        let index = (childViewControllers as NSArray).index(of: viewController)
+        // 获取当前索引
+        // 判断当前索引是首页，同时index也是首页，重复点击首页按钮
+        if selectedIndex == 0 && index == selectedIndex {
+            // 让表格滚动到顶部
+            // 获取到控制器
+            let nav = childViewControllers[0] as! UINavigationController
+            let vc = nav.childViewControllers[0] as! WeiBoHomeViewController
+            // 滚动到顶部
+            vc.tableView?.setContentOffset(CGPoint(x: 0, y: -64), animated: true)
+            // 刷新数据 - 增加延迟，是保证表格先滚动到顶部再刷新
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                vc.loadData()
+            })
+
+        }
+        
+        // 判断目标控制器是否是UIViewController
+        return !viewController.isMember(of: UIViewController.self)
+        
+    }
+}
+
 // MARK - 时钟相关方法
 extension WeiBoMainViewController {
     func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        // 时间间隔60秒
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     // 时钟触发方法
     @objc func updateTimer() {
+        if !WeiBoNetWorkManager.shared.userLogin {
+            return
+        }
         WeiBoNetWorkManager.shared.unreadCount { (count) in
             // 设置 tabBarItem 的 badgeNumber
             self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
@@ -86,7 +124,7 @@ extension WeiBoMainViewController {
         let count = CGFloat(childViewControllers.count)
         
         // 将向内缩进的宽度减少，能够让按钮的宽度变大。
-        let width = tabBar.bounds.width / count - 1
+        let width = tabBar.bounds.width / count
         
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * width, dy: 0)
         
