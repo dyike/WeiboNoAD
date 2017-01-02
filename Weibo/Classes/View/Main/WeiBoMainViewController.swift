@@ -21,11 +21,16 @@ class WeiBoMainViewController: UITabBarController {
         setupTimer()
         // 设置代理
         delegate = self
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification), object: nil)
+        
     }
     
     deinit {
         // 销毁时钟
         timer?.invalidate()
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -34,6 +39,11 @@ class WeiBoMainViewController: UITabBarController {
      */
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait   // 竖屏
+    }
+    
+    // MARK: 监听方法
+    @objc func userLogin(n: Notification) {
+        print("用户登录通知\(n)")
     }
     
    

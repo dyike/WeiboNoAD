@@ -50,7 +50,8 @@ class WeiBoBaseViewController: UIViewController {
 // MARK - 访客视图监听方法
 extension WeiBoBaseViewController {
     @objc func login() {
-        print("用户登录")
+        // 发送通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification), object: nil)
     }
     
     @objc func register() {
