@@ -16,6 +16,12 @@ class WeiBoMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         
+        // 测试未读数量
+        WeiBoNetWorkManager.shared.unreadCount { (count) in
+            print("\(count) 条新微博")
+            
+        }
+        
     }
     
     
