@@ -9,6 +9,8 @@
 import UIKit
 
 class WeiBoMainViewController: UITabBarController {
+    // 定时器
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +18,19 @@ class WeiBoMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         
+        setupTimer()
+        // 设置代理
+        delegate = self
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification), object: nil)
+        
+    }
+    
+    deinit {
+        // 销毁时钟
+        timer?.invalidate()
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -24,6 +39,15 @@ class WeiBoMainViewController: UITabBarController {
      */
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait   // 竖屏
+    }
+    
+    // MARK: 监听方法
+    @objc func userLogin(n: Notification) {
+        print("用户登录通知\(n)")
+        // 展现登陆控制器 - 通常会和 UINavigationController 连用，方便发挥
+//        let vc = WeiBoOAuthViewController()
+        let nav = UINavigationController(rootViewController: WeiBoOAuthViewController())
+        present(nav, animated: true, completion: nil)
     }
     
    
@@ -46,6 +70,61 @@ class WeiBoMainViewController: UITabBarController {
     lazy var composeButton = UIButton.init(imageName: "tabbar_add", backgroundImageName: "tabbar_compose_button")
 
 }
+
+extension WeiBoMainViewController: UITabBarControllerDelegate {
+    // 将要选择 TabBarItem
+    // tabBarController: tabBarController
+    // viewController: 目标控制器
+    // returns: 是否切换到目标控制器
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print("将要切换到\(viewController)")
+        
+        // 获取控制器在数组中的索引
+        let index = (childViewControllers as NSArray).index(of: viewController)
+        // 获取当前索引
+        // 判断当前索引是首页，同时index也是首页，重复点击首页按钮
+        if selectedIndex == 0 && index == selectedIndex {
+            // 让表格滚动到顶部
+            // 获取到控制器
+            let nav = childViewControllers[0] as! UINavigationController
+            let vc = nav.childViewControllers[0] as! WeiBoHomeViewController
+            // 滚动到顶部
+            vc.tableView?.setContentOffset(CGPoint(x: 0, y: -64), animated: true)
+            // 刷新数据 - 增加延迟，是保证表格先滚动到顶部再刷新
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                vc.loadData()
+            })
+
+        }
+        
+        // 判断目标控制器是否是UIViewController
+        return !viewController.isMember(of: UIViewController.self)
+        
+    }
+}
+
+// MARK - 时钟相关方法
+extension WeiBoMainViewController {
+    func setupTimer() {
+        // 时间间隔60秒
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    // 时钟触发方法
+    @objc func updateTimer() {
+        if !WeiBoNetWorkManager.shared.userLogin {
+            return
+        }
+        WeiBoNetWorkManager.shared.unreadCount { (count) in
+            // 设置 tabBarItem 的 badgeNumber
+            self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
+            // 设置app的badgeNumber
+            UIApplication.shared.applicationIconBadgeNumber = count
+        }
+    }
+}
+
+
 // extension 类似于oc中分类，在swift中还可以用来切分代码块
 // 可以将相近功能的函数，放在一个extension 
 // 设置界面：
@@ -59,7 +138,7 @@ extension WeiBoMainViewController {
         let count = CGFloat(childViewControllers.count)
         
         // 将向内缩进的宽度减少，能够让按钮的宽度变大。
-        let width = tabBar.bounds.width / count - 1
+        let width = tabBar.bounds.width / count
         
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * width, dy: 0)
         

@@ -20,20 +20,22 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     
     override func loadData() {
         
-        listViewModel.loadStatus(pullup: self.isPullUp) { (isSuccess) in
+        listViewModel.loadStatus(pullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             // 结束刷新
             self.refreshControl?.endRefreshing()
             // 恢复上来刷新标记
             self.isPullUp = false
             // 刷新表格
-            self.tableView?.reloadData()
+            if shouldRefresh {
+               self.tableView?.reloadData()
+            }
         }
         
     }
     
     // 显示好友
     @objc func showFriends() {
-        let vc = WeiboDemoViewController()
+        let vc = WeiBoHomeViewController()
         // push 的动作是 nav 做的
         navigationController?.pushViewController(vc, animated: true)
     }
