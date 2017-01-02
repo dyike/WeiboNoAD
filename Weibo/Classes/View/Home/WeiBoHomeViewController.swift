@@ -35,7 +35,7 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     
     // 显示好友
     @objc func showFriends() {
-        let vc = WeiboDemoViewController()
+        let vc = WeiBoHomeViewController()
         // push 的动作是 nav 做的
         navigationController?.pushViewController(vc, animated: true)
     }

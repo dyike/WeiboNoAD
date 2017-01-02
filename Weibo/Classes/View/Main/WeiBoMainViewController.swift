@@ -44,6 +44,10 @@ class WeiBoMainViewController: UITabBarController {
     // MARK: 监听方法
     @objc func userLogin(n: Notification) {
         print("用户登录通知\(n)")
+        // 展现登陆控制器 - 通常会和 UINavigationController 连用，方便发挥
+//        let vc = WeiBoOAuthViewController()
+        let nav = UINavigationController(rootViewController: WeiBoOAuthViewController())
+        present(nav, animated: true, completion: nil)
     }
     
    
