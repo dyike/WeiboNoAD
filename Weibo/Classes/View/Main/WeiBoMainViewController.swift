@@ -9,6 +9,8 @@
 import UIKit
 
 class WeiBoMainViewController: UITabBarController {
+    // 定时器
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,12 +18,12 @@ class WeiBoMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         
-        // 测试未读数量
-        WeiBoNetWorkManager.shared.unreadCount { (count) in
-            print("\(count) 条新微博")
-            
-        }
-        
+        setupTimer()
+    }
+    
+    deinit {
+        // 销毁时钟
+        timer?.invalidate()
     }
     
     
@@ -52,6 +54,23 @@ class WeiBoMainViewController: UITabBarController {
     lazy var composeButton = UIButton.init(imageName: "tabbar_add", backgroundImageName: "tabbar_compose_button")
 
 }
+
+// MARK - 时钟相关方法
+extension WeiBoMainViewController {
+    func setupTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    // 时钟触发方法
+    @objc func updateTimer() {
+        WeiBoNetWorkManager.shared.unreadCount { (count) in
+            // 设置 tabBarItem 的 badgeNumber
+            self.tabBar.items?[0].badgeValue = count > 0 ? "\(count)" : nil
+        }
+    }
+}
+
+
 // extension 类似于oc中分类，在swift中还可以用来切分代码块
 // 可以将相近功能的函数，放在一个extension 
 // 设置界面：
