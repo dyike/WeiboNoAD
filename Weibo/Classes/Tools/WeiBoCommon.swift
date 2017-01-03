@@ -11,3 +11,11 @@ import Foundation
 // MARK - 全局通知定义
 
 let WeiBoUserShouldLoginNotification = "WeiBoUserShouldLoginNotification"
+
+// MARK - 应用程序信息
+// AppKey
+let WeiBoAppKey = "1139226012"
+// 密钥
+let WeiBoAppSecret = "b443d78786bf65e2fe93d92a6624bd7d"
+// 回调地址
+let WeiBoRedirectUri = "https://www.baidu.com"
