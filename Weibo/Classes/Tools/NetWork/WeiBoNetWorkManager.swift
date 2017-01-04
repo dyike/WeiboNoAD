@@ -20,11 +20,18 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
     // 实现一个单例
     // 静态区/常量 / 闭包
     // 第一次访问时，执行闭包，并且将结果存在shared
-    static let shared = WeiBoNetWorkManager()
+    static let shared: WeiBoNetWorkManager = {
+        // 实例化
+        let instance = WeiBoNetWorkManager()
+        // 设置响应的反序列化的数据类型
+        instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
+        // 返回对象
+        return instance
+    }()
     
     // 访问令牌，所有的网络请求都基于此令牌（登录除外）
     // 访问令牌有时限（为了保护用户安全）
-    var accessToken: String? //= "2.00BVldmBGjEGPB41db88b702etzBAE"
+    var accessToken: String? //= "2.00BVldmBGjEGPB71caab9e85FZOTtC"
     // 微博ID
     var uid: String? = "1634874343"
     

@@ -40,3 +40,29 @@ extension WeiBoNetWorkManager {
         }
     }
 }
+
+
+// MARK - OAuth相关方法
+extension WeiBoNetWorkManager {
+    // 加载accesstoken
+    func loadAccessToken(code: String) {
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+//        client_id	申请应用时分配的AppKey。
+//        client_secret	申请应用时分配的AppSecret。
+//        grant_type 请求的类型，填写authorization_code
+//        grant_type为authorization_code时
+//        code	调用authorize获得的code值。
+//        redirect_uri
+        let params = [
+                "client_id": WeiBoAppKey,
+                "client_secret": WeiBoAppSecret,
+                "grant_type": "authorization_code",
+                "code": code,
+                "redirect_uri": WeiBoRedirectUri
+            ]
+        
+        request(method: .POST, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
+            print(json)
+        }
+    }
+}
