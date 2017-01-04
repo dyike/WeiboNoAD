@@ -28,7 +28,7 @@ extension WeiBoNetWorkManager {
     
     // 未读数量
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
-        guard let uid = uid else {
+        guard let uid = userAccount.uid else {
             return
         }
         let urlString = "https://rm.api.weibo.com/2/remind/unread_count.json"
@@ -37,6 +37,35 @@ extension WeiBoNetWorkManager {
             let dict = json as? [String: AnyObject]
             let count = dict?["status"] as? Int
             completion(count ?? 0)
+        }
+    }
+}
+
+
+// MARK - OAuth相关方法
+extension WeiBoNetWorkManager {
+    // 加载accesstoken
+    func loadAccessToken(code: String) {
+        let urlString = "https://api.weibo.com/oauth2/access_token"
+//        client_id	申请应用时分配的AppKey。
+//        client_secret	申请应用时分配的AppSecret。
+//        grant_type 请求的类型，填写authorization_code
+//        grant_type为authorization_code时
+//        code	调用authorize获得的code值。
+//        redirect_uri
+        let params = [
+                "client_id": WeiBoAppKey,
+                "client_secret": WeiBoAppSecret,
+                "grant_type": "authorization_code",
+                "code": code,
+                "redirect_uri": WeiBoRedirectUri
+            ]
+        
+        request(method: .POST, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
+            //print(json)
+            // 直接使用字典设置UserAccount的属性
+            self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
+            print(self.userAccount)
         }
     }
 }

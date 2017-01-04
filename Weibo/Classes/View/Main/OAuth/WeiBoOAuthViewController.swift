@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
+
+
 // 通过WebView加载新浪微博授权页面控制器
 class WeiBoOAuthViewController: UIViewController {
     
@@ -15,6 +18,8 @@ class WeiBoOAuthViewController: UIViewController {
     override func loadView() {
         view = webView
         view.backgroundColor = UIColor.white
+        // 取消滚动视图
+        webView.scrollView.isScrollEnabled = false
         // 设置代理
         webView.delegate = self
         // 设置导航栏
@@ -40,7 +45,9 @@ class WeiBoOAuthViewController: UIViewController {
         
     }
     
+    // 关闭控制器
     @objc func close() {
+        SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
     
@@ -72,8 +79,19 @@ extension WeiBoOAuthViewController: UIWebViewDelegate {
         }
         // 从query中取出授权码
         let code = request.url?.query?.substring(from: "code=".endIndex)
-        print("获取授权码\(code)")
+        //print("获取授权码\(code)")
+        
+        // 使用授权码获取acess_token
+        WeiBoNetWorkManager.shared.loadAccessToken(code: code ?? "")
         
         return false
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        SVProgressHUD.dismiss()
     }
 }
