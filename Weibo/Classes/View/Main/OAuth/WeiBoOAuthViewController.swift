@@ -82,7 +82,7 @@ extension WeiBoOAuthViewController: UIWebViewDelegate {
         //print("获取授权码\(code)")
         
         // 使用授权码获取acess_token
-        WeiBoNetWorkManager.shared.loadAccessToken(code: code!)
+        WeiBoNetWorkManager.shared.loadAccessToken(code: code ?? "")
         
         return false
     }
