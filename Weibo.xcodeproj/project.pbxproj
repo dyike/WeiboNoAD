@@ -305,12 +305,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6FD3ED31E097CD6009622C3 /* Build configuration list for PBXNativeTarget "Weibo" */;
 			buildPhases = (
-				187675D2BAE796162C9C8475 /* Check Pods Manifest.lock */,
+				187675D2BAE796162C9C8475 /* [CP] Check Pods Manifest.lock */,
 				A6FD3EBD1E097CD6009622C3 /* Sources */,
 				A6FD3EBE1E097CD6009622C3 /* Frameworks */,
 				A6FD3EBF1E097CD6009622C3 /* Resources */,
-				6E01E10E5447105C006F59C9 /* Embed Pods Frameworks */,
-				1B193177619FC0C223ABD28F /* Copy Pods Resources */,
+				6E01E10E5447105C006F59C9 /* [CP] Embed Pods Frameworks */,
+				1B193177619FC0C223ABD28F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -371,29 +371,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		187675D2BAE796162C9C8475 /* Check Pods Manifest.lock */ = {
+		187675D2BAE796162C9C8475 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		1B193177619FC0C223ABD28F /* Copy Pods Resources */ = {
+		1B193177619FC0C223ABD28F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,14 +401,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weibo/Pods-Weibo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6E01E10E5447105C006F59C9 /* Embed Pods Frameworks */ = {
+		6E01E10E5447105C006F59C9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
