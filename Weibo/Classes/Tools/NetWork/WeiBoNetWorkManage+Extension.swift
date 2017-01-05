@@ -66,6 +66,8 @@ extension WeiBoNetWorkManager {
             // 直接使用字典设置UserAccount的属性
             self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
             print(self.userAccount)
+            // 保存模型
+            self.userAccount.saveAccount()
         }
     }
 }
