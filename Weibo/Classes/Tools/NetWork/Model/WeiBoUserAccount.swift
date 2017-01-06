@@ -34,8 +34,9 @@ class WeiBoUserAccount: NSObject {
         // 删除expires_in值
         dict.removeValue(forKey: "expires_in")
         // 2 字典序列化
-        guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []),
-            let filePath = ("useraccount.json" as? NSString)?.appendDocumentDir() else {
+        let filePath = ("useraccount.json" as NSString).appendDocumentDir()
+        guard let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
+            else {
                 return
         }
         // 3 写入磁盘
