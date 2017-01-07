@@ -87,7 +87,12 @@ extension WeiBoOAuthViewController: UIWebViewDelegate {
                 SVProgressHUD.showInfo(withStatus: "网络请求失败")
             } else {
                 SVProgressHUD.showInfo(withStatus: "登录成功")
-                // 跳转到首页
+                // 跳转'页面' 通过通知发送登陆成功消息
+                // 1 发送通知
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: WeiBoUserLoginSuccessedNotification), object: nil)
+                
+                // 2 关闭窗口
+                self.close()
             }
         }
         
