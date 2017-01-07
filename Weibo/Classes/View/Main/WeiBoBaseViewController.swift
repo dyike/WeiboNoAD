@@ -59,7 +59,12 @@ class WeiBoBaseViewController: UIViewController {
 extension WeiBoBaseViewController {
     // 登陆成功处理
     @objc func loginSuccess(n: Notification) {
+        
         // print("登录成功 \(n)")
+        // 登录前左边右边的按钮处理
+        navItem.leftBarButtonItem = nil
+        navItem.rightBarButtonItem = nil
+        
         // 更新UI 将访客视图替换为表格视图
         // 需要重新设置View
         // 在访问view的getter时，当view == nil 会调用loadView -> viewDidLoad
@@ -104,6 +109,10 @@ extension WeiBoBaseViewController {
                                                left: 0,
                                                bottom: tabBarController?.tabBar.bounds.height ?? 0,
                                                right: 0)
+        // 修改指示器的缩进
+        tableView?.scrollIndicatorInsets = tableView!.contentInset
+
+        
         // 设置刷新控件
         // 1 实例化控件
         refreshControl = UIRefreshControl()
