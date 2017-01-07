@@ -26,7 +26,7 @@ extension WeiBoNetWorkManager {
         }
     }
     
-    // 未读数量
+    // 未读数量  - 定时刷新
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
         guard let uid = userAccount.uid else {
             return
@@ -45,14 +45,11 @@ extension WeiBoNetWorkManager {
 // MARK - OAuth相关方法
 extension WeiBoNetWorkManager {
     // 加载accesstoken
-    func loadAccessToken(code: String) {
+    // code 授权码
+    // completion 回调
+    func loadAccessToken(code: String, completion: @escaping (_ isSuccess: Bool) -> ()) {
         let urlString = "https://api.weibo.com/oauth2/access_token"
-//        client_id	申请应用时分配的AppKey。
-//        client_secret	申请应用时分配的AppSecret。
-//        grant_type 请求的类型，填写authorization_code
-//        grant_type为authorization_code时
-//        code	调用authorize获得的code值。
-//        redirect_uri
+
         let params = [
                 "client_id": WeiBoAppKey,
                 "client_secret": WeiBoAppSecret,
@@ -68,6 +65,8 @@ extension WeiBoNetWorkManager {
             print(self.userAccount)
             // 保存模型
             self.userAccount.saveAccount()
+            // 完成回调
+            completion(isSuccess)
         }
     }
 }

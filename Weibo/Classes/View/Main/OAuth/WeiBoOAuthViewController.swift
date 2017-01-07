@@ -78,11 +78,18 @@ extension WeiBoOAuthViewController: UIWebViewDelegate {
             return false
         }
         // 从query中取出授权码
-        let code = request.url?.query?.substring(from: "code=".endIndex)
+        let code = request.url?.query?.substring(from: "code=".endIndex) ?? ""
         //print("获取授权码\(code)")
         
         // 使用授权码获取acess_token
-        WeiBoNetWorkManager.shared.loadAccessToken(code: code ?? "")
+        WeiBoNetWorkManager.shared.loadAccessToken(code: code) { (isSuccess) in
+            if !isSuccess {
+                SVProgressHUD.showInfo(withStatus: "网络请求失败")
+            } else {
+                SVProgressHUD.showInfo(withStatus: "登录成功")
+                // 跳转到首页
+            }
+        }
         
         return false
     }
