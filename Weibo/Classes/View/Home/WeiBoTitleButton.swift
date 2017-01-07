@@ -17,7 +17,7 @@ class WeiBoTitleButton: UIButton {
         if title == nil {
             setTitle("首页", for: [])
         } else {
-            setTitle(title, for: [])
+            setTitle(title! + " ", for: [])
             
             setImage(UIImage(named: "navigationbar_arrow_down"), for: [])
             setImage(UIImage(named: "navigationbar_arrow_up"), for: .selected)
@@ -32,5 +32,18 @@ class WeiBoTitleButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // 重新布局视图
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let titleLabel = titleLabel, let imageView = imageView else {
+            return
+        }
+        // 将label的x向左移动imageView的宽度
+        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
+        // 将imageView的想向右移动label的宽度
+        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
+        
     }
 }
