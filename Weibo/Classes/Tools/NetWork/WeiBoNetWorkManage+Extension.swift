@@ -63,15 +63,21 @@ extension WeiBoNetWorkManager {
             self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
             //print(self.userAccount)
         
+            // 如果请求失败，对用户账户数据不会有任何影响
+            // 直接用字典设置 userAccount 的属性
+            self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
+            
             // 加载当前用户信息
             self.loadUserInfo(completion: { (dict) in
-                // 使用用户字典信息，用户昵称和用户头像
-                self.yy_modelSet(with: dict)
+                // 使用用户信息字典设置用户账户信息(昵称和头像地址)
+                self.userAccount.yy_modelSet(with: dict)
                 
                 // 保存模型
                 self.userAccount.saveAccount()
                 
-                // 完成回调
+                print(self.userAccount)
+                
+                // 用户信息加载完成再，完成回调
                 completion(isSuccess)
             })
         }
@@ -91,7 +97,7 @@ extension WeiBoNetWorkManager {
         let params = ["uid": uid]
         tokenRequest(URLString: urlString, parameters: params as [String : AnyObject]?) { (json, isSuccess) in
             // 完成回调
-            completion(json as? [String: AnyObject] ?? [:])
+            completion((json as? [String: AnyObject]) ?? [:])
         }
         
     }

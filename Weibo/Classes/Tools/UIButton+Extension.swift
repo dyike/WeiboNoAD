@@ -32,6 +32,19 @@ extension UIButton {
         titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
         setTitleColor(normalColor, for: .normal)
         setTitleColor(highlightedColor, for: .highlighted)
-        setBackgroundImage(UIImage(named: backgroundImageName), for: .normal)
+        if backgroundImageName != "" {
+           setBackgroundImage(UIImage(named: backgroundImageName), for: .normal)
+        }
+        sizeToFit()
+    }
+    
+    convenience init(title: String, fontSize: CGFloat, normalColor: UIColor, highlightedColor: UIColor) {
+        // 实例化
+        self.init()
+        setTitle(title, for: .normal)
+        titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
+        setTitleColor(normalColor, for: .normal)
+        setTitleColor(highlightedColor, for: .highlighted)
+        sizeToFit()
     }
 }
