@@ -41,9 +41,9 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
         //处理tocken字典
         // 0判断token是否为nil
         guard let token = userAccount.access_token else {
-            // FIXME: 发送通知，提示用户登陆
+            //print("没有token！需要重新登陆")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification), object: nil)
             
-            print("没有token！需要重新登陆")
             completion(nil, false)
             return
         }
@@ -73,8 +73,8 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
             
             // 针对403处理用户token过期
             if (dataTask?.response as? HTTPURLResponse)?.statusCode == 403 {
-                print("token过期")
-                // FIXME: 发送通知（本方法不知道被谁通知）
+                // print("token过期")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification), object: "bad token")
             }
             print("网络请求错误 \(error)")
             completion(nil, false)

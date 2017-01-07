@@ -11,6 +11,9 @@ import Foundation
 // MARK - 全局通知定义
 
 let WeiBoUserShouldLoginNotification = "WeiBoUserShouldLoginNotification"
+// 用户登陆成功通知
+let WeiBoUserLoginSuccessedNotification = "WeiBoUserLoginSuccessedNotification"
+
 
 // MARK - 应用程序信息
 // AppKey

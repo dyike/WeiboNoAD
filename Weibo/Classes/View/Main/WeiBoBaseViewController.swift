@@ -31,6 +31,14 @@ class WeiBoBaseViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         WeiBoNetWorkManager.shared.userLogin ? loadData() : ()
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(rawValue: WeiBoUserLoginSuccessedNotification), object: nil)
+    }
+    
+    deinit {
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
     }
     
     // 重写 title 的 didSet
@@ -49,6 +57,23 @@ class WeiBoBaseViewController: UIViewController {
 
 // MARK - 访客视图监听方法
 extension WeiBoBaseViewController {
+    // 登陆成功处理
+    @objc func loginSuccess(n: Notification) {
+        
+        // print("登录成功 \(n)")
+        // 登录前左边右边的按钮处理
+        navItem.leftBarButtonItem = nil
+        navItem.rightBarButtonItem = nil
+        
+        // 更新UI 将访客视图替换为表格视图
+        // 需要重新设置View
+        // 在访问view的getter时，当view == nil 会调用loadView -> viewDidLoad
+        view = nil
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+        
+    }
+    
     @objc func login() {
         // 发送通知
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification), object: nil)
@@ -84,6 +109,10 @@ extension WeiBoBaseViewController {
                                                left: 0,
                                                bottom: tabBarController?.tabBar.bounds.height ?? 0,
                                                right: 0)
+        // 修改指示器的缩进
+        tableView?.scrollIndicatorInsets = tableView!.contentInset
+
+        
         // 设置刷新控件
         // 1 实例化控件
         refreshControl = UIRefreshControl()

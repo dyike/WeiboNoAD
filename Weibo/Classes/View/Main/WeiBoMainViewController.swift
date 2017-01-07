@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class WeiBoMainViewController: UITabBarController {
     // 定时器
@@ -44,10 +45,25 @@ class WeiBoMainViewController: UITabBarController {
     // MARK: 监听方法
     @objc func userLogin(n: Notification) {
         print("用户登录通知\(n)")
-        // 展现登陆控制器 - 通常会和 UINavigationController 连用，方便发挥
-//        let vc = WeiBoOAuthViewController()
-        let nav = UINavigationController(rootViewController: WeiBoOAuthViewController())
-        present(nav, animated: true, completion: nil)
+        
+        var deadline = DispatchTime.now()
+        
+        // 判断n.object是否有值，如果有值，提示用户重新登录
+        if n.object != nil {
+            // 设置指示器渐变样式
+            SVProgressHUD.setDefaultMaskType(.gradient)
+            SVProgressHUD.showInfo(withStatus: "用户登录已经超时，需要重新登录")
+            // 修改延迟时间
+            deadline = DispatchTime.now() + 2
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            SVProgressHUD.setDefaultMaskType(.clear)
+            // 展现登陆控制器 - 通常会和 UINavigationController 连用，方便发挥
+            let nav = UINavigationController(rootViewController: WeiBoOAuthViewController())
+            self.present(nav, animated: true, completion: nil)
+        }
+        
     }
     
    

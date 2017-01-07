@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */; };
 		A6479A391E1D3047002C6A0B /* WeiBoUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6479A381E1D3047002C6A0B /* WeiBoUserAccount.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		5E147C76114FB007E5A6986A /* Pods-Weibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo/Pods-Weibo.debug.xcconfig"; sourceTree = "<group>"; };
+		A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoTitleButton.swift; sourceTree = "<group>"; };
 		A6479A381E1D3047002C6A0B /* WeiBoUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoUserAccount.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A61EF16F1E2137BC00FA0655 /* TitileButton */ = {
+			isa = PBXGroup;
+			children = (
+				A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */,
+			);
+			name = TitileButton;
+			sourceTree = "<group>";
+		};
 		A6479A371E1D3024002C6A0B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 		A6FD3EDB1E09FB1A009622C3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A61EF16F1E2137BC00FA0655 /* TitileButton */,
 				A6FD3EE61E09FCD8009622C3 /* WeiBoHomeViewController.swift */,
 			);
 			path = Home;
@@ -441,6 +452,7 @@
 				A6FD3EE31E09FC2D009622C3 /* WeiBoNavigationController.swift in Sources */,
 				A6FD3EE11E09FBB2009622C3 /* WeiBoMainViewController.swift in Sources */,
 				A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */,
+				A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */,
 				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
 				A6479A391E1D3047002C6A0B /* WeiBoUserAccount.swift in Sources */,
 				A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */,

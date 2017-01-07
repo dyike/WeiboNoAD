@@ -13,7 +13,9 @@ class WeiBoDiscoverViewController: WeiBoBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // 测试token
+//        WeiBoNetWorkManager.shared.userAccount.access_token = "Haaaa"
+//        print("修改了token")
     }
 
     override func didReceiveMemoryWarning() {

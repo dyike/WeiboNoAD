@@ -26,7 +26,7 @@ extension WeiBoNetWorkManager {
         }
     }
     
-    // 未读数量
+    // 未读数量  - 定时刷新
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
         guard let uid = userAccount.uid else {
             return
@@ -45,14 +45,11 @@ extension WeiBoNetWorkManager {
 // MARK - OAuth相关方法
 extension WeiBoNetWorkManager {
     // 加载accesstoken
-    func loadAccessToken(code: String) {
+    // code 授权码
+    // completion 回调
+    func loadAccessToken(code: String, completion: @escaping (_ isSuccess: Bool) -> ()) {
         let urlString = "https://api.weibo.com/oauth2/access_token"
-//        client_id	申请应用时分配的AppKey。
-//        client_secret	申请应用时分配的AppSecret。
-//        grant_type 请求的类型，填写authorization_code
-//        grant_type为authorization_code时
-//        code	调用authorize获得的code值。
-//        redirect_uri
+
         let params = [
                 "client_id": WeiBoAppKey,
                 "client_secret": WeiBoAppSecret,
@@ -62,12 +59,46 @@ extension WeiBoNetWorkManager {
             ]
         
         request(method: .POST, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
-            //print(json)
             // 直接使用字典设置UserAccount的属性
             self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
-            print(self.userAccount)
-            // 保存模型
-            self.userAccount.saveAccount()
+            //print(self.userAccount)
+        
+            // 如果请求失败，对用户账户数据不会有任何影响
+            // 直接用字典设置 userAccount 的属性
+            self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
+            
+            // 加载当前用户信息
+            self.loadUserInfo(completion: { (dict) in
+                // 使用用户信息字典设置用户账户信息(昵称和头像地址)
+                self.userAccount.yy_modelSet(with: dict)
+                
+                // 保存模型
+                self.userAccount.saveAccount()
+                
+                print(self.userAccount)
+                
+                // 用户信息加载完成再，完成回调
+                completion(isSuccess)
+            })
         }
+    }
+}
+
+
+// MARK - 用户信息
+extension WeiBoNetWorkManager {
+    // 加载用户信息 - 用户加载后
+    func loadUserInfo(completion: @escaping (_ dict: [String: AnyObject]) -> ()) {
+        
+        guard let uid = userAccount.uid else {
+            return
+        }
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        let params = ["uid": uid]
+        tokenRequest(URLString: urlString, parameters: params as [String : AnyObject]?) { (json, isSuccess) in
+            // 完成回调
+            completion((json as? [String: AnyObject]) ?? [:])
+        }
+        
     }
 }
