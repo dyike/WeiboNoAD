@@ -40,6 +40,18 @@ class WeiBoUserAccount: NSObject {
         }
         // 使用字典设置属性
         yy_modelSet(with: dict ?? [:])
+        
+        // 处理token过期
+        // expiresDate = Date(timeIntervalSinceNow: -3600 * 24)
+        // print(expiresDate)
+        if expiresDate?.compare(Date()) != .orderedDescending {
+            // print("账户过期")
+            // 清空 token
+            access_token = nil
+            uid = nil
+            // 删除账户文件
+            _ = try? FileManager.default.removeItem(atPath: path)
+        }
     }
     
     // 1.偏好设置 2.沙盒-归档/plist/json 3.数据库（FMDB/CoreData） 4.钥匙串访问
