@@ -39,7 +39,7 @@ class WeiBoUserAccount: NSObject {
             return
         }
         // 使用字典设置属性
-        //yy_modelSet(with: dict ?? [:])
+        yy_modelSet(with: dict ?? [:])
         
         // 处理token过期
         // expiresDate = Date(timeIntervalSinceNow: -3600 * 24)
