@@ -25,6 +25,11 @@ class WeiBoUserAccount: NSObject {
     // 过期日期
     var expiresDate: Date?
     
+    // 用户昵称
+    var screen_name: String?
+    // 用户头像
+    var avatar_large: String?
+    
     override var description: String {
         return yy_modelDescription()
     }
@@ -39,7 +44,7 @@ class WeiBoUserAccount: NSObject {
             return
         }
         // 使用字典设置属性
-        yy_modelSet(with: dict ?? [:])
+        // yy_modelSet(with: dict ?? [:])
         
         // 处理token过期
         // expiresDate = Date(timeIntervalSinceNow: -3600 * 24)
