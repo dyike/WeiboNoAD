@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let accountFile: NSString = "useraccount.json"
+
 // 用户账户信息
 class WeiBoUserAccount: NSObject {
     // 访问令牌
@@ -27,6 +29,19 @@ class WeiBoUserAccount: NSObject {
         return yy_modelDescription()
     }
     
+    
+    override init() {
+        super.init()
+        // 从磁盘加载保存的文件
+        let path = accountFile.appendDocumentDir()
+        guard let data = NSData(contentsOfFile: path),
+            let dict = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [String: AnyObject] else {
+            return
+        }
+        // 使用字典设置属性
+        yy_modelSet(with: dict ?? [:])
+    }
+    
     // 1.偏好设置 2.沙盒-归档/plist/json 3.数据库（FMDB/CoreData） 4.钥匙串访问
     func saveAccount() {
         // 1 模型转字典
@@ -34,7 +49,7 @@ class WeiBoUserAccount: NSObject {
         // 删除expires_in值
         dict.removeValue(forKey: "expires_in")
         // 2 字典序列化
-        let filePath = ("useraccount.json" as NSString).appendDocumentDir()
+        let filePath = accountFile.appendDocumentDir()
         guard let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
             else {
                 return
