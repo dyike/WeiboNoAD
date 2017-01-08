@@ -52,8 +52,9 @@ extension WeiBoHomeViewController {
         // 1 取cell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WeiBoStatusCell
         // 2 设置cell
+        let vm = listViewModel.statusList[indexPath.row]
+        cell.viewModel = vm
         
-        cell.statusLabel?.text = listViewModel.statusList[indexPath.row].text
         // 3 返回cell
         return cell
     }

@@ -9,6 +9,18 @@
 import UIKit
 
 class WeiBoStatusCell: UITableViewCell {
+    
+    var viewModel: WeiBoStatusViewModel? {
+        didSet {
+            // 微博文本
+            statusLabel?.text = viewModel?.status.text
+            // 微博昵称
+            nameLabel.text = viewModel?.status.user?.screen_name
+            // 设置会员等级 - 直接获取属性，不需要计算
+            memberIconView.image = viewModel?.memberIcon
+        }
+    }
+    
     // 头像
     @IBOutlet weak var iconView: UIImageView!
     // 昵称
