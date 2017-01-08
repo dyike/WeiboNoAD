@@ -16,6 +16,8 @@ class WeiBoStatus: NSObject {
     // 微博内容
     var text: String?
     
+    var user: WeiBoUser?
+    
     // 重写description的计算属性
     override var description: String {
         return yy_modelDescription()

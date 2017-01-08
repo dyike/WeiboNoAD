@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YYModel
 
 // 微博用户模型
 class WeiBoUser: NSObject {
