@@ -113,6 +113,9 @@ extension WeiBoMainViewController: UITabBarControllerDelegate {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                 vc.loadData()
             })
+            // 清除tabbarItem的badgeNumber
+            vc.tabBarItem.badgeValue = nil
+            UIApplication.shared.applicationIconBadgeNumber = 0
 
         }
         
@@ -172,7 +175,7 @@ extension WeiBoMainViewController {
         _ = try? currentVersion.write(toFile: path, atomically: true, encoding: .utf8)
         // 4 返回两个版本号是否一致
         
-        return currentVersion == sandboxVersion
+        return currentVersion != sandboxVersion
     }
 }
 
