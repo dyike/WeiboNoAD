@@ -19,6 +19,9 @@ class WeiBoMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         
+        
+        setupNewFeatureViews()
+        
         setupTimer()
         // 设置代理
         delegate = self
@@ -110,6 +113,9 @@ extension WeiBoMainViewController: UITabBarControllerDelegate {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                 vc.loadData()
             })
+            // 清除tabbarItem的badgeNumber
+            vc.tabBarItem.badgeValue = nil
+            UIApplication.shared.applicationIconBadgeNumber = 0
 
         }
         
@@ -137,6 +143,39 @@ extension WeiBoMainViewController {
             // 设置app的badgeNumber
             UIApplication.shared.applicationIconBadgeNumber = count
         }
+    }
+}
+
+// MARK 新特性视图处理
+extension WeiBoMainViewController {
+    func setupNewFeatureViews() {
+        // 0 判断是否登陆
+        if !WeiBoNetWorkManager.shared.userLogin {
+            return
+        }
+        // 1 检查版本是否更新
+        // 如果更新，显示新特性，否则显示欢迎
+        let v = isNewVersion ? WeiBoNewFeatureView.newFeatureView() : WeiBoWelcomeView.welcomeView()
+        // 2 添加视图
+        
+        view.addSubview(v)
+    }
+    
+    // extension中可以有计算属性，不会占用存储空间
+    private var isNewVersion: Bool {
+        // 1 取当前的版本号
+        let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+//        print(currentVersion)
+        // 2 取保存在“Document”目录中的之前的版本
+        let path = ("version" as NSString).appendDocumentDir()
+        let sandboxVersion = try? String(contentsOfFile: path) 
+//        print(sandboxVersion)
+//        print(path)
+        // 3 将当前版本保存在沙盒中
+        _ = try? currentVersion.write(toFile: path, atomically: true, encoding: .utf8)
+        // 4 返回两个版本号是否一致
+        
+        return currentVersion != sandboxVersion
     }
 }
 

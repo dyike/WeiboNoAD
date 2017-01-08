@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="New Feature View" customClass="WeiBoNewFeatureView" customModule="Weibo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bK-Tl-STU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW1-gc-UkL">
+                    <rect key="frame" x="135" y="473" width="105" height="36"/>
+                    <state key="normal" title="进入微博" backgroundImage="new_feature_finish_button"/>
+                    <state key="highlighted" backgroundImage="new_feature_finish_button_highlighted"/>
+                    <connections>
+                        <action selector="enterStatus" destination="iN0-l3-epB" eventType="touchUpInside" id="Djg-lF-FXe"/>
+                    </connections>
+                </button>
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="vAb-H7-Nbg">
+                    <rect key="frame" x="160" y="559" width="55" height="37"/>
+                    <color key="pageIndicatorTintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vAb-H7-Nbg" firstAttribute="centerX" secondItem="OW1-gc-UkL" secondAttribute="centerX" id="9ej-BK-5bi"/>
+                <constraint firstItem="1bK-Tl-STU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DO5-sN-Ubs"/>
+                <constraint firstItem="1bK-Tl-STU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EPb-Vx-STa"/>
+                <constraint firstItem="OW1-gc-UkL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="J3t-TF-ZO2"/>
+                <constraint firstAttribute="bottom" secondItem="1bK-Tl-STU" secondAttribute="bottom" id="PRr-Zx-6gX"/>
+                <constraint firstAttribute="trailing" secondItem="1bK-Tl-STU" secondAttribute="trailing" id="apX-Sb-ldo"/>
+                <constraint firstAttribute="bottom" secondItem="OW1-gc-UkL" secondAttribute="bottom" constant="158" id="gVf-zB-8Yq"/>
+                <constraint firstItem="vAb-H7-Nbg" firstAttribute="top" secondItem="OW1-gc-UkL" secondAttribute="bottom" constant="50" id="vt3-92-eET"/>
+            </constraints>
+            <connections>
+                <outlet property="enterButton" destination="OW1-gc-UkL" id="aZ2-f2-x58"/>
+                <outlet property="pageControl" destination="vAb-H7-Nbg" id="HHp-4s-rp4"/>
+                <outlet property="scrollView" destination="1bK-Tl-STU" id="zaz-8v-W93"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="new_feature_finish_button" width="105" height="36"/>
+        <image name="new_feature_finish_button_highlighted" width="105" height="36"/>
+    </resources>
+</document>
