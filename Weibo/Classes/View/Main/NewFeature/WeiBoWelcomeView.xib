@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Welcome View" customClass="WeiBoWelcomeView" customModule="Weibo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_background" translatesAutoresizingMaskIntoConstraints="NO" id="OvY-Ur-nw3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="676"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default_big" translatesAutoresizingMaskIntoConstraints="NO" id="hvA-3a-nHF">
+                    <rect key="frame" x="145" y="422" width="85" height="85"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="Ifm-uW-2Vj"/>
+                        <constraint firstAttribute="height" constant="85" id="YiN-gk-hcy"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXY-Yx-N66">
+                    <rect key="frame" x="152" y="523" width="70" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hvA-3a-nHF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5Hi-jM-k9E"/>
+                <constraint firstItem="OvY-Ur-nw3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="G9V-nm-mV6"/>
+                <constraint firstItem="lXY-Yx-N66" firstAttribute="centerX" secondItem="hvA-3a-nHF" secondAttribute="centerX" id="IdB-rS-6Xv"/>
+                <constraint firstAttribute="trailing" secondItem="OvY-Ur-nw3" secondAttribute="trailing" id="JXk-ZZ-Aeg"/>
+                <constraint firstAttribute="bottom" secondItem="OvY-Ur-nw3" secondAttribute="bottom" constant="-9" id="dok-nG-MHs"/>
+                <constraint firstItem="lXY-Yx-N66" firstAttribute="top" secondItem="hvA-3a-nHF" secondAttribute="bottom" constant="16" id="izm-Vo-Nl2"/>
+                <constraint firstAttribute="bottom" secondItem="hvA-3a-nHF" secondAttribute="bottom" constant="160" id="pP7-Ll-bQf"/>
+                <constraint firstItem="OvY-Ur-nw3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pce-NO-z2G"/>
+            </constraints>
+            <connections>
+                <outlet property="bottomCons" destination="pP7-Ll-bQf" id="ByI-bV-FgG"/>
+                <outlet property="iconView" destination="hvA-3a-nHF" id="10u-TI-SMB"/>
+                <outlet property="tipLabel" destination="lXY-Yx-N66" id="M5a-5E-Dz7"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ad_background" width="375" height="667"/>
+        <image name="avatar_default_big" width="85" height="85"/>
+    </resources>
+</document>

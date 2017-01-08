@@ -41,9 +41,11 @@ class WeiBoTitleButton: UIButton {
             return
         }
         // 将label的x向左移动imageView的宽度
-        titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
+        //titleLabel.frame = titleLabel.frame.offsetBy(dx: -imageView.bounds.width, dy: 0)
+        titleLabel.frame.origin.x = 0
         // 将imageView的想向右移动label的宽度
-        imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
+        //imageView.frame = imageView.frame.offsetBy(dx: titleLabel.bounds.width, dy: 0)
+        imageView.frame.origin.x = titleLabel.bounds.width
         
     }
 }
