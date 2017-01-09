@@ -26,6 +26,10 @@ class WeiBoStatusCell: UITableViewCell {
             
             // 底部
             toolBar.viewModel = viewModel
+            
+            //修改微博配图高度
+            pictureView.heightCons.constant = 200
+    
         }
     }
     
@@ -45,6 +49,9 @@ class WeiBoStatusCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     // 底部工具栏
     @IBOutlet weak var toolBar: WeiBoStatusToolBar!
+    // 微博配图
+    @IBOutlet weak var pictureView: WeiBoStatusPictureView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
