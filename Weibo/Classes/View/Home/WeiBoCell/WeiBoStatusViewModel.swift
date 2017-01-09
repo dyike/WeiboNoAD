@@ -25,6 +25,12 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     
     // 认证
     var vipIcon: UIImage?
+    // 转发
+    var retweetedStr: String?
+    // 评论
+    var commentStr: String?
+    // 点赞
+    var likeStr: String?
     
     // model:微博模型
     // return 微博视图模型
@@ -36,17 +42,27 @@ class WeiBoStatusViewModel: CustomStringConvertible {
             
             memberIcon = UIImage(named: imageName)
         }
+        
         // 认证图标
-        switch model.user?.verifed_type ?? -1 {
-        case 0:
+        if (model.user?.verified) ?? false {
             vipIcon = UIImage(named: "avatar_vip")
-        case 2, 3, 5:
-            vipIcon = UIImage(named: "avatar_enterprise_vip")
-        case 220:
-            vipIcon = UIImage(named: "avatar_grassroot")
-        default:
-            break
         }
+        // 设置底部计数字符串
+        retweetedStr = countString(count: model.reposts_count, defaultStr: "转发")
+        commentStr = countString(count: model.comments_count, defaultStr: "评论")
+        likeStr = countString(count: model.attitudes_count, defaultStr: "赞")
+        
+    }
+    
+    // 评定转发，评论，点赞数
+    private func countString(count: Int, defaultStr: String) -> String {
+        if count == 0 {
+            return defaultStr
+        }
+        if count < 10000 {
+            return count.description
+        }
+        return String(format: "%.02f 万", Double(count / 10000))
     }
     
     var description: String {

@@ -17,6 +17,12 @@ class WeiBoStatus: NSObject {
     var text: String?
     
     var user: WeiBoUser?
+    // 转发数
+    var reposts_count: Int = 0
+    // 评论数
+    var comments_count: Int = 0
+    // 点赞数
+    var attitudes_count: Int = 0
     
     // 重写description的计算属性
     override var description: String {

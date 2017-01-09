@@ -63,7 +63,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-v3-uaO" userLabel="顶部视图">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-v3-uaO" userLabel="底部视图" customClass="WeiBoStatusToolBar" customModule="Weibo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="218" width="385" height="28"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGm-xI-ZZa">
@@ -82,7 +82,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRd-Uw-My9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRd-Uw-My9" userLabel="like Button">
                                 <rect key="frame" x="256.5" y="0.0" width="128.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -127,6 +127,11 @@
                             <constraint firstItem="luF-Dy-3i6" firstAttribute="width" secondItem="dGm-xI-ZZa" secondAttribute="width" id="rOw-wq-Chm"/>
                             <constraint firstItem="D3x-gg-A6r" firstAttribute="leading" secondItem="dGm-xI-ZZa" secondAttribute="trailing" id="xr9-S0-xMh"/>
                         </constraints>
+                        <connections>
+                            <outlet property="commentButton" destination="luF-Dy-3i6" id="R0K-x9-hnx"/>
+                            <outlet property="likeButton" destination="BRd-Uw-My9" id="aR9-jm-yVL"/>
+                            <outlet property="retweetedButton" destination="dGm-xI-ZZa" id="U4H-dw-GWm"/>
+                        </connections>
                     </view>
                 </subviews>
                 <constraints>
@@ -161,6 +166,7 @@
                 <outlet property="sourceLabel" destination="gnh-TR-faj" id="nqr-XH-umm"/>
                 <outlet property="statusLabel" destination="Qwu-J8-Xpl" id="VhI-3P-axU"/>
                 <outlet property="timeLabel" destination="8Le-X0-FHh" id="Fae-eF-Noa"/>
+                <outlet property="toolBar" destination="fvH-v3-uaO" id="TBI-O1-GfX"/>
                 <outlet property="vipIconView" destination="EdH-1L-EIX" id="kE1-yx-BHq"/>
             </connections>
             <point key="canvasLocation" x="20.5" y="36.5"/>

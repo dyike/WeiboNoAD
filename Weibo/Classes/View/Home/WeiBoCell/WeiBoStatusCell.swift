@@ -23,6 +23,9 @@ class WeiBoStatusCell: UITableViewCell {
             
             // 用户头像
             iconView.setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isAvatar: true)
+            
+            // 底部
+            toolBar.viewModel = viewModel
         }
     }
     
@@ -40,6 +43,8 @@ class WeiBoStatusCell: UITableViewCell {
     @IBOutlet weak var vipIconView: UIImageView!
     // 微博内容
     @IBOutlet weak var statusLabel: UILabel!
+    // 底部工具栏
+    @IBOutlet weak var toolBar: WeiBoStatusToolBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
