@@ -19,6 +19,8 @@
 		A6B2ACFB1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6B2ACFA1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib */; };
 		A6B2ACFD1E22782900A39D67 /* WeiBoUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACFC1E22782900A39D67 /* WeiBoUser.swift */; };
 		A6B2ACFF1E227BED00A39D67 /* WeiBoStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACFE1E227BED00A39D67 /* WeiBoStatusViewModel.swift */; };
+		A6B2AD011E23047400A39D67 /* UIImageView+WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2AD001E23047400A39D67 /* UIImageView+WebImage.swift */; };
+		A6B2AD031E2307EE00A39D67 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2AD021E2307EE00A39D67 /* UIImage+Extension.swift */; };
 		A6C038FE1E169F64000C44E9 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C038FD1E169F64000C44E9 /* UIColor+extension.swift */; };
 		A6C039001E17DEE5000C44E9 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = A6C038FF1E17DEE5000C44E9 /* main.json */; };
 		A6C039031E189AF6000C44E9 /* WeiBoNetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C039021E189AF6000C44E9 /* WeiBoNetWorkManager.swift */; };
@@ -61,6 +63,8 @@
 		A6B2ACFA1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoStatusNormalCell.xib; sourceTree = "<group>"; };
 		A6B2ACFC1E22782900A39D67 /* WeiBoUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoUser.swift; path = Weibo/Classes/View/Home/WeiBoCell/WeiBoUser.swift; sourceTree = SOURCE_ROOT; };
 		A6B2ACFE1E227BED00A39D67 /* WeiBoStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoStatusViewModel.swift; path = Weibo/Classes/View/Home/WeiBoCell/WeiBoStatusViewModel.swift; sourceTree = SOURCE_ROOT; };
+		A6B2AD001E23047400A39D67 /* UIImageView+WebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+WebImage.swift"; sourceTree = "<group>"; };
+		A6B2AD021E2307EE00A39D67 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		A6C038FD1E169F64000C44E9 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		A6C038FF1E17DEE5000C44E9 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		A6C039021E189AF6000C44E9 /* WeiBoNetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNetWorkManager.swift; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 				A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */,
 				A6C038FD1E169F64000C44E9 /* UIColor+extension.swift */,
 				A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */,
+				A6B2AD001E23047400A39D67 /* UIImageView+WebImage.swift */,
+				A6B2AD021E2307EE00A39D67 /* UIImage+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -500,12 +506,14 @@
 				A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */,
 				A6B2ACF91E2269EC00A39D67 /* WeiBoStatusCell.swift in Sources */,
 				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
+				A6B2AD011E23047400A39D67 /* UIImageView+WebImage.swift in Sources */,
 				A6B2ACFF1E227BED00A39D67 /* WeiBoStatusViewModel.swift in Sources */,
 				A6479A391E1D3047002C6A0B /* WeiBoUserAccount.swift in Sources */,
 				A6B2ACFD1E22782900A39D67 /* WeiBoUser.swift in Sources */,
 				A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */,
 				A6C039071E18FD6F000C44E9 /* WeiBoStatus.swift in Sources */,
 				A6C039141E1A9AE3000C44E9 /* WeiBoOAuthViewController.swift in Sources */,
+				A6B2AD031E2307EE00A39D67 /* UIImage+Extension.swift in Sources */,
 				A6C039051E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift in Sources */,
 				A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */,
 				A6FD3EE51E09FC7F009622C3 /* WeiBoBaseViewController.swift in Sources */,

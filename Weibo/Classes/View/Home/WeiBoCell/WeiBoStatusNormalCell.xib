@@ -55,7 +55,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_vip" translatesAutoresizingMaskIntoConstraints="NO" id="EdH-1L-EIX" userLabel="认证图标">
-                        <rect key="frame" x="38" y="47" width="14" height="14"/>
+                        <rect key="frame" x="34" y="43" width="14" height="14"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-J8-Xpl" userLabel="微博内容">
                         <rect key="frame" x="11" y="65" width="33" height="16"/>
@@ -68,7 +68,7 @@
                     <constraint firstAttribute="trailing" secondItem="QJd-5h-sNz" secondAttribute="trailing" id="4Bm-ef-bts"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Qwu-J8-Xpl" secondAttribute="bottom" constant="12" id="6zX-B0-jbZ"/>
                     <constraint firstItem="8Le-X0-FHh" firstAttribute="bottom" secondItem="pfb-wB-RLH" secondAttribute="bottom" id="8ap-2Z-y1a"/>
-                    <constraint firstItem="EdH-1L-EIX" firstAttribute="centerY" secondItem="pfb-wB-RLH" secondAttribute="bottom" id="BkQ-D1-JQP"/>
+                    <constraint firstItem="EdH-1L-EIX" firstAttribute="centerY" secondItem="pfb-wB-RLH" secondAttribute="bottom" constant="-4" id="BkQ-D1-JQP"/>
                     <constraint firstItem="QJd-5h-sNz" firstAttribute="leading" secondItem="Jp7-f5-Knp" secondAttribute="leading" id="Cgl-Nm-g31"/>
                     <constraint firstItem="eCK-3F-46c" firstAttribute="top" secondItem="pfb-wB-RLH" secondAttribute="top" constant="4" id="FM0-Fg-JZe"/>
                     <constraint firstItem="8Le-X0-FHh" firstAttribute="leading" secondItem="eCK-3F-46c" secondAttribute="leading" id="Fq4-xh-F57"/>
@@ -77,7 +77,7 @@
                     <constraint firstItem="Qwu-J8-Xpl" firstAttribute="top" secondItem="pfb-wB-RLH" secondAttribute="bottom" constant="11" id="QuP-y1-XNy"/>
                     <constraint firstItem="Qwu-J8-Xpl" firstAttribute="leading" secondItem="pfb-wB-RLH" secondAttribute="leading" id="WRy-6h-HUh"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qwu-J8-Xpl" secondAttribute="trailing" constant="11" id="Xp6-Qh-sjw"/>
-                    <constraint firstItem="EdH-1L-EIX" firstAttribute="centerX" secondItem="pfb-wB-RLH" secondAttribute="trailing" id="bI3-c7-aRs"/>
+                    <constraint firstItem="EdH-1L-EIX" firstAttribute="centerX" secondItem="pfb-wB-RLH" secondAttribute="trailing" constant="-4" id="bI3-c7-aRs"/>
                     <constraint firstItem="AEH-bO-dj2" firstAttribute="leading" secondItem="eCK-3F-46c" secondAttribute="trailing" constant="4" id="flj-OP-R2y"/>
                     <constraint firstItem="gnh-TR-faj" firstAttribute="centerY" secondItem="8Le-X0-FHh" secondAttribute="centerY" id="hIH-Lo-gaE"/>
                     <constraint firstItem="gnh-TR-faj" firstAttribute="leading" secondItem="8Le-X0-FHh" secondAttribute="trailing" constant="8" id="mQv-Qd-ZXa"/>

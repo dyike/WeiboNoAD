@@ -23,6 +23,9 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     // 会员图标
     var memberIcon: UIImage?
     
+    // 认证
+    var vipIcon: UIImage?
+    
     // model:微博模型
     // return 微博视图模型
     init(model: WeiBoStatus) {
@@ -32,6 +35,17 @@ class WeiBoStatusViewModel: CustomStringConvertible {
             let imageName = "common_icon_membership_level\(model.user?.mbrank ?? 0)"
             
             memberIcon = UIImage(named: imageName)
+        }
+        // 认证图标
+        switch model.user?.verifed_type ?? -1 {
+        case 0:
+            vipIcon = UIImage(named: "avatar_vip")
+        case 2, 3, 5:
+            vipIcon = UIImage(named: "avatar_enterprise_vip")
+        case 220:
+            vipIcon = UIImage(named: "avatar_grassroot")
+        default:
+            break
         }
     }
     

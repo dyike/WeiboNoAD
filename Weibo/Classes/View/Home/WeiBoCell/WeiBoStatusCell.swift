@@ -18,6 +18,11 @@ class WeiBoStatusCell: UITableViewCell {
             nameLabel.text = viewModel?.status.user?.screen_name
             // 设置会员等级 - 直接获取属性，不需要计算
             memberIconView.image = viewModel?.memberIcon
+            // 认证
+            vipIconView.image = viewModel?.vipIcon
+            
+            // 用户头像
+            iconView.setImage(urlString: viewModel?.status.user?.profile_image_url, placeholderImage: UIImage(named: "avatar_default_big"), isAvatar: true)
         }
     }
     
