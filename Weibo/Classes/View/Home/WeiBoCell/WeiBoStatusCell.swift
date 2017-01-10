@@ -28,7 +28,7 @@ class WeiBoStatusCell: UITableViewCell {
             toolBar.viewModel = viewModel
             
             //修改微博配图高度
-            pictureView.heightCons.constant = 200
+            pictureView.heightCons.constant = 0
     
         }
     }

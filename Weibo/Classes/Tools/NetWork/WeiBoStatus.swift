@@ -24,8 +24,17 @@ class WeiBoStatus: NSObject {
     // 点赞数
     var attitudes_count: Int = 0
     
+    // 微博配图模型数组
+    var pic_urls: [WeiBoStatusPicture]?
+    
+    
     // 重写description的计算属性
     override var description: String {
         return yy_modelDescription()
     }
+    
+    class func modelContainerPropertyGenericClass() -> [String: AnyClass] {
+        return ["pic_urls": WeiBoStatusPicture.self]
+    }
+    
 }

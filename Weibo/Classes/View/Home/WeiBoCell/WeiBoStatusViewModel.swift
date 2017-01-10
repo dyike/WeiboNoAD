@@ -32,6 +32,7 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     // 点赞
     var likeStr: String?
     
+    
     // model:微博模型
     // return 微博视图模型
     init(model: WeiBoStatus) {
