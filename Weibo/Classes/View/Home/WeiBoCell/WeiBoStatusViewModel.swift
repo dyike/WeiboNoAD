@@ -31,6 +31,8 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     var commentStr: String?
     // 点赞
     var likeStr: String?
+    // 配图大小
+    var pictureViewSize = CGSize()
     
     
     // model:微博模型
@@ -45,13 +47,47 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         }
         
         // 认证图标
-        if (model.user?.verified) ?? false {
+        // 没有认证
+        
+        switch model.user?.verified_type ?? -1 {
+        case 220:
+            vipIcon = UIImage(named: "avatar_grassroot")
+        case 0:
             vipIcon = UIImage(named: "avatar_vip")
+        case 2, 3, 5:
+            vipIcon = UIImage(named: "avatar_enterprise_vip")
+        default:
+            break
         }
+        
         // 设置底部计数字符串
         retweetedStr = countString(count: model.reposts_count, defaultStr: "转发")
         commentStr = countString(count: model.comments_count, defaultStr: "评论")
         likeStr = countString(count: model.attitudes_count, defaultStr: "赞")
+        
+        // 计算配图大小
+        pictureViewSize = calcPictureViewSize(count: status.pic_urls?.count)
+    }
+    
+    // count: 配图数量
+    private func calcPictureViewSize(count: Int?) -> CGSize {
+        if count == 0 {
+            return CGSize()
+        }
+        // 配图外侧的间距
+        let WeiBoStatusPictureViewOutterMargin: CGFloat = 12
+        // 配图内部的间距
+        let WeiBoStatusPictureViewInnerMargin: CGFloat = 3
+        // 配图视图宽度
+        let WeiBoStatusPictureViewWidth = UIScreen.main.bounds.width - 2 * WeiBoStatusPictureViewOutterMargin
+        // 每个item的宽度
+        let WeiBoStatusPictureItemWidth = (WeiBoStatusPictureViewWidth - 2 * WeiBoStatusPictureViewInnerMargin) / 3
+        // 计算高度
+        let row = (count! - 1) / 3 + 1
+        var height = WeiBoStatusPictureViewOutterMargin
+        height += CGFloat(row - 1) * WeiBoStatusPictureViewInnerMargin + CGFloat(row) * WeiBoStatusPictureItemWidth
+        
+        return CGSize(width: WeiBoStatusPictureViewWidth, height: height)
         
     }
     
