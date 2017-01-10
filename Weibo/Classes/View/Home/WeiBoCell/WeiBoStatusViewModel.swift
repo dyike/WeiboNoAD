@@ -74,14 +74,7 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         if count == 0 {
             return CGSize()
         }
-        // 配图外侧的间距
-        let WeiBoStatusPictureViewOutterMargin: CGFloat = 12
-        // 配图内部的间距
-        let WeiBoStatusPictureViewInnerMargin: CGFloat = 3
-        // 配图视图宽度
-        let WeiBoStatusPictureViewWidth = UIScreen.main.bounds.width - 2 * WeiBoStatusPictureViewOutterMargin
-        // 每个item的宽度
-        let WeiBoStatusPictureItemWidth = (WeiBoStatusPictureViewWidth - 2 * WeiBoStatusPictureViewInnerMargin) / 3
+
         // 计算高度
         let row = (count! - 1) / 3 + 1
         var height = WeiBoStatusPictureViewOutterMargin
