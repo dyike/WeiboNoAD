@@ -9,8 +9,64 @@
 import UIKit
 
 class WeiBoStatusPictureView: UIView {
+    
+    var urls: [WeiBoStatusPicture]? {
+        didSet {
+            // 隐藏所有的imageView
+            for v in subviews {
+                v.isHidden = true
+            }
+            // 遍历urls数组
+            var index = 0
+            for url in urls ?? [] {
+                let iv = subviews[index] as! UIImageView
+                // 4张图像的处理
+                if index == 1 && urls?.count == 4 {
+                    index += 1
+                }
+                
+                // 设置图象
+                iv.setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
+                // 显示图像
+                iv.isHidden = false
+                index += 1
+            }
+        }
+    }
 
     @IBOutlet weak var heightCons: NSLayoutConstraint!
     
 
+    override func awakeFromNib() {
+        setupUI()
+    }
+}
+
+
+extension WeiBoStatusPictureView {
+    // cell中的所有控件都是提前准备好的
+    // 设置的时候，根据数组决定是否显示
+    fileprivate func setupUI() {
+        backgroundColor = superview?.backgroundColor
+        // 超出便捷的内容不显示
+        clipsToBounds = true
+        
+        let count = 3
+        let rect = CGRect(x: 0, y: WeiBoStatusPictureViewOutterMargin, width: WeiBoStatusPictureItemWidth, height: WeiBoStatusPictureItemWidth)
+        for i in 0..<count * count {
+            let iv = UIImageView()
+            // 设置 contentMode
+            iv.contentMode = .scaleAspectFit
+            iv.clipsToBounds = true
+        
+            // 行
+            let row = CGFloat(i / count)
+            // 列
+            let col = CGFloat(i % count)
+            let dx = col * (WeiBoStatusPictureItemWidth + WeiBoStatusPictureViewInnerMargin)
+            let dy = row * (WeiBoStatusPictureItemWidth + WeiBoStatusPictureViewInnerMargin)
+            iv.frame = rect.offsetBy(dx: dx, dy: dy)
+            addSubview(iv)
+        }
+    }
 }

@@ -27,9 +27,19 @@ class WeiBoStatusCell: UITableViewCell {
             // 底部
             toolBar.viewModel = viewModel
             
-            //修改微博配图高度
-            pictureView.heightCons.constant = 200
-    
+            // 微博配图高度
+            pictureView.heightCons.constant = (viewModel?.pictureViewSize.height) ?? 0
+            // 设置配图的url属性
+//            if (viewModel?.status.pic_urls?.count)! > 4 {
+//                // 修改数组 -> 将末尾的数据全部删除
+//                var picUrls = viewModel!.status.pic_urls!
+//                picUrls.removeSubrange((picUrls.startIndex + 4)..<picUrls.endIndex)
+//                pictureView.urls = picUrls
+//            } else {
+//               pictureView.urls = viewModel?.status.pic_urls
+//            }
+            pictureView.urls = viewModel?.status.pic_urls
+            
         }
     }
     

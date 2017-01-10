@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK - 全局通知定义
 
@@ -22,3 +23,13 @@ let WeiBoAppKey = "1139226012"
 let WeiBoAppSecret = "b443d78786bf65e2fe93d92a6624bd7d"
 // 回调地址
 let WeiBoRedirectUri = "https://www.baidu.com"
+
+// MARK 微博配图大小
+// 配图外侧的间距
+let WeiBoStatusPictureViewOutterMargin: CGFloat = 12
+// 配图内部的间距
+let WeiBoStatusPictureViewInnerMargin: CGFloat = 3
+// 配图视图宽度
+let WeiBoStatusPictureViewWidth = UIScreen.main.bounds.width - 2 * WeiBoStatusPictureViewOutterMargin
+// 每个item的宽度
+let WeiBoStatusPictureItemWidth = (WeiBoStatusPictureViewWidth - 2 * WeiBoStatusPictureViewInnerMargin) / 3

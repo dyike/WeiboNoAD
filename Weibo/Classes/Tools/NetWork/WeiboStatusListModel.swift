@@ -46,12 +46,15 @@ class WeiboStatusListModel {
             var array = [WeiBoStatusViewModel]()
             // 遍历服务器返回的字典数组，字典组模型
             for dict in list ?? [] {
+                //print(dict["pic_urls"])
+                
                 // 创建微博模型,如果创建失败，继续后续的遍历
                 guard let model = WeiBoStatus.yy_model(with: dict) else {
                     continue
                 }
                 // 将viewmodel添加到数组
                 array.append(WeiBoStatusViewModel(model: model))
+                //print("-----\(array)")
             }
         
             // 2 拼接数据
