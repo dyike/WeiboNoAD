@@ -38,7 +38,8 @@ class WeiBoStatusCell: UITableViewCell {
 //            } else {
 //               pictureView.urls = viewModel?.status.pic_urls
 //            }
-            pictureView.urls = viewModel?.status.pic_urls
+            // （被转发和原创）
+            pictureView.urls = viewModel?.picURLs
             
         }
     }

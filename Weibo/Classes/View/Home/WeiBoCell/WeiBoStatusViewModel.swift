@@ -34,6 +34,14 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     // 配图大小
     var pictureViewSize = CGSize()
     
+    // 如果是被转发的微博，原创微博一定没有图
+    var picURLs: [WeiBoStatusPicture]? {
+        // 如果有被转发的微博，返回被转发微博的配图
+        // 如果没有被转发的微博，返回原创微博的配图
+        // 都没有的话就返回nil
+        return status.retweeted_status?.pic_urls ?? status.pic_urls
+    }
+    
     
     // model:微博模型
     // return 微博视图模型
@@ -65,8 +73,8 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         commentStr = countString(count: model.comments_count, defaultStr: "评论")
         likeStr = countString(count: model.attitudes_count, defaultStr: "赞")
         
-        // 计算配图大小
-        pictureViewSize = calcPictureViewSize(count: status.pic_urls?.count)
+        // 计算配图大小（有原创的就计算原创的，有转发的就计算转发的）
+        pictureViewSize = calcPictureViewSize(count: picURLs?.count)
     }
     
     // count: 配图数量
