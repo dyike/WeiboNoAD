@@ -117,7 +117,6 @@ class WeiboStatusListModel {
                     // 图象缓存成功，更新配图大小
                     vm.updateSingalImageSize(image: image)
                 }
-                print(length)
                 // B 出组
                 group.leave()
                 

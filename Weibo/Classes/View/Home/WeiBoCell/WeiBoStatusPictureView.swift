@@ -10,7 +10,40 @@ import UIKit
 
 class WeiBoStatusPictureView: UIView {
     
-    var urls: [WeiBoStatusPicture]? {
+    var viewModel: WeiBoStatusViewModel? {
+        didSet {
+            calcViewSize()
+            // 设置urls
+            urls = viewModel?.picURLs
+        }
+    }
+    
+    // 根据视图模型的配图视图大小，调整显示内容
+    private func calcViewSize() {
+        // 处理宽度
+        // 1 单图
+        if viewModel?.picURLs?.count == 1 {
+            // 获取图象
+            let v = subviews[0]
+            let viewSize = viewModel?.pictureViewSize ?? CGSize()
+            v.frame = CGRect(x: 0,
+                             y: 0,
+                             width: viewSize.width,
+                             height: viewSize.height - WeiBoStatusPictureViewOutterMargin)
+        } else {
+            // 多图
+            let v = subviews[0]
+            v.frame = CGRect(x: 0,
+                             y: WeiBoStatusPictureViewOutterMargin,
+                             width: WeiBoStatusPictureItemWidth,
+                             height: WeiBoStatusPictureItemWidth)
+        }
+        
+        // 修改高度约束
+        heightCons.constant = (viewModel?.pictureViewSize.height) ?? 0
+    }
+    
+    private var urls: [WeiBoStatusPicture]? {
         didSet {
             // 隐藏所有的imageView
             for v in subviews {
@@ -27,6 +60,10 @@ class WeiBoStatusPictureView: UIView {
                 
                 // 设置图象
                 iv.setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
+                
+                // 是否是 gif
+//                iv.subviews[0].isHidden = (((url.thumbnail_pic ?? "") as NSString).pathExtension.lowercased() != "gif")
+                
                 // 显示图像
                 iv.isHidden = false
                 index += 1
@@ -59,7 +96,6 @@ extension WeiBoStatusPictureView {
             iv.contentMode = .scaleAspectFill
             iv.clipsToBounds = true
             
-        
             // 行
             let row = CGFloat(i / count)
             // 列
