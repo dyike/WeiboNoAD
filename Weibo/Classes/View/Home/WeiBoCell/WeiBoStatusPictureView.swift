@@ -56,8 +56,9 @@ extension WeiBoStatusPictureView {
         for i in 0..<count * count {
             let iv = UIImageView()
             // 设置 contentMode
-            iv.contentMode = .scaleAspectFit
+            iv.contentMode = .scaleAspectFill
             iv.clipsToBounds = true
+            
         
             // 行
             let row = CGFloat(i / count)

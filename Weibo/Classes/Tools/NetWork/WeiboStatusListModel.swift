@@ -81,6 +81,9 @@ class WeiboStatusListModel {
     
     // 缓存本次下载微博数组中单张图象
     private func cacheSingleImage(list: [WeiBoStatusViewModel]) {
+        // 调度组
+        let group = DispatchGroup()
+        
         // 记录数据长度
         var length = 0
         // 遍历数组，查找数组中有单张图象的，进行缓存
@@ -99,6 +102,10 @@ class WeiboStatusListModel {
             // 下载完成后自动保存在沙盒中
             // 如果沙盒中存在的，后续就使用SD通过URL加载图象，都会加载本地沙盒的图象
             // 不会发起网络请求，同时 回调方法，同样会被调用
+            
+            // A 入组
+            group.enter()
+            
             SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _) in
                 
                 // 将图像转换成二进制数据
@@ -108,8 +115,14 @@ class WeiboStatusListModel {
                     length += data.count
                 }
                 print(length)
+                // B 出组
+                group.leave()
                 
             })
+        }
+        // C 监听调度组
+        group.notify(queue: DispatchQueue.main) {
+            print(length / 1024 )
         }
     }
 }
