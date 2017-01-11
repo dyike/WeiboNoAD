@@ -71,16 +71,16 @@ class WeiboStatusListModel {
                 self.pullupErrorTimes += 1
                 completion(isSuccess, false)
             } else {
-                self.cacheSingleImage(list: array)
+                self.cacheSingleImage(list: array, finished: completion)
                 // 完成回调
-                completion(isSuccess, true)
+//                completion(isSuccess, true)
             }
             
         }
     }
     
     // 缓存本次下载微博数组中单张图象
-    private func cacheSingleImage(list: [WeiBoStatusViewModel]) {
+    private func cacheSingleImage(list: [WeiBoStatusViewModel], finished: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool) -> ()) {
         // 调度组
         let group = DispatchGroup()
         
@@ -122,7 +122,8 @@ class WeiboStatusListModel {
         }
         // C 监听调度组
         group.notify(queue: DispatchQueue.main) {
-            print(length / 1024 )
+//            print(length / 1024 )
+            finished(true, true)
         }
     }
 }
