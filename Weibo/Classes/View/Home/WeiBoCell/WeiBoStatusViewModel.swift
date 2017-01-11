@@ -113,4 +113,12 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     var description: String {
         return status.description
     }
+    
+    // 使用单个图象，更新配图的大小
+    func updateSingalImageSize(image: UIImage) {
+        var size = image.size
+        // 尺寸需要增加顶部的12个点
+        size.height += WeiBoStatusPictureViewOutterMargin
+        pictureViewSize = size
+    }
 }

@@ -113,6 +113,9 @@ class WeiboStatusListModel {
                     let data = UIImagePNGRepresentation(image) {
                     // NSData 是 length 的属性
                     length += data.count
+                    
+                    // 图象缓存成功，更新配图大小
+                    vm.updateSingalImageSize(image: image)
                 }
                 print(length)
                 // B 出组
