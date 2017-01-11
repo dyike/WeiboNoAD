@@ -40,7 +40,8 @@ class WeiBoStatusCell: UITableViewCell {
 //            }
             // （被转发和原创）
             pictureView.urls = viewModel?.picURLs
-            
+            //设置被转发微博的文字
+            retweetedLabel?.text = viewModel?.retweetedText
         }
     }
     
@@ -63,6 +64,8 @@ class WeiBoStatusCell: UITableViewCell {
     // 微博配图
     @IBOutlet weak var pictureView: WeiBoStatusPictureView!
     
+    // 被转发微博的标签 -原创微博没有此控件
+    @IBOutlet weak var retweetedLabel: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()

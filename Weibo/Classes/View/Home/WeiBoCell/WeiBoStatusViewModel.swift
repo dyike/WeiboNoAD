@@ -42,6 +42,9 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
     
+    // 被转发的微博文字
+    var retweetedText: String?
+    
     
     // model:微博模型
     // return 微博视图模型
@@ -75,6 +78,10 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         
         // 计算配图大小（有原创的就计算原创的，有转发的就计算转发的）
         pictureViewSize = calcPictureViewSize(count: picURLs?.count)
+        
+        // 设置被转发微博文字
+        retweetedText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":"
+                        + (status.retweeted_status?.text ?? "")
     }
     
     // count: 配图数量

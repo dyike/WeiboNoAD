@@ -61,7 +61,7 @@
                         <rect key="frame" x="0.0" y="422.5" width="398" height="35"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGm-xI-ZZa">
-                                <rect key="frame" x="0.0" y="0.0" width="133" height="37"/>
+                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="转发" image="timeline_icon_retweet" backgroundImage="timeline_card_bottom_background">
@@ -69,7 +69,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luF-Dy-3i6">
-                                <rect key="frame" x="133" y="0.0" width="132" height="37"/>
+                                <rect key="frame" x="132.5" y="0.0" width="133" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="评论" image="timeline_icon_comment" backgroundImage="timeline_card_bottom_background">
@@ -77,7 +77,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRd-Uw-My9" userLabel="like Button">
-                                <rect key="frame" x="265" y="0.0" width="133" height="37"/>
+                                <rect key="frame" x="265.5" y="0.0" width="132.5" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="赞" image="timeline_icon_unlike" backgroundImage="timeline_card_bottom_background">
@@ -85,14 +85,14 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_card_bottom_line_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="D3x-gg-A6r">
-                                <rect key="frame" x="133" y="8" width="1" height="20"/>
+                                <rect key="frame" x="132.5" y="8" width="1" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="k0A-UB-7wm"/>
                                     <constraint firstAttribute="height" constant="20" id="uQT-Nc-Nau"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_card_bottom_line_highlighted" translatesAutoresizingMaskIntoConstraints="NO" id="6vb-oX-CyF">
-                                <rect key="frame" x="264" y="8" width="1" height="20"/>
+                                <rect key="frame" x="264.5" y="8" width="1" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="a8W-On-WEo"/>
                                     <constraint firstAttribute="width" constant="1" id="npS-ep-wHL"/>
@@ -137,7 +137,7 @@
                         <rect key="frame" x="0.0" y="100" width="398" height="322.5"/>
                         <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i04-qN-pOJ" userLabel="被转发原文">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i04-qN-pOJ" userLabel="被转发原文">
                         <rect key="frame" x="12" y="112" width="35.5" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
@@ -194,6 +194,7 @@
                 <outlet property="memberIconView" destination="AEH-bO-dj2" id="jJ4-L0-iJ5"/>
                 <outlet property="nameLabel" destination="eCK-3F-46c" id="BKA-H8-EXQ"/>
                 <outlet property="pictureView" destination="KBb-Z4-clS" id="iPQ-PZ-uCz"/>
+                <outlet property="retweetedLabel" destination="i04-qN-pOJ" id="ud7-EN-JU1"/>
                 <outlet property="sourceLabel" destination="gnh-TR-faj" id="nqr-XH-umm"/>
                 <outlet property="statusLabel" destination="Qwu-J8-Xpl" id="VhI-3P-axU"/>
                 <outlet property="timeLabel" destination="8Le-X0-FHh" id="Fae-eF-Noa"/>

@@ -54,7 +54,7 @@ class WeiboStatusListModel {
                 }
                 // 将viewmodel添加到数组
                 array.append(WeiBoStatusViewModel(model: model))
-                print("-----\(array)")
+                // print("-----\(array)")
             }
         
             // 2 拼接数据
