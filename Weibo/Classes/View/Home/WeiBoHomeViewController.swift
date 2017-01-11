@@ -9,7 +9,10 @@
 import UIKit
 
 // 定义全局常量，private修饰，否则到处可访问
-private let cellId = "cellId"
+// 原创微博
+private let originalCellId = "originalCellId"
+// 转发微博
+private let retweetedCellId =  "retweetedCellId"
 
 class WeiBoHomeViewController: WeiBoBaseViewController {
     // 列表视图模型
@@ -49,10 +52,13 @@ extension WeiBoHomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 取视图模型，根据视图模型判断可用cell
+        let vm = listViewModel.statusList[indexPath.row]
+        let cellId = (vm.status.retweeted_status != nil) ? retweetedCellId : originalCellId
         // 1 取cell
+        // FIXME - 修改cellid
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WeiBoStatusCell
         // 2 设置cell
-        let vm = listViewModel.statusList[indexPath.row]
         cell.viewModel = vm
         
         // 3 返回cell
@@ -73,7 +79,8 @@ extension WeiBoHomeViewController {
         navItem.leftBarButtonItem = UIBarButtonItem(title: "好友", target: self, action: #selector(showFriends))
         // 注册原型 cell
         //tableView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        tableView?.register(UINib(nibName: "WeiBoStatusNormalCell", bundle: nil), forCellReuseIdentifier: cellId)
+        tableView?.register(UINib(nibName: "WeiBoStatusNormalCell", bundle: nil), forCellReuseIdentifier: originalCellId)
+        tableView?.register(UINib(nibName: "WeiBoStatusRetweetedCell", bundle: nil), forCellReuseIdentifier: retweetedCellId)
         
         // 设置行高
         tableView?.rowHeight = UITableViewAutomaticDimension

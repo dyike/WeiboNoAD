@@ -27,6 +27,9 @@ class WeiBoStatus: NSObject {
     // 微博配图模型数组
     var pic_urls: [WeiBoStatusPicture]?
     
+    // 被转发的原创微博
+    var retweeted_status: WeiBoStatus?
+    
     
     // 重写description的计算属性
     override var description: String {
