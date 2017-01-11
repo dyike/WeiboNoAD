@@ -54,7 +54,7 @@ extension WeiBoHomeViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 1 取cell
         // FIXME - 修改cellid
-        let cell = tableView.dequeueReusableCell(withIdentifier: retweetedCellId, for: indexPath) as! WeiBoStatusCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: originalCellId, for: indexPath) as! WeiBoStatusCell
         // 2 设置cell
         let vm = listViewModel.statusList[indexPath.row]
         cell.viewModel = vm
