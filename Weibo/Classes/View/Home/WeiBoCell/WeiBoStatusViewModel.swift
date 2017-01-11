@@ -80,7 +80,7 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         pictureViewSize = calcPictureViewSize(count: picURLs?.count)
         
         // 设置被转发微博文字
-        retweetedText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ":"
+        retweetedText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ": "
                         + (status.retweeted_status?.text ?? "")
     }
     

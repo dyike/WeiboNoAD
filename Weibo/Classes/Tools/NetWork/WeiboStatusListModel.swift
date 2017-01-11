@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SDWebImage
 
 // 上拉刷新最大尝试次数
-private let maxPulluoTryTimes = 3
+private let maxPulluoTryTimes = 100
 
 // 微博数据列表视图模型(微博数据处理)
 // 父类的选择：
@@ -70,11 +71,45 @@ class WeiboStatusListModel {
                 self.pullupErrorTimes += 1
                 completion(isSuccess, false)
             } else {
+                self.cacheSingleImage(list: array)
                 // 完成回调
                 completion(isSuccess, true)
             }
             
-            
+        }
+    }
+    
+    // 缓存本次下载微博数组中单张图象
+    private func cacheSingleImage(list: [WeiBoStatusViewModel]) {
+        // 记录数据长度
+        var length = 0
+        // 遍历数组，查找数组中有单张图象的，进行缓存
+        for vm in list {
+            // 1 判断图象数量
+            if vm.picURLs?.count != 1 {
+                continue
+            }
+            // 2 获取图象模型
+            guard let pic = vm.picURLs![0].thumbnail_pic,
+                let url = URL(string: pic) else {
+                continue
+            }
+      
+            // 下载图象
+            // 下载完成后自动保存在沙盒中
+            // 如果沙盒中存在的，后续就使用SD通过URL加载图象，都会加载本地沙盒的图象
+            // 不会发起网络请求，同时 回调方法，同样会被调用
+            SDWebImageManager.shared().downloadImage(with: url, options: [], progress: nil, completed: { (image, _, _, _, _) in
+                
+                // 将图像转换成二进制数据
+                if let image = image,
+                    let data = UIImagePNGRepresentation(image) {
+                    // NSData 是 length 的属性
+                    length += data.count
+                }
+                print(length)
+                
+            })
         }
     }
 }
