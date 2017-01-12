@@ -164,6 +164,23 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     // 使用单个图象，更新配图的大小
     func updateSingalImageSize(image: UIImage) {
         var size = image.size
+    
+        // 过宽图象处理
+        let maxWidth: CGFloat = 300
+        let minWidth: CGFloat = 40
+        if size.width > maxWidth {
+            size.width = maxWidth
+            // 等比例调整高度
+            size.height = (image.size.height / image.size.width) * size.width
+        }
+        // 过窄图象处理
+        if size.width < 300 {
+            size.width = minWidth
+            // 处理高度
+            size.height = (image.size.height / image.size.width) * size.width / 3
+        }
+        
+        
         // 尺寸需要增加顶部的12个点
         size.height += WeiBoStatusPictureViewOutterMargin
         // 更新设置配图的大小

@@ -61,7 +61,16 @@ class WeiBoStatusCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // 离屏渲染 - 异步绘制 需要在GPU/CPU之间快速切换，耗电厉害
+        //self.layer.drawsAsynchronously = true
+        
+        // 栅格化 - 异步绘制后，会生成一张独立的图象，cell在屏幕上滚动的时候，本质上滚动的是这样图片
+        // cell 优化要尽量减少图层的数量，相当于就只有一层
+        // 停止滚动之后，可以接受监听
+        self.layer.shouldRasterize = true
+        // 使用 栅格化 必须要指定分辨率
+        self.layer.rasterizationScale = UIScreen.main.scale
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
