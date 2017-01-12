@@ -17,5 +17,11 @@ class RefreshView: UIView {
     @IBOutlet weak var tipLabel: UILabel!
     // 指示器
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
+    class func refreshView() -> RefreshView {
+        let nib = UINib(nibName: "RefreshView", bundle: nil)
+        
+        return nib.instantiate(withOwner: nil, options: nil)[0] as! RefreshView
+    }
 
 }
