@@ -13,6 +13,8 @@
 		A66734F71E2461C200FCF900 /* WeiBoStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734F61E2461C200FCF900 /* WeiBoStatusPicture.swift */; };
 		A66734FB1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */; };
 		A66734FE1E27BEA600FCF900 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734FD1E27BEA600FCF900 /* RefreshControl.swift */; };
+		A66735001E27D63000FCF900 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66734FF1E27D63000FCF900 /* RefreshView.xib */; };
+		A66735021E27D7BC00FCF900 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66735011E27D7BC00FCF900 /* RefreshView.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
@@ -62,6 +64,8 @@
 		A66734F61E2461C200FCF900 /* WeiBoStatusPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoStatusPicture.swift; path = Weibo/Classes/View/Home/WeiBoCell/WeiBoStatusPicture.swift; sourceTree = SOURCE_ROOT; };
 		A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoStatusRetweetedCell.xib; sourceTree = "<group>"; };
 		A66734FD1E27BEA600FCF900 /* RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
+		A66734FF1E27D63000FCF900 /* RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
+		A66735011E27D7BC00FCF900 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				A66734FD1E27BEA600FCF900 /* RefreshControl.swift */,
+				A66734FF1E27D63000FCF900 /* RefreshView.xib */,
+				A66735011E27D7BC00FCF900 /* RefreshView.swift */,
 			);
 			path = RefreshControl;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A66735001E27D63000FCF900 /* RefreshView.xib in Resources */,
 				A66734FB1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib in Resources */,
 				A6FD3ECF1E097CD6009622C3 /* LaunchScreen.storyboard in Resources */,
 				A6B2ACF61E22365500A39D67 /* WeiBoNewFeatureView.xib in Resources */,
@@ -511,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C039091E190368000C44E9 /* WeiboStatusListModel.swift in Sources */,
+				A66735021E27D7BC00FCF900 /* RefreshView.swift in Sources */,
 				A6C039121E1A9A60000C44E9 /* WeiboVisitorView.swift in Sources */,
 				A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */,
 				A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// 刷新控件
+// 刷新控件  负责刷新相关的逻辑处理
 class RefreshControl: UIControl {
     
     // 刷新控件的父视图，下拉刷新控件应该使用与 UITableView / UICollectionView
