@@ -166,7 +166,7 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         var size = image.size
     
         // 过宽图象处理
-        let maxWidth: CGFloat = 300
+        let maxWidth: CGFloat = 200
         let minWidth: CGFloat = 40
         if size.width > maxWidth {
             size.width = maxWidth
@@ -174,12 +174,15 @@ class WeiBoStatusViewModel: CustomStringConvertible {
             size.height = (image.size.height / image.size.width) * size.width
         }
         // 过窄图象处理
-        if size.width < 300 {
+        if size.width < minWidth {
             size.width = minWidth
             // 处理高度
             size.height = (image.size.height / image.size.width) * size.width / 3
         }
         
+        if size.height > 200 {
+            size.height = 200
+        }
         
         // 尺寸需要增加顶部的12个点
         size.height += WeiBoStatusPictureViewOutterMargin
