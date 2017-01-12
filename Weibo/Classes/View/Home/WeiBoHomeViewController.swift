@@ -65,6 +65,14 @@ extension WeiBoHomeViewController {
         return cell
     }
     
+    // swift2 没有override， siwft3不写没关系
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 根据indexPath 获取视图模型
+        let vm = listViewModel.statusList[indexPath.row]
+        // 返回计算行高
+        return vm.rowHeight
+    }
+    
 }
 
 // 设置界面
@@ -83,7 +91,8 @@ extension WeiBoHomeViewController {
         tableView?.register(UINib(nibName: "WeiBoStatusRetweetedCell", bundle: nil), forCellReuseIdentifier: retweetedCellId)
         
         // 设置行高
-        tableView?.rowHeight = UITableViewAutomaticDimension
+        // 取消自动行高
+        //tableView?.rowHeight = UITableViewAutomaticDimension
         tableView?.estimatedRowHeight = 300
         
         // 取消分割线

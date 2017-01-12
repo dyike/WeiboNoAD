@@ -12,6 +12,7 @@
 		A66734F51E23E31900FCF900 /* WeiBoStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734F41E23E31900FCF900 /* WeiBoStatusPictureView.swift */; };
 		A66734F71E2461C200FCF900 /* WeiBoStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734F61E2461C200FCF900 /* WeiBoStatusPicture.swift */; };
 		A66734FB1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */; };
+		A66734FE1E27BEA600FCF900 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734FD1E27BEA600FCF900 /* RefreshControl.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
@@ -60,6 +61,7 @@
 		A66734F41E23E31900FCF900 /* WeiBoStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoStatusPictureView.swift; sourceTree = "<group>"; };
 		A66734F61E2461C200FCF900 /* WeiBoStatusPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoStatusPicture.swift; path = Weibo/Classes/View/Home/WeiBoCell/WeiBoStatusPicture.swift; sourceTree = SOURCE_ROOT; };
 		A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoStatusRetweetedCell.xib; sourceTree = "<group>"; };
+		A66734FD1E27BEA600FCF900 /* RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A66734FC1E27BE7800FCF900 /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				A66734FD1E27BEA600FCF900 /* RefreshControl.swift */,
+			);
+			path = RefreshControl;
+			sourceTree = "<group>";
+		};
 		A6B2ACEA1E2209EA00A39D67 /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */,
-				A6B2ACF81E2269EC00A39D67 /* WeiBoStatusCell.swift */,
 				A6B2ACFA1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib */,
+				A6B2ACF81E2269EC00A39D67 /* WeiBoStatusCell.swift */,
 				A6B2AD041E23CE9700A39D67 /* WeiBoStatusToolBar.swift */,
 				A66734F41E23E31900FCF900 /* WeiBoStatusPictureView.swift */,
 			);
@@ -244,6 +254,7 @@
 		A6FD3ED81E09FB1A009622C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A66734FC1E27BE7800FCF900 /* RefreshControl */,
 				A6C039011E189A85000C44E9 /* NetWork */,
 				A6FD3EFA1E0EC1D9009622C3 /* Additions */,
 				A6FD3EEE1E0A0266009622C3 /* Extension */,
@@ -514,6 +525,7 @@
 				A66734F71E2461C200FCF900 /* WeiBoStatusPicture.swift in Sources */,
 				A66734F51E23E31900FCF900 /* WeiBoStatusPictureView.swift in Sources */,
 				A6FD3F031E100CEE009622C3 /* UIBarButtonItem+Extension.swift in Sources */,
+				A66734FE1E27BEA600FCF900 /* RefreshControl.swift in Sources */,
 				A6C038FE1E169F64000C44E9 /* UIColor+extension.swift in Sources */,
 				A6FD3EE31E09FC2D009622C3 /* WeiBoNavigationController.swift in Sources */,
 				A6FD3EE11E09FBB2009622C3 /* WeiBoMainViewController.swift in Sources */,

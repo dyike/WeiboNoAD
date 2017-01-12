@@ -27,7 +27,7 @@ class WeiBoStatusPictureView: UIView {
             let v = subviews[0]
             let viewSize = viewModel?.pictureViewSize ?? CGSize()
             v.frame = CGRect(x: 0,
-                             y: 0,
+                             y: WeiBoStatusPictureViewOutterMargin,
                              width: viewSize.width,
                              height: viewSize.height - WeiBoStatusPictureViewOutterMargin)
         } else {

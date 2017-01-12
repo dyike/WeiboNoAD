@@ -17,7 +17,7 @@ class WeiBoBaseViewController: UIViewController {
     // 表格视图  - 如果用户没有登陆，就不创建
     var tableView: UITableView?
     // 刷新控件
-    var refreshControl: UIRefreshControl?
+    var refreshControl: RefreshControl?
     
     // 标记是否上拉
     var isPullUp = false
@@ -60,7 +60,6 @@ extension WeiBoBaseViewController {
     // 登陆成功处理
     @objc func loginSuccess(n: Notification) {
         
-        // print("登录成功 \(n)")
         // 登录前左边右边的按钮处理
         navItem.leftBarButtonItem = nil
         navItem.rightBarButtonItem = nil
@@ -115,7 +114,7 @@ extension WeiBoBaseViewController {
         
         // 设置刷新控件
         // 1 实例化控件
-        refreshControl = UIRefreshControl()
+        refreshControl = RefreshControl()
         // 2 添加到表格视图
         tableView?.addSubview(refreshControl!)
         // 3 添加监听方法
@@ -164,6 +163,10 @@ extension WeiBoBaseViewController: UITableViewDataSource, UITableViewDelegate {
     // 子类的数据源方法不需要 super
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 10
     }
     
     // 在显示最后一行的时候，做上拉刷新
