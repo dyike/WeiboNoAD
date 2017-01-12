@@ -147,8 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */,
-				A6B2ACF81E2269EC00A39D67 /* WeiBoStatusCell.swift */,
 				A6B2ACFA1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib */,
+				A6B2ACF81E2269EC00A39D67 /* WeiBoStatusCell.swift */,
 				A6B2AD041E23CE9700A39D67 /* WeiBoStatusToolBar.swift */,
 				A66734F41E23E31900FCF900 /* WeiBoStatusPictureView.swift */,
 			);

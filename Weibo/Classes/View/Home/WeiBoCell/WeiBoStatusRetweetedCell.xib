@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="398" height="458"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="654-Ik-2u3" id="Jp7-f5-Knp">
-                <rect key="frame" x="0.0" y="0.0" width="398" height="457.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="398" height="457"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJd-5h-sNz" userLabel="顶部视图">
@@ -57,8 +57,34 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_vip" translatesAutoresizingMaskIntoConstraints="NO" id="EdH-1L-EIX" userLabel="认证图标">
                         <rect key="frame" x="35" y="47" width="14" height="14"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-J8-Xpl" userLabel="微博内容">
+                        <rect key="frame" x="12" y="70" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhI-cb-qWC" userLabel="被转发背景按钮">
+                        <rect key="frame" x="0.0" y="100" width="398" height="326"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i04-qN-pOJ" userLabel="被转发原文">
+                        <rect key="frame" x="12" y="112" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBb-Z4-clS" userLabel="配图视图" customClass="WeiBoStatusPictureView" customModule="Weibo" customModuleProvider="target">
+                        <rect key="frame" x="12" y="128.5" width="374" height="285"/>
+                        <color key="backgroundColor" red="0.7254902124" green="0.4784313738" blue="0.098039217289999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="285" id="Noo-z1-mhc"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="heightCons" destination="Noo-z1-mhc" id="d2e-n6-NWu"/>
+                        </connections>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-v3-uaO" userLabel="底部视图" customClass="WeiBoStatusToolBar" customModule="Weibo" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="422.5" width="398" height="35"/>
+                        <rect key="frame" x="0.0" y="426" width="398" height="35"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGm-xI-ZZa">
                                 <rect key="frame" x="0.0" y="0.0" width="132.5" height="37"/>
@@ -127,32 +153,6 @@
                             <outlet property="retweetedButton" destination="dGm-xI-ZZa" id="U4H-dw-GWm"/>
                         </connections>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwu-J8-Xpl" userLabel="微博内容">
-                        <rect key="frame" x="12" y="70" width="38" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhI-cb-qWC" userLabel="被转发背景按钮">
-                        <rect key="frame" x="0.0" y="100" width="398" height="322.5"/>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i04-qN-pOJ" userLabel="被转发原文">
-                        <rect key="frame" x="12" y="112" width="35.5" height="13.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBb-Z4-clS" userLabel="配图视图" customClass="WeiBoStatusPictureView" customModule="Weibo" customModuleProvider="target">
-                        <rect key="frame" x="12" y="125.5" width="374" height="285"/>
-                        <color key="backgroundColor" red="0.7254902124" green="0.4784313738" blue="0.098039217289999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="285" id="Noo-z1-mhc"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="heightCons" destination="Noo-z1-mhc" id="d2e-n6-NWu"/>
-                        </connections>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="QJd-5h-sNz" secondAttribute="trailing" id="4Bm-ef-bts"/>
@@ -184,9 +184,8 @@
                     <constraint firstItem="AEH-bO-dj2" firstAttribute="centerY" secondItem="eCK-3F-46c" secondAttribute="centerY" id="okg-k7-ORo"/>
                     <constraint firstItem="fvH-v3-uaO" firstAttribute="top" secondItem="FhI-cb-qWC" secondAttribute="bottom" id="s0p-va-frf"/>
                     <constraint firstItem="KBb-Z4-clS" firstAttribute="top" secondItem="i04-qN-pOJ" secondAttribute="bottom" id="szu-XQ-826"/>
-                    <constraint firstItem="fvH-v3-uaO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KBb-Z4-clS" secondAttribute="bottom" constant="12" id="vI8-u3-Whr"/>
+                    <constraint firstItem="fvH-v3-uaO" firstAttribute="top" secondItem="KBb-Z4-clS" secondAttribute="bottom" constant="12" id="vI8-u3-Whr"/>
                     <constraint firstItem="eCK-3F-46c" firstAttribute="leading" secondItem="pfb-wB-RLH" secondAttribute="trailing" constant="11" id="vhU-f9-v3Y"/>
-                    <constraint firstAttribute="bottom" secondItem="fvH-v3-uaO" secondAttribute="bottom" id="wKD-zn-6BS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

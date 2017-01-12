@@ -45,6 +45,8 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     // 被转发的微博文字
     var retweetedText: String?
     
+    var rowHeight: CGFloat = 0
+    
     
     // model:微博模型
     // return 微博视图模型
@@ -82,6 +84,9 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         // 设置被转发微博文字
         retweetedText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ": "
                         + (status.retweeted_status?.text ?? "")
+        
+        // 计算行高
+        updateRowHeight()
     }
     
     // count: 配图数量
@@ -113,12 +118,57 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     var description: String {
         return status.description
     }
+    // 根据当前的视图模型内容计算行高
+    // 原创微博：顶部分隔视图(12) + 间距(12) + 图像的高度(34) + 间距(12) + 正文高度(需要计算) + 配图视图高度(计算) + 间距(12) ＋ 底部视图高度(35)
+    // 被转发微博：顶部分隔视图(12) + 间距(12) + 图像的高度(34) + 间距(12) + 正文高度(需要计算) + 间距(12)+间距(12)+转发文本高度(需要计算) + 配图视图高度(计算) + 间距(12) ＋ 底部视图高度(35)
+    func updateRowHeight() {
+        let margin: CGFloat = 12
+        let iconHeight: CGFloat = 34
+        let toolbarHeight: CGFloat = 35
+        
+        var height: CGFloat = 0
+        let viewSize = CGSize(width: UIScreen.main.bounds.width - 2 * margin, height: CGFloat(MAXFLOAT))
+        let originalFont = UIFont.systemFont(ofSize: 15)
+        let retweetedFont = UIFont.systemFont(ofSize: 14)
+        // 顶部高度
+        height = 2 * margin + iconHeight + margin
+        // 正文
+        if let text = status.text {
+            height += (text as NSString).boundingRect(with: viewSize,
+                                            options: [.usesLineFragmentOrigin],
+                                            attributes: [NSFontAttributeName: originalFont],
+                                            context: nil).height
+        }
+        // 判断是否转发
+        if status.retweeted_status != nil {
+            height += 2 * margin
+            // 转发文本  使用retweetedText，拼接了 @用户名
+            if let text = retweetedText {
+                height += (text as NSString).boundingRect(with: viewSize,
+                                                options: [.usesLineFragmentOrigin],
+                                                attributes: [NSFontAttributeName: retweetedFont],
+                                                context: nil).height
+                
+            }
+        }
+        // 配图视图
+        height += pictureViewSize.height
+        height += margin
+        // 顶部
+        height += toolbarHeight
+        // 使用属性记录
+        rowHeight = height
+        
+    }
     
     // 使用单个图象，更新配图的大小
     func updateSingalImageSize(image: UIImage) {
         var size = image.size
         // 尺寸需要增加顶部的12个点
         size.height += WeiBoStatusPictureViewOutterMargin
+        // 更新设置配图的大小
         pictureViewSize = size
+        // 更新行高
+        updateRowHeight()
     }
 }

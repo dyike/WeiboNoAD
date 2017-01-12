@@ -166,6 +166,10 @@ extension WeiBoBaseViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 10
+    }
+    
     // 在显示最后一行的时候，做上拉刷新
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // 1 判断indexPath是否是最后一行(indexPath.section(最大), indexPath.row(最后一行))

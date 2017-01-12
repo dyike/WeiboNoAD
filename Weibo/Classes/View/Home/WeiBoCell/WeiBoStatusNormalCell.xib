@@ -57,8 +57,18 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_vip" translatesAutoresizingMaskIntoConstraints="NO" id="EdH-1L-EIX" userLabel="认证图标">
                         <rect key="frame" x="35" y="47" width="14" height="14"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBb-Z4-clS" userLabel="配图视图" customClass="WeiBoStatusPictureView" customModule="Weibo" customModuleProvider="target">
+                        <rect key="frame" x="12" y="88" width="361" height="285"/>
+                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="285" id="Noo-z1-mhc"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="heightCons" destination="Noo-z1-mhc" id="d2e-n6-NWu"/>
+                        </connections>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-v3-uaO" userLabel="底部视图" customClass="WeiBoStatusToolBar" customModule="Weibo" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="443" width="385" height="35"/>
+                        <rect key="frame" x="0.0" y="385" width="385" height="35"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGm-xI-ZZa">
                                 <rect key="frame" x="0.0" y="0.0" width="128.5" height="37"/>
@@ -133,16 +143,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBb-Z4-clS" userLabel="配图视图" customClass="WeiBoStatusPictureView" customModule="Weibo" customModuleProvider="target">
-                        <rect key="frame" x="12" y="88" width="361" height="285"/>
-                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="285" id="Noo-z1-mhc"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="heightCons" destination="Noo-z1-mhc" id="d2e-n6-NWu"/>
-                        </connections>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="QJd-5h-sNz" secondAttribute="trailing" id="4Bm-ef-bts"/>
@@ -167,9 +167,8 @@
                     <constraint firstItem="gnh-TR-faj" firstAttribute="leading" secondItem="8Le-X0-FHh" secondAttribute="trailing" constant="8" id="mQv-Qd-ZXa"/>
                     <constraint firstItem="pfb-wB-RLH" firstAttribute="leading" secondItem="Jp7-f5-Knp" secondAttribute="leading" constant="12" id="njs-ff-E5Z"/>
                     <constraint firstItem="AEH-bO-dj2" firstAttribute="centerY" secondItem="eCK-3F-46c" secondAttribute="centerY" id="okg-k7-ORo"/>
-                    <constraint firstItem="fvH-v3-uaO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KBb-Z4-clS" secondAttribute="bottom" constant="12" id="vI8-u3-Whr"/>
+                    <constraint firstItem="fvH-v3-uaO" firstAttribute="top" secondItem="KBb-Z4-clS" secondAttribute="bottom" constant="12" id="vI8-u3-Whr"/>
                     <constraint firstItem="eCK-3F-46c" firstAttribute="leading" secondItem="pfb-wB-RLH" secondAttribute="trailing" constant="11" id="vhU-f9-v3Y"/>
-                    <constraint firstAttribute="bottom" secondItem="fvH-v3-uaO" secondAttribute="bottom" id="wKD-zn-6BS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
