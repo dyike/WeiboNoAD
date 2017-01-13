@@ -15,6 +15,9 @@
 		A66734FE1E27BEA600FCF900 /* RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734FD1E27BEA600FCF900 /* RefreshControl.swift */; };
 		A66735001E27D63000FCF900 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66734FF1E27D63000FCF900 /* RefreshView.xib */; };
 		A66735021E27D7BC00FCF900 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66735011E27D7BC00FCF900 /* RefreshView.swift */; };
+		A66735041E290FF000FCF900 /* transportRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66735031E290FF000FCF900 /* transportRefreshView.xib */; };
+		A66735081E29179300FCF900 /* WeiBoComposeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66735071E29179300FCF900 /* WeiBoComposeTypeView.swift */; };
+		A667350A1E29256700FCF900 /* WeiBoComposeTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66735091E29256700FCF900 /* WeiBoComposeTypeView.xib */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
@@ -66,6 +69,9 @@
 		A66734FD1E27BEA600FCF900 /* RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControl.swift; sourceTree = "<group>"; };
 		A66734FF1E27D63000FCF900 /* RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
 		A66735011E27D7BC00FCF900 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		A66735031E290FF000FCF900 /* transportRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = transportRefreshView.xib; sourceTree = "<group>"; };
+		A66735071E29179300FCF900 /* WeiBoComposeTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoComposeTypeView.swift; sourceTree = "<group>"; };
+		A66735091E29256700FCF900 /* WeiBoComposeTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoComposeTypeView.xib; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
@@ -144,8 +150,26 @@
 				A66734FD1E27BEA600FCF900 /* RefreshControl.swift */,
 				A66734FF1E27D63000FCF900 /* RefreshView.xib */,
 				A66735011E27D7BC00FCF900 /* RefreshView.swift */,
+				A66735031E290FF000FCF900 /* transportRefreshView.xib */,
 			);
 			path = RefreshControl;
+			sourceTree = "<group>";
+		};
+		A66735051E29174900FCF900 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				A66735061E29174900FCF900 /* ComposeType */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		A66735061E29174900FCF900 /* ComposeType */ = {
+			isa = PBXGroup;
+			children = (
+				A66735071E29179300FCF900 /* WeiBoComposeTypeView.swift */,
+				A66735091E29256700FCF900 /* WeiBoComposeTypeView.xib */,
+			);
+			path = ComposeType;
 			sourceTree = "<group>";
 		};
 		A6B2ACEA1E2209EA00A39D67 /* NewFeature */ = {
@@ -272,6 +296,7 @@
 		A6FD3ED91E09FB1A009622C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A66735051E29174900FCF900 /* Compose */,
 				A6FD3EDA1E09FB1A009622C3 /* Discover */,
 				A6FD3EDB1E09FB1A009622C3 /* Home */,
 				A6FD3EDC1E09FB1A009622C3 /* Main */,
@@ -452,6 +477,8 @@
 			files = (
 				A66735001E27D63000FCF900 /* RefreshView.xib in Resources */,
 				A66734FB1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib in Resources */,
+				A66735041E290FF000FCF900 /* transportRefreshView.xib in Resources */,
+				A667350A1E29256700FCF900 /* WeiBoComposeTypeView.xib in Resources */,
 				A6FD3ECF1E097CD6009622C3 /* LaunchScreen.storyboard in Resources */,
 				A6B2ACF61E22365500A39D67 /* WeiBoNewFeatureView.xib in Resources */,
 				A6FD3ECC1E097CD6009622C3 /* Assets.xcassets in Resources */,
@@ -523,6 +550,7 @@
 				A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */,
 				A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */,
 				A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */,
+				A66735081E29179300FCF900 /* WeiBoComposeTypeView.swift in Sources */,
 				A6B2AD051E23CE9700A39D67 /* WeiBoStatusToolBar.swift in Sources */,
 				A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */,
 				A6FD3F051E101050009622C3 /* TitleButton.swift in Sources */,

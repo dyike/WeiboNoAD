@@ -19,7 +19,6 @@ class WeiBoMainViewController: UITabBarController {
         setupChildControllers()
         setupComposeButton()
         
-        
         setupNewFeatureViews()
         
         setupTimer()
@@ -75,13 +74,19 @@ class WeiBoMainViewController: UITabBarController {
     // private 能够保证方法私有，仅当前对象能访问
     // @objc 允许这个函数在运行时通过OC的消息机制被调用
     @objc func composeStatus() {
-        print("xie weibo")
-        
         // 测试方向旋转
 //        let vc = UIViewController()
 //        vc.view.backgroundColor = UIColor.red
 //        let nav = UINavigationController(rootViewController: vc)
 //        present(nav, animated: true, completion: nil)
+        
+        // FIXME
+        // 0 判断是否登陆
+        // 1 实例化视图 
+        let v = WeiBoComposeTypeView.composeTypeView()
+        // 2 显示视图
+        v.show()
+        
     }
     
     // MARK： -私有控件
@@ -261,8 +266,8 @@ extension WeiBoMainViewController {
         
         
         // 4 设置tabbar 的标题字体
-        viewController.tabBarItem.setBadgeTextAttributes([NSForegroundColorAttributeName: UIColor(red: 0.05, green: 0.38, blue: 0.56, alpha: 0.5)], for: .highlighted)
-        viewController.tabBarItem.setBadgeTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 12)], for: UIControlState(rawValue: 0))
+        viewController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orange], for: .highlighted)
+        viewController.tabBarItem.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 12)], for: UIControlState(rawValue: 0))
         
         let navigation = WeiBoNavigationController(rootViewController: viewController)
         return navigation
