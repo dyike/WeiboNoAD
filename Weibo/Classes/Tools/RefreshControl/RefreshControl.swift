@@ -95,6 +95,11 @@ class RefreshControl: UIControl {
                 print("准备刷新")
                 // 刷新结束后，将状态修改为 .Normal 才能继续响应刷新
                 refreshView.refreshState = .WillRefresh
+                // 让整个刷新视图显示出来
+                // 解决办法：修改表格的contentInset
+                var inset = sv.contentInset
+                inset.top += RefreshOffset
+                sv.contentInset = inset
             }
             
         }
@@ -117,7 +122,7 @@ extension RefreshControl {
         backgroundColor = superview?.backgroundColor
         
         // 设置超出边界不显示
-        clipsToBounds = true
+        // clipsToBounds = true
         
         // 添加刷新视图 从xib加载出来，默认是xib中的指定的高度
         addSubview(refreshView)
