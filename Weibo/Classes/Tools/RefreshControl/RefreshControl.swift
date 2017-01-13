@@ -8,6 +8,20 @@
 
 import UIKit
 
+// 刷新控件变化的临界点
+fileprivate let RefreshOffset: CGFloat = 60
+
+/// 刷新状态
+///
+/// - Normal:      普通状态，什么都不做
+/// - Pulling:     超过临界点，如果放手，开始刷新
+/// - WillRefresh: 用户超过临界点，并且放手
+enum RefreshState {
+    case Normal
+    case Pulling
+    case WillRefresh
+}
+
 // 刷新控件  负责刷新相关的逻辑处理
 class RefreshControl: UIControl {
     
@@ -55,21 +69,83 @@ class RefreshControl: UIControl {
         }
         // 初始高度为0
         let height = -(sv.contentInset.top + sv.contentOffset.y)
+        
+        if height < 0 {
+            return
+        }
+        
         // 可以根据高度设置刷新控件的frame
         self.frame = CGRect(x: 0,
                             y: -height,
                             width: sv.bounds.width,
                             height: height)
+     
+        // 判断临界点 只判断一次
+        if sv.isDragging {
+            if height > RefreshOffset && (refreshView.refreshState == .Normal) {
+                //print("放手刷新")
+                refreshView.refreshState = .Pulling
+            } else if height <= RefreshOffset && (refreshView.refreshState == .Pulling) {
+                //print("继续使劲")
+                refreshView.refreshState = .Normal
+            }
+        } else {
+            // 放手 判断是否超过临界点
+            if refreshView.refreshState == .Pulling {
+                //print("准备刷新")
+                // 刷新结束后，将状态修改为 .Normal 才能继续响应刷新
+//                refreshView.refreshState = .WillRefresh
+//                // 让整个刷新视图显示出来
+//                // 解决办法：修改表格的contentInset
+//                var inset = sv.contentInset
+//                inset.top += RefreshOffset
+//                sv.contentInset = inset
+                beginRefreshing()
+                // 发送刷新数据事件
+                sendActions(for: .valueChanged)
+            }
+            
+        }
     }
     
     // 开始刷新
     func beginRefreshing() {
+        // 判断父视图
+        guard let sv = scrollView else {
+            return
+        }
+        // 判断视图是否正在刷新
+        if refreshView.refreshState == .WillRefresh {
+            return
+        }
+        // 设置刷新视图的状态
+        refreshView.refreshState = .WillRefresh
+        
+        // 调整表格间距
+        var inset = sv.contentInset
+        inset.top += RefreshOffset
+        sv.contentInset = inset
         
     }
     
     // 结束刷新
     func endRefreshing() {
         
+        guard let sv = scrollView else {
+            return
+        }
+        // 判断状态，是否正在刷新，如果不是，直接返回
+        if refreshView.refreshState != .WillRefresh {
+            return 
+        }
+        
+        // 恢复刷新视图的状态
+        refreshView.refreshState = .Normal
+        
+        // 恢复表格视图的 contentInset
+        var inset = sv.contentInset
+        inset.top -= RefreshOffset
+        sv.contentInset = inset
     }
 
 }
@@ -79,7 +155,7 @@ extension RefreshControl {
         backgroundColor = superview?.backgroundColor
         
         // 设置超出边界不显示
-        clipsToBounds = true
+        // clipsToBounds = true
         
         // 添加刷新视图 从xib加载出来，默认是xib中的指定的高度
         addSubview(refreshView)
