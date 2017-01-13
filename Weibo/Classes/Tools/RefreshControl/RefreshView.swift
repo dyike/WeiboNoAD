@@ -22,6 +22,10 @@ class RefreshView: UIView {
         didSet {
             switch refreshState {
             case .Normal:
+                // 恢复状态
+                tipIcon.isHidden = false
+                indicator.stopAnimating()
+                
                 tipLabel.text = "下拉刷新"
                 UIView.animate(withDuration: 0.25, animations: {
                     self.tipIcon.transform = CGAffineTransform.identity
