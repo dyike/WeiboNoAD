@@ -15,6 +15,9 @@ class WeiBoComposeTypeButton: UIControl {
 
     @IBOutlet weak var titleLabel: UILabel!
 
+    // 点击按钮要展现控制器的类名
+    var className: String?
+    
     
     // 使用图象，标题创建按钮，按钮布局从xib加载
     class func composeTypeButton(imageName: String, title: String) -> WeiBoComposeTypeButton {

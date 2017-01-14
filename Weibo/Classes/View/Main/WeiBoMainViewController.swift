@@ -84,8 +84,20 @@ class WeiBoMainViewController: UITabBarController {
         // 0 判断是否登陆
         // 1 实例化视图 
         let v = WeiBoComposeTypeView.composeTypeView()
-        // 2 显示视图
-        v.show()
+        // 2 显示视图  - 主要闭包的循环引用 [weak v]
+        v.show { [weak v] (className) in
+            // 展现撰写微博控制器
+            guard let className = className,
+                let cls = NSClassFromString(Bundle.main.nameSpace + "." + className) as? UIViewController.Type else {
+                    v?.removeFromSuperview()
+                return
+            }
+            let vc = cls.init()
+            let nav = UINavigationController(rootViewController: vc)
+            self.present(nav, animated: true) {
+                v?.removeFromSuperview()
+            }
+        }
         
     }
     

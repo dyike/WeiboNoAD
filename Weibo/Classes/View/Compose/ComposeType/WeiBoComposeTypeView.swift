@@ -20,7 +20,7 @@ class WeiBoComposeTypeView: UIView {
     // 返回前一页按钮
     @IBOutlet weak var returnButton: UIButton!
     
-    fileprivate let buttonsInfo = [["imageName": "tabbar_compose_idea", "title": "文字"],
+    fileprivate let buttonsInfo = [["imageName": "tabbar_compose_idea", "title": "文字", "className": "WeiBoComposeViewController"],
                               ["imageName": "tabbar_compose_photo", "title": "照片/视频"],
                               ["imageName": "tabbar_compose_weibo", "title": "长微博"],
                               ["imageName": "tabbar_compose_lbs", "title": "签到"],
@@ -32,6 +32,9 @@ class WeiBoComposeTypeView: UIView {
                               ["imageName": "tabbar_compose_shooting", "title": "秒拍"]
         ]
     
+    // 完成回调
+    private var completionBlock: ((_ className: String?) -> ())?
+    // MARK - 实例化方法
     class func composeTypeView() ->WeiBoComposeTypeView {
         let nib = UINib(nibName: "WeiBoComposeTypeView", bundle: nil)
         let v = nib.instantiate(withOwner: nil, options: nil)[0] as! WeiBoComposeTypeView
@@ -44,7 +47,11 @@ class WeiBoComposeTypeView: UIView {
     }
     
     // 显示当前视图
-    func show() {
+    // 如果当前方法不能执行，通常使用属性记录，在需要的时候执行
+    func show(completion: @escaping (_ className: String?) -> ()) {
+        // 记录闭包
+        completionBlock = completion
+        
         // 将当前视图添加到 根视图控制器 view
         guard let vc = UIApplication.shared.keyWindow?.rootViewController else {
             return
@@ -97,8 +104,38 @@ class WeiBoComposeTypeView: UIView {
     
 
     // MARK - 监听方法
-    @objc fileprivate func clickButton() {
-        print("xieweibo")
+    @objc fileprivate func clickButton(selectedButton: WeiBoComposeTypeButton) {
+        
+        // 1 判断当前显示的视图
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let v = scrollView.subviews[page]
+        
+        // 遍历当前视图
+        // 选中的按钮放大，未选中的按钮缩小
+        for (i, btn) in v.subviews.enumerated() {
+            // 缩放动画
+            let scaleAnim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewScaleXY)
+            // x y 在系统中使用CGPoint 表示，如果需要转换成id，需要使用NSValue包装
+            let scale = (selectedButton == btn) ? 1.5 : 0.6
+            let value = CGPoint(x: scale, y: scale)
+            scaleAnim.toValue = NSValue(cgPoint: value)
+            scaleAnim.duration = 0.5
+            btn.pop_add(scaleAnim, forKey: nil)
+            
+            // 渐变动画 - 动画组
+            let alphaAnim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+            alphaAnim.toValue = 0.2
+            alphaAnim.duration = 0.5
+            btn.pop_add(alphaAnim, forKey: nil)
+            
+            // 添加动画监听
+            if i == 0 {
+                alphaAnim.completionBlock = { (_, _) in
+                    // 执行闭包完成回调
+                    self.completionBlock?(selectedButton.className)
+                }
+            }
+        }
     }
 }
 // private 让extension中的所有方法都私有
@@ -144,7 +181,15 @@ private extension WeiBoComposeTypeView {
             // 添加监听方法
             if let actionName = dict["actionName"] {
                 btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            } else {
+                // FIXME - 其他按钮 
+                btn.addTarget(self, action: #selector(clickButton), for: .touchUpInside)
             }
+            
+            // 设置要展现的类名  - 不需要任何判断
+            btn.className = dict["className"]
+            
+            
         }
         // 布局按钮
         let btnSize = CGSize(width: 100, height: 100)
@@ -243,12 +288,8 @@ private extension WeiBoComposeTypeView {
                     self.hideCurrentView()
                 }
             }
-            
         }
-        
     }
-
-    
 }
 
 

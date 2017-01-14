@@ -20,6 +20,7 @@
 		A667350A1E29256700FCF900 /* WeiBoComposeTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66735091E29256700FCF900 /* WeiBoComposeTypeView.xib */; };
 		A667350C1E29B66500FCF900 /* WeiBoComposeTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667350B1E29B66500FCF900 /* WeiBoComposeTypeButton.swift */; };
 		A667350E1E29B68100FCF900 /* WeiBoComposeTypeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A667350D1E29B68100FCF900 /* WeiBoComposeTypeButton.xib */; };
+		A66735101E2A57CA00FCF900 /* WeiBoComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A667350F1E2A57CA00FCF900 /* WeiBoComposeViewController.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
@@ -76,6 +77,7 @@
 		A66735091E29256700FCF900 /* WeiBoComposeTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoComposeTypeView.xib; sourceTree = "<group>"; };
 		A667350B1E29B66500FCF900 /* WeiBoComposeTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoComposeTypeButton.swift; sourceTree = "<group>"; };
 		A667350D1E29B68100FCF900 /* WeiBoComposeTypeButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoComposeTypeButton.xib; sourceTree = "<group>"; };
+		A667350F1E2A57CA00FCF900 /* WeiBoComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoComposeViewController.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				A66735061E29174900FCF900 /* ComposeType */,
+				A667350F1E2A57CA00FCF900 /* WeiBoComposeViewController.swift */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				A6C039141E1A9AE3000C44E9 /* WeiBoOAuthViewController.swift in Sources */,
 				A6B2AD031E2307EE00A39D67 /* UIImage+Extension.swift in Sources */,
 				A6C039051E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift in Sources */,
+				A66735101E2A57CA00FCF900 /* WeiBoComposeViewController.swift in Sources */,
 				A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */,
 				A6FD3EE51E09FC7F009622C3 /* WeiBoBaseViewController.swift in Sources */,
 				A6C039031E189AF6000C44E9 /* WeiBoNetWorkManager.swift in Sources */,
