@@ -119,13 +119,13 @@ class WeiBoComposeTypeView: UIView {
             let scale = (selectedButton == btn) ? 1.5 : 0.6
             let value = CGPoint(x: scale, y: scale)
             scaleAnim.toValue = NSValue(cgPoint: value)
-            scaleAnim.duration = 0.5
+            scaleAnim.duration = 0.3
             btn.pop_add(scaleAnim, forKey: nil)
             
             // 渐变动画 - 动画组
             let alphaAnim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
             alphaAnim.toValue = 0.2
-            alphaAnim.duration = 0.5
+            alphaAnim.duration = 0.2
             btn.pop_add(alphaAnim, forKey: nil)
             
             // 添加动画监听
@@ -291,9 +291,3 @@ private extension WeiBoComposeTypeView {
         }
     }
 }
-
-
-
-
-
-
