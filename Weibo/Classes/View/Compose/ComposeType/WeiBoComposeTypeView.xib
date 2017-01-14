@@ -27,16 +27,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9g-z8-X7g">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAy-A0-RQx">
-                                        <rect key="frame" x="175.5" y="9" width="25" height="25"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAy-A0-RQx" userLabel="叉">
+                                        <rect key="frame" x="175.5" y="9.5" width="25" height="25"/>
                                         <state key="normal" image="tabbar_compose_background_icon_close"/>
                                         <connections>
                                             <action selector="close" destination="iN0-l3-epB" eventType="touchUpInside" id="YRu-fE-LEs"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6c-rI-0wR" userLabel="箭头">
+                                        <rect key="frame" x="175" y="9.5" width="25" height="25"/>
+                                        <state key="normal" image="tabbar_compose_background_icon_return"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Z6c-rI-0wR" firstAttribute="centerY" secondItem="F9g-z8-X7g" secondAttribute="centerY" id="FBW-k5-xF4"/>
+                                    <constraint firstItem="Z6c-rI-0wR" firstAttribute="centerX" secondItem="F9g-z8-X7g" secondAttribute="centerX" id="LWK-QT-ZvO"/>
                                     <constraint firstAttribute="height" constant="44" id="Q0v-vQ-lCm"/>
                                     <constraint firstItem="SAy-A0-RQx" firstAttribute="centerY" secondItem="F9g-z8-X7g" secondAttribute="centerY" id="VY2-xt-HHP"/>
                                     <constraint firstItem="SAy-A0-RQx" firstAttribute="centerX" secondItem="F9g-z8-X7g" secondAttribute="centerX" id="dsQ-sB-XXF"/>
@@ -72,6 +78,9 @@
                 <constraint firstItem="Mgw-jr-Zr0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qEI-FN-9sj"/>
             </constraints>
             <connections>
+                <outlet property="closeButtonCenterXCons" destination="dsQ-sB-XXF" id="5cd-f1-h0N"/>
+                <outlet property="returnButton" destination="Z6c-rI-0wR" id="lfV-YC-sT5"/>
+                <outlet property="returnButtonCenterXCons" destination="LWK-QT-ZvO" id="DgK-0N-Vzv"/>
                 <outlet property="scrollView" destination="ajX-GZ-qej" id="Znt-Ex-vEa"/>
             </connections>
             <point key="canvasLocation" x="302.5" y="52.5"/>
@@ -80,5 +89,6 @@
     <resources>
         <image name="compose_slogan" width="154" height="48"/>
         <image name="tabbar_compose_background_icon_close" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_return" width="25" height="25"/>
     </resources>
 </document>

@@ -12,6 +12,12 @@ import UIKit
 class WeiBoComposeTypeView: UIView {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    // 关闭按钮约束
+    @IBOutlet weak var closeButtonCenterXCons: NSLayoutConstraint!
+    // 返回前一页按钮约束
+    @IBOutlet weak var returnButtonCenterXCons: NSLayoutConstraint!
+    // 返回前一页按钮
+    @IBOutlet weak var returnButton: UIButton!
     
     fileprivate let buttonsInfo = [["imageName": "tabbar_compose_idea", "title": "文字"],
                               ["imageName": "tabbar_compose_photo", "title": "照片/视频"],
@@ -45,6 +51,7 @@ class WeiBoComposeTypeView: UIView {
         vc.view.addSubview(self)
     }
 
+
     
     /// 关闭视图
     @IBAction func close() {
@@ -52,7 +59,19 @@ class WeiBoComposeTypeView: UIView {
     }
     
     @objc fileprivate func clickMore() {
-        print("点击更多")
+        // 将scrollView滚动到第二页
+        let offSet = CGPoint(x: scrollView.bounds.width, y: 0)
+        scrollView.setContentOffset(offSet, animated: true)
+        // 处理底部按钮， 让按钮都分开，一个向左，一个向右
+        returnButton.isHidden = false
+        let margin = scrollView.bounds.width / 8
+        closeButtonCenterXCons.constant += margin
+        returnButtonCenterXCons.constant -= margin
+        
+        UIView.animate(withDuration: 0.25) {
+            self.layoutIfNeeded()
+        }
+        
     }
 
     // MARK - 监听方法
