@@ -159,15 +159,45 @@ private extension WeiBoComposeTypeView {
 
 // MARK - 动画扩展
 private extension WeiBoComposeTypeView {
+    // 动画显示当前视图
     func showCurrentView() {
         // 创建动画
         let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         anim.fromValue = 0
         anim.toValue = 1
-        anim.duration = 0.5
+        anim.duration = 0.25
         
         // 添加到视图
         pop_add(anim, forKey: nil)
+        
+        // 添加按钮动画
+        showButton()
+    }
+    
+    // 弹力显示所有的按钮
+    func showButton() {
+        // 1 获取scrollview 的子视图的第 0 个视图
+        let v = scrollView.subviews[0]
+        // 2 遍历 v 中的所有按钮
+        for (i, btn) in v.subviews.enumerated() {
+            // 创建动画
+            let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            // 设置动画属性
+            anim.fromValue = btn.center.y + 400
+            anim.toValue = btn.center.y
+            // 弹力系数
+            anim.springBounciness = 8
+            // 弹力速度
+            anim.springSpeed = 6
+            
+            // 设置动画启动时间
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(i) * 0.025
+            
+            
+            // 添加动画
+            btn.pop_add(anim, forKey: nil)
+            
+        }
     }
 }
 
