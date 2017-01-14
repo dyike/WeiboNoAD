@@ -18,7 +18,7 @@ class WeiBoComposeTypeView: UIView {
                               ["imageName": "tabbar_compose_weibo", "title": "长微博"],
                               ["imageName": "tabbar_compose_lbs", "title": "签到"],
                               ["imageName": "tabbar_compose_review", "title": "点评"],
-                              ["imageName": "tabbar_compose_more", "title": "更多"],
+                              ["imageName": "tabbar_compose_more", "title": "更多", "actionName": "clickMore"],
                               ["imageName": "tabbar_compose_friend", "title": "好友圈"],
                               ["imageName": "tabbar_compose_wbcamera", "title": "微博相机"],
                               ["imageName": "tabbar_compose_music", "title": "音乐"],
@@ -51,6 +51,9 @@ class WeiBoComposeTypeView: UIView {
         removeFromSuperview()
     }
     
+    @objc fileprivate func clickMore() {
+        print("点击更多")
+    }
 
     // MARK - 监听方法
     @objc fileprivate func clickButton() {
@@ -97,6 +100,10 @@ private extension WeiBoComposeTypeView {
             }
             let btn = WeiBoComposeTypeButton.composeTypeButton(imageName: imageName, title: title)
             v.addSubview(btn)
+            // 添加监听方法
+            if let actionName = dict["actionName"] {
+                btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
         }
         // 布局按钮
         let btnSize = CGSize(width: 100, height: 100)
