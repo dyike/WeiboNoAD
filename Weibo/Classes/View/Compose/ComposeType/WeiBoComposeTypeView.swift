@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 // 撰写微博类型视图
 class WeiBoComposeTypeView: UIView {
@@ -28,7 +29,7 @@ class WeiBoComposeTypeView: UIView {
                               ["imageName": "tabbar_compose_friend", "title": "好友圈"],
                               ["imageName": "tabbar_compose_wbcamera", "title": "微博相机"],
                               ["imageName": "tabbar_compose_music", "title": "音乐"],
-                              ["imageName": "tabbar_compose_shooting", "title": "拍摄"]
+                              ["imageName": "tabbar_compose_shooting", "title": "秒拍"]
         ]
     
     class func composeTypeView() ->WeiBoComposeTypeView {
@@ -49,6 +50,9 @@ class WeiBoComposeTypeView: UIView {
             return
         }
         vc.view.addSubview(self)
+        
+        // 开始动画
+        showCurrentView()
     }
 
 
@@ -64,7 +68,7 @@ class WeiBoComposeTypeView: UIView {
         scrollView.setContentOffset(offSet, animated: true)
         // 处理底部按钮， 让按钮都分开，一个向左，一个向右
         returnButton.isHidden = false
-        let margin = scrollView.bounds.width / 8
+        let margin = scrollView.bounds.width / 4
         closeButtonCenterXCons.constant += margin
         returnButtonCenterXCons.constant -= margin
         
@@ -73,6 +77,23 @@ class WeiBoComposeTypeView: UIView {
         }
         
     }
+    
+    @IBAction func clickReturn() {
+        // 1 将滚动视图滚动到第一页
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        // 两个按钮合并
+        closeButtonCenterXCons.constant = 0
+        returnButtonCenterXCons.constant = 0
+        UIView.animate(withDuration: 0.25, animations: {
+            self.layoutIfNeeded()
+            self.returnButton.alpha = 0
+        }) { _ in
+            // 隐藏返回按钮
+            self.returnButton.isHidden = true
+            self.returnButton.alpha = 1
+        }
+    }
+    
 
     // MARK - 监听方法
     @objc fileprivate func clickButton() {
@@ -136,6 +157,19 @@ private extension WeiBoComposeTypeView {
     }
 }
 
+// MARK - 动画扩展
+private extension WeiBoComposeTypeView {
+    func showCurrentView() {
+        // 创建动画
+        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        anim.fromValue = 0
+        anim.toValue = 1
+        anim.duration = 0.5
+        
+        // 添加到视图
+        pop_add(anim, forKey: nil)
+    }
+}
 
 
 
