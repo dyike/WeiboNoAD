@@ -59,8 +59,8 @@ class WeiBoComposeTypeView: UIView {
     
     /// 关闭视图
     @IBAction func close() {
-        heideButtons()
-        removeFromSuperview()
+        hideButtons()
+        //removeFromSuperview()
     }
     
     @objc fileprivate func clickMore() {
@@ -175,6 +175,24 @@ private extension WeiBoComposeTypeView {
         showButton()
     }
     
+    // 隐藏当前视图
+    func hideCurrentView() {
+        // 创建动画
+        let anim: POPBasicAnimation = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
+        
+        anim.fromValue = 1
+        anim.toValue = 0
+        anim.duration = 0.1
+        // 添加视图
+        pop_add(anim, forKey: nil)
+        
+        // 添加完成监听方法
+        anim.completionBlock = { (_, _) in
+            self.removeFromSuperview()
+        }
+        
+    }
+    
     // 弹力显示所有的按钮
     func showButton() {
         // 1 获取scrollview 的子视图的第 0 个视图
@@ -202,7 +220,7 @@ private extension WeiBoComposeTypeView {
     }
     
     // MARK - 消除动画  隐藏按钮
-    func heideButtons() {
+    func hideButtons() {
         // 根据 contentOffset 判断当前显示的子视图
         let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         let v = scrollView.subviews[page]
@@ -219,12 +237,17 @@ private extension WeiBoComposeTypeView {
             
             // 添加动画
             btn.layer.pop_add(anim, forKey: nil)
+            // 监听第0个按钮的动画，是最后一个执行的
+            if i == 0 {
+                anim.completionBlock = { (_, _) in
+                    self.hideCurrentView()
+                }
+            }
             
         }
+        
     }
-    
-    
-    
+
     
 }
 
