@@ -59,6 +59,7 @@ class WeiBoComposeTypeView: UIView {
     
     /// 关闭视图
     @IBAction func close() {
+        heideButtons()
         removeFromSuperview()
     }
     
@@ -183,7 +184,7 @@ private extension WeiBoComposeTypeView {
             // 创建动画
             let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
             // 设置动画属性
-            anim.fromValue = btn.center.y + 400
+            anim.fromValue = btn.center.y + 350
             anim.toValue = btn.center.y
             // 弹力系数
             anim.springBounciness = 8
@@ -199,6 +200,32 @@ private extension WeiBoComposeTypeView {
             
         }
     }
+    
+    // MARK - 消除动画  隐藏按钮
+    func heideButtons() {
+        // 根据 contentOffset 判断当前显示的子视图
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        let v = scrollView.subviews[page]
+        
+        // 遍历 v 中所有的按钮
+        for (i, btn) in v.subviews.enumerated().reversed() {
+            // 创建动画
+            let anim: POPSpringAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
+            // 设置动画属性
+            anim.fromValue = btn.center.y
+            anim.toValue = btn.center.y + 350
+            // 设置时间
+            anim.beginTime = CACurrentMediaTime() + CFTimeInterval(v.subviews.count - i) * 0.025
+            
+            // 添加动画
+            btn.layer.pop_add(anim, forKey: nil)
+            
+        }
+    }
+    
+    
+    
+    
 }
 
 
