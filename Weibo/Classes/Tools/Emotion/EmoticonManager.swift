@@ -28,12 +28,16 @@ extension EmoticonManager {
         // 遍历表情包
         for p in packages {
             // 在表情数组中过滤string
-            let reslut = p.emoticons.filter( { (em) -> Bool in
-                return em.str == string
-            })
+            // 这是一个尾随闭包，还有一个最简单的写法
+            // 闭包的格式定义可以省略，参数省略之后，，使用 $0, $1, $2...依次替代原有的参数
+            // return也可以省略
+            let result = p.emoticons.filter() { $0.chs == string }
+//            let result = p.emoticons.filter( { (em) -> Bool in
+//                return em.chs == string
+//            })
             // 判断结果数组中的数量
-            if reslut.count == 1 {
-                return reslut[0]
+            if result.count == 1 {
+                return result[0]
             }
         }
         return nil

@@ -16,7 +16,7 @@ class Emoticon: NSObject {
     var type = false
     
     // 表情字符串
-    var str: String?
+    var chs: String?
     // 表情图片名称
     var png: String?
     // emoji 的十六进制编码
