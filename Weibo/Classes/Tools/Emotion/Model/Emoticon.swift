@@ -27,22 +27,41 @@ class Emoticon: NSObject {
     var image: UIImage? {
         // 判断表情类型
         if type {
-           return nil
+            return nil
         }
         
         guard let directory = directory,
             let png = png,
-            let path = Bundle.main.path(forResource: "HMEmoticon", ofType: nil),
+            let path = Bundle.main.path(forResource: "HMEmoticon.bundle", ofType: nil),
             let bundle = Bundle(path: path) else {
-            return nil
+                return nil
         }
         
         return UIImage(named: "\(directory)/\(png)", in: bundle, compatibleWith: nil)
     }
-
+    
+    // 将当前的图象转换成图片的属性文本
+    func imageText(font: UIFont) -> NSAttributedString {
+        // 判断图象是否存在
+        guard let image = image  else {
+            return NSAttributedString(string: "")
+        }
+        // 创建文本附件
+        let attachment = NSTextAttachment()
+        // 记录属性文本文字
+        // attachment.chs = chs
+        
+        attachment.image = image
+        
+        let height = font.lineHeight
+        attachment.bounds = CGRect(x: 0, y: -4, width: height, height: height)
+        // 返回图片属性文本
+        return NSAttributedString(attachment: attachment)
+    }
+    
     
     override var description: String {
         return yy_modelDescription()
     }
-
+    
 }

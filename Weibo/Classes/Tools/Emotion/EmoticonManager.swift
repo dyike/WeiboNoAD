@@ -6,7 +6,7 @@
 //  Copyright © 2017年 袁 峰. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class EmoticonManager {
@@ -15,6 +15,13 @@ class EmoticonManager {
     
     // 表情包的懒加载数组
     lazy var packages = [EmoticonPackage]()
+    
+    // 表情素材的 bundle
+    lazy var bundle: Bundle = {
+        let path = Bundle.main.path(forResource: "HMEmoticon.bundle", ofType: nil)
+        
+        return Bundle(path: path!)!
+    }()
     
     private init() {
         loadPackages()
@@ -41,6 +48,39 @@ extension EmoticonManager {
             }
         }
         return nil
+    }
+    
+    
+    // 将给定的字符串转换成表情属性文本
+    func emoticonString(string: String, font: UIFont) -> NSAttributedString {
+    
+        let attrString = NSMutableAttributedString(string: string)
+        
+        // 建立正则表达式，过滤所有的表情文字
+        let pattern = "\\[.*?\\]"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return attrString
+        }
+        
+        // 匹配所有项
+        let matches = regx.matches(in: string, options: [], range: NSRange(location: 0, length: attrString.length))
+        
+        for m in matches.reversed() {
+            let r = m.rangeAt(0)
+            let subStr = (attrString.string as NSString).substring(with: r)
+            // 使用subStr查找对应的表情符号
+            // if let em = EmoticonManager.shared.findEmoticon(string: subStr) {
+            if let em = findEmoticon(string: subStr) {
+                // 使用表情符号中的属性文本，替换原有的属性文本内容
+                // 注意 需要倒序遍历，原因：顺序的话，替换了前面的之后，后面的范围会失效
+                attrString.replaceCharacters(in: r, with: em.imageText(font: font))
+            }
+        }
+        // 统一设置字符串的属性
+        attrString.addAttributes([NSFontAttributeName: font,
+                                  NSForegroundColorAttributeName: UIColor.darkGray], range: NSRange(location: 0, length: attrString.length))
+        
+        return attrString
     }
 }
 

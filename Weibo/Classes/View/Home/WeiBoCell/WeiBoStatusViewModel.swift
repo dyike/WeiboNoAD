@@ -19,12 +19,11 @@ class WeiBoStatusViewModel: CustomStringConvertible {
     
     // 微博模型
     var status: WeiBoStatus
-    
     // 会员图标
     var memberIcon: UIImage?
-    
     // 认证
     var vipIcon: UIImage?
+    
     // 转发
     var retweetedStr: String?
     // 评论
@@ -42,9 +41,12 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
     
-    // 被转发的微博文字
-    var retweetedText: String?
-    
+    // 微博正文的属性文本
+    var statusAttrText: NSAttributedString?
+    // 转发文字的属性文本
+    var retweetedAttrText: NSAttributedString?
+
+    // 行高
     var rowHeight: CGFloat = 0
     
     
@@ -81,9 +83,17 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         // 计算配图大小（有原创的就计算原创的，有转发的就计算转发的）
         pictureViewSize = calcPictureViewSize(count: picURLs?.count)
         
-        // 设置被转发微博文字
-        retweetedText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ": "
+        // 设置微博文本
+        let originalFont = UIFont.systemFont(ofSize: 15)
+        let retweetedFont = UIFont.systemFont(ofSize: 14)
+        
+        // 微博正文的属性文字
+        statusAttrText = EmoticonManager.shared.emoticonString(string: model.text ?? "", font: originalFont)
+        
+        // 设置被转发微博的属性文字
+        let rText = "@" + (status.retweeted_status?.user?.screen_name ?? "") + ": "
                         + (status.retweeted_status?.text ?? "")
+        retweetedAttrText = EmoticonManager.shared.emoticonString(string: rText, font: retweetedFont)
         
         // 计算行高
         updateRowHeight()
@@ -128,27 +138,21 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         
         var height: CGFloat = 0
         let viewSize = CGSize(width: UIScreen.main.bounds.width - 2 * margin, height: CGFloat(MAXFLOAT))
-        let originalFont = UIFont.systemFont(ofSize: 15)
-        let retweetedFont = UIFont.systemFont(ofSize: 14)
+        
         // 顶部高度
         height = 2 * margin + iconHeight + margin
         // 正文
-        if let text = status.text {
-            height += (text as NSString).boundingRect(with: viewSize,
-                                            options: [.usesLineFragmentOrigin],
-                                            attributes: [NSFontAttributeName: originalFont],
-                                            context: nil).height
+        if let text = statusAttrText {
+            height += text.boundingRect(with: viewSize, options: [.usesLineFragmentOrigin], context: nil).height
         }
         // 判断是否转发
         if status.retweeted_status != nil {
             height += 2 * margin
             // 转发文本  使用retweetedText，拼接了 @用户名
-            if let text = retweetedText {
-                height += (text as NSString).boundingRect(with: viewSize,
-                                                options: [.usesLineFragmentOrigin],
-                                                attributes: [NSFontAttributeName: retweetedFont],
-                                                context: nil).height
+            if let text = retweetedAttrText {
                 
+                height += text.boundingRect(with: viewSize, options: [.usesLineFragmentOrigin], context: nil).height
+
             }
         }
         // 配图视图

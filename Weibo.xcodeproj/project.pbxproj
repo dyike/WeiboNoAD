@@ -24,9 +24,9 @@
 		A66735121E2B14BE00FCF900 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66735111E2B14BE00FCF900 /* String+Extension.swift */; };
 		A67DDDEC1E2B5D2200F09557 /* HMEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A67DDDEB1E2B5D2200F09557 /* HMEmoticon.bundle */; };
 		A67DDDEE1E2B5D9300F09557 /* EmoticonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67DDDED1E2B5D9300F09557 /* EmoticonManager.swift */; };
-		A67DDDF11E2B67B200F09557 /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67DDDF01E2B67B200F09557 /* Emoticon.swift */; };
 		A67DDDF31E2B68FD00F09557 /* EmoticonPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67DDDF21E2B68FD00F09557 /* EmoticonPackage.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
+		A68D7C961E2BAD1C00508F9F /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D7C951E2BAD1C00508F9F /* Emoticon.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
 		A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */; };
@@ -86,9 +86,9 @@
 		A66735111E2B14BE00FCF900 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A67DDDEB1E2B5D2200F09557 /* HMEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HMEmoticon.bundle; sourceTree = "<group>"; };
 		A67DDDED1E2B5D9300F09557 /* EmoticonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonManager.swift; sourceTree = "<group>"; };
-		A67DDDF01E2B67B200F09557 /* Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
 		A67DDDF21E2B68FD00F09557 /* EmoticonPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonPackage.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
+		A68D7C951E2BAD1C00508F9F /* Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
 		A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNewFeatureView.swift; sourceTree = "<group>"; };
@@ -204,8 +204,8 @@
 		A67DDDEF1E2B677200F09557 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A67DDDF01E2B67B200F09557 /* Emoticon.swift */,
 				A67DDDF21E2B68FD00F09557 /* EmoticonPackage.swift */,
+				A68D7C951E2BAD1C00508F9F /* Emoticon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,7 +587,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C039091E190368000C44E9 /* WeiboStatusListModel.swift in Sources */,
-				A67DDDF11E2B67B200F09557 /* Emoticon.swift in Sources */,
 				A66735021E27D7BC00FCF900 /* RefreshView.swift in Sources */,
 				A6C039121E1A9A60000C44E9 /* WeiboVisitorView.swift in Sources */,
 				A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */,
@@ -626,6 +625,7 @@
 				A6C039051E18A927000C44E9 /* WeiBoNetWorkManage+Extension.swift in Sources */,
 				A66735101E2A57CA00FCF900 /* WeiBoComposeViewController.swift in Sources */,
 				A6FD3EC51E097CD6009622C3 /* AppDelegate.swift in Sources */,
+				A68D7C961E2BAD1C00508F9F /* Emoticon.swift in Sources */,
 				A6FD3EE51E09FC7F009622C3 /* WeiBoBaseViewController.swift in Sources */,
 				A6C039031E189AF6000C44E9 /* WeiBoNetWorkManager.swift in Sources */,
 				A67DDDF31E2B68FD00F09557 /* EmoticonPackage.swift in Sources */,

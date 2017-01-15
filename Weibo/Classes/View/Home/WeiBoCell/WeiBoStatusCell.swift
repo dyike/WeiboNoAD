@@ -13,7 +13,11 @@ class WeiBoStatusCell: UITableViewCell {
     var viewModel: WeiBoStatusViewModel? {
         didSet {
             // 微博文本
-            statusLabel?.text = viewModel?.status.text
+            statusLabel?.attributedText = viewModel?.statusAttrText
+            //设置被转发微博的文字
+            retweetedLabel?.attributedText = viewModel?.retweetedAttrText
+            
+            
             // 微博昵称
             nameLabel.text = viewModel?.status.user?.screen_name
             // 设置会员等级 - 直接获取属性，不需要计算
@@ -31,9 +35,6 @@ class WeiBoStatusCell: UITableViewCell {
             
             // 微博配图高度
             // pictureView.heightCons.constant = (viewModel?.pictureViewSize.height) ?? 0
-            
-            //设置被转发微博的文字
-            retweetedLabel?.text = viewModel?.retweetedText
             
             // 设置来源
             sourceLabel.text = viewModel?.status.source
