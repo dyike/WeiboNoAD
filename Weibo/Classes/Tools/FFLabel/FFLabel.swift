@@ -19,7 +19,7 @@ public protocol FFLabelDelegate: NSObjectProtocol {
 
 public class FFLabel: UILabel {
     
-    public var linkTextColor = UIColor.blue
+    public var linkTextColor = UIColor(hex: 0x3670AC)
     public var selectedBackgroudColor = UIColor.lightGray
     public weak var delegate: FFLabelDelegate?
     
