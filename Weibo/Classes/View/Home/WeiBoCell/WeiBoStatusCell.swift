@@ -36,8 +36,7 @@ class WeiBoStatusCell: UITableViewCell {
             retweetedLabel?.text = viewModel?.retweetedText
             
             // 设置来源
-            let sourceValue = (viewModel?.status.source)?.getHref()
-            sourceLabel.text = "来自 " + ((sourceValue?.text) ?? "不显示的客户端")
+            sourceLabel.text = viewModel?.status.source
             // 发布时间
             timeLabel.text = viewModel?.status.created_at
 

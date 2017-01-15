@@ -33,7 +33,12 @@ class WeiBoStatus: NSObject {
     // 微博发布时间
     var created_at: String?
     // 微博来源
-    var source: String?
+    var source: String? {
+        didSet {
+            // 重新计算来源，并保存
+            source = "来自 " + ((source?.getHref()?.text) ?? "不显示的客户端")
+        }
+    }
     
     
     // 重写description的计算属性
