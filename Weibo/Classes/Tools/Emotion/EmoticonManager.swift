@@ -21,6 +21,25 @@ class EmoticonManager {
     }
 }
 
+// MARK - 表情符号处理 查找表情图片
+extension EmoticonManager {
+    // 根据string在所有的表情符号中查找所有的表情模型对象
+    func findEmoticon(string: String) -> Emoticon? {
+        // 遍历表情包
+        for p in packages {
+            // 在表情数组中过滤string
+            let reslut = p.emoticons.filter( { (em) -> Bool in
+                return em.str == string
+            })
+            // 判断结果数组中的数量
+            if reslut.count == 1 {
+                return reslut[0]
+            }
+        }
+        return nil
+    }
+}
+
 private extension EmoticonManager {
     func loadPackages() {
         // 读取emotions.plist
