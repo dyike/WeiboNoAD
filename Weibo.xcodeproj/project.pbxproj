@@ -194,9 +194,9 @@
 		A67DDDEA1E2B5A7D00F09557 /* Emotion */ = {
 			isa = PBXGroup;
 			children = (
+				A67DDDED1E2B5D9300F09557 /* EmoticonManager.swift */,
 				A67DDDEF1E2B677200F09557 /* Model */,
 				A67DDDEB1E2B5D2200F09557 /* HMEmoticon.bundle */,
-				A67DDDED1E2B5D9300F09557 /* EmoticonManager.swift */,
 			);
 			path = Emotion;
 			sourceTree = "<group>";

@@ -12,6 +12,9 @@ import Foundation
 class EmoticonManager {
     static let shared = EmoticonManager()
     
+    // 表情包的懒加载数组
+    lazy var packages = [EmoticonPackage]()
+    
     private init() {
         loadPackages()
     }
@@ -22,11 +25,14 @@ private extension EmoticonManager {
         // 读取emotions.plist
         guard let path = Bundle.main.path(forResource: "HMEmoticon.bundle", ofType: nil),
             let bundle = Bundle(path: path),
-            let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil) else {
+            let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
+            let array = NSArray(contentsOfFile: plistPath) as? [[String: String]],
+            let models = NSArray.yy_modelArray(with: EmoticonPackage.self, json: array) as? [EmoticonPackage] else {
             return
         }
         
-        let array = NSArray(contentsOfFile: plistPath) as? [[String: String]]
-        print(path)
+        // 设置表情包数据
+        // 使用+=不会再次分配内存空间
+        packages += models
     }
 }
