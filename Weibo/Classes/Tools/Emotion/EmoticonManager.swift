@@ -78,7 +78,7 @@ extension EmoticonManager {
         }
         // 统一设置字符串的属性
         attrString.addAttributes([NSFontAttributeName: font,
-                                  NSForegroundColorAttributeName: UIColor.darkGray], range: NSRange(location: 0, length: attrString.length))
+                                  NSForegroundColorAttributeName: UIColor.black], range: NSRange(location: 0, length: attrString.length))
         
         return attrString
     }

@@ -85,7 +85,7 @@ class WeiBoStatusViewModel: CustomStringConvertible {
         
         // 设置微博文本
         let originalFont = UIFont.systemFont(ofSize: 15)
-        let retweetedFont = UIFont.systemFont(ofSize: 14)
+        let retweetedFont = UIFont.systemFont(ofSize: 15)
         
         // 微博正文的属性文字
         statusAttrText = EmoticonManager.shared.emoticonString(string: model.text ?? "", font: originalFont)

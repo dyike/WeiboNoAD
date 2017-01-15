@@ -27,6 +27,7 @@
 		A67DDDF31E2B68FD00F09557 /* EmoticonPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67DDDF21E2B68FD00F09557 /* EmoticonPackage.swift */; };
 		A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */; };
 		A68D7C961E2BAD1C00508F9F /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D7C951E2BAD1C00508F9F /* Emoticon.swift */; };
+		A68D7C991E2BB8AD00508F9F /* FFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D7C981E2BB8AD00508F9F /* FFLabel.swift */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
 		A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */; };
@@ -89,6 +90,7 @@
 		A67DDDF21E2B68FD00F09557 /* EmoticonPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonPackage.swift; sourceTree = "<group>"; };
 		A68C4DBE1E14879F00CEECA4 /* UIlabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIlabel+extension.swift"; sourceTree = "<group>"; };
 		A68D7C951E2BAD1C00508F9F /* Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
+		A68D7C981E2BB8AD00508F9F /* FFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFLabel.swift; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
 		A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNewFeatureView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A68D7C971E2BB88100508F9F /* FFLabel */ = {
+			isa = PBXGroup;
+			children = (
+				A68D7C981E2BB8AD00508F9F /* FFLabel.swift */,
+			);
+			path = FFLabel;
+			sourceTree = "<group>";
+		};
 		A6B2ACEA1E2209EA00A39D67 /* NewFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +332,7 @@
 		A6FD3ED81E09FB1A009622C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A68D7C971E2BB88100508F9F /* FFLabel */,
 				A67DDDEA1E2B5A7D00F09557 /* Emotion */,
 				A66734FC1E27BE7800FCF900 /* RefreshControl */,
 				A6C039011E189A85000C44E9 /* NetWork */,
@@ -619,6 +630,7 @@
 				A6479A391E1D3047002C6A0B /* WeiBoUserAccount.swift in Sources */,
 				A6B2ACFD1E22782900A39D67 /* WeiBoUser.swift in Sources */,
 				A6FD3EE91E09FCFE009622C3 /* WeiBoMessageViewController.swift in Sources */,
+				A68D7C991E2BB8AD00508F9F /* FFLabel.swift in Sources */,
 				A6C039071E18FD6F000C44E9 /* WeiBoStatus.swift in Sources */,
 				A6C039141E1A9AE3000C44E9 /* WeiBoOAuthViewController.swift in Sources */,
 				A6B2AD031E2307EE00A39D67 /* UIImage+Extension.swift in Sources */,
