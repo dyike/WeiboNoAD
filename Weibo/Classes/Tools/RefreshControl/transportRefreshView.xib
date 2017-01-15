@@ -31,7 +31,7 @@
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="tableview_pull_refresh" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-QR-nFI">
-                    <rect key="frame" x="99" y="26" width="32" height="32"/>
+                    <rect key="frame" x="99" y="23" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
             </subviews>
