@@ -16,7 +16,7 @@ class WeiBoComposeViewController: UIViewController {
 
         view.backgroundColor = UIColor.orange
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", target: self, action: #selector(close))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(close))
     }
     
     @objc private func close() {

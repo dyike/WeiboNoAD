@@ -30,6 +30,11 @@ class WeiBoStatus: NSObject {
     // 被转发的原创微博
     var retweeted_status: WeiBoStatus?
     
+    // 微博发布时间
+    var created_at: String?
+    // 微博来源
+    var source: String?
+    
     
     // 重写description的计算属性
     override var description: String {
