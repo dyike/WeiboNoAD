@@ -8,12 +8,25 @@
 
 import UIKit
 
+// 微博cell协议
+@objc protocol WeiBoStatusCellDelegate: NSObjectProtocol {
+    // 选中url字符串
+    @objc func statusCellDidSelectedURLString(cell: WeiBoStatusCell, urlString: String)
+}
+
+// 微博cell
 class WeiBoStatusCell: UITableViewCell {
+    
+    weak var delegate: WeiBoStatusCellDelegate?
     
     var viewModel: WeiBoStatusViewModel? {
         didSet {
             // 微博文本
-            statusLabel?.text = viewModel?.status.text
+            statusLabel?.attributedText = viewModel?.statusAttrText
+            //设置被转发微博的文字
+            retweetedLabel?.attributedText = viewModel?.retweetedAttrText
+            
+            
             // 微博昵称
             nameLabel.text = viewModel?.status.user?.screen_name
             // 设置会员等级 - 直接获取属性，不需要计算
@@ -32,8 +45,11 @@ class WeiBoStatusCell: UITableViewCell {
             // 微博配图高度
             // pictureView.heightCons.constant = (viewModel?.pictureViewSize.height) ?? 0
             
-            //设置被转发微博的文字
-            retweetedLabel?.text = viewModel?.retweetedText
+            // 设置来源
+            sourceLabel.text = viewModel?.status.source
+            // 发布时间
+            timeLabel.text = viewModel?.status.created_at
+
         }
     }
     
@@ -50,14 +66,14 @@ class WeiBoStatusCell: UITableViewCell {
     // 认证图标
     @IBOutlet weak var vipIconView: UIImageView!
     // 微博内容
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel: FFLabel!
     // 底部工具栏
     @IBOutlet weak var toolBar: WeiBoStatusToolBar!
     // 微博配图
     @IBOutlet weak var pictureView: WeiBoStatusPictureView!
     
     // 被转发微博的标签 -原创微博没有此控件
-    @IBOutlet weak var retweetedLabel: UILabel?
+    @IBOutlet weak var retweetedLabel: FFLabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,6 +87,10 @@ class WeiBoStatusCell: UITableViewCell {
         self.layer.shouldRasterize = true
         // 使用 栅格化 必须要指定分辨率
         self.layer.rasterizationScale = UIScreen.main.scale
+        
+        // 设置微博文本代理
+        statusLabel.delegate = self
+        retweetedLabel?.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,3 +100,16 @@ class WeiBoStatusCell: UITableViewCell {
     }
 
 }
+
+
+extension WeiBoStatusCell: FFLabelDelegate {
+    func labelDidSelectedLinkText(label: FFLabel, text: String) {
+        // 判断是否是url
+        if !text.hasPrefix("http") {
+            return
+        }
+        // 插入？表示如果代理没有实现协议方法，就什么都不做
+        delegate?.statusCellDidSelectedURLString(cell: self, urlString: text)
+    }
+}
+

@@ -113,7 +113,7 @@ extension WeiBoMainViewController: UITabBarControllerDelegate {
     // viewController: 目标控制器
     // returns: 是否切换到目标控制器
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("将要切换到\(viewController)")
+        // print("将要切换到\(viewController)")
         
         // 获取控制器在数组中的索引
         let index = (childViewControllers as NSArray).index(of: viewController)

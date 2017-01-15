@@ -61,6 +61,9 @@ extension WeiBoHomeViewController {
         // 2 设置cell
         cell.viewModel = vm
         
+        // 设置代理
+        cell.delegate = self
+        
         // 3 返回cell
         return cell
     }
@@ -72,6 +75,17 @@ extension WeiBoHomeViewController {
         // 返回计算行高
         return vm.rowHeight
     }
+    
+}
+
+extension WeiBoHomeViewController: WeiBoStatusCellDelegate {
+    @objc internal func statusCellDidSelectedURLString(cell: WeiBoStatusCell, urlString: String) {
+        //print(urlString)
+        let vc = WeiBoWebViewController()
+        vc.urlString = urlString
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
     
 }
 
