@@ -10,6 +10,7 @@ import Foundation
 
 
 class EmoticonManager {
+    // 单例
     static let shared = EmoticonManager()
     
     // 表情包的懒加载数组

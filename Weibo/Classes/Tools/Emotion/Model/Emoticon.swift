@@ -21,6 +21,24 @@ class Emoticon: NSObject {
     var png: String?
     // emoji 的十六进制编码
     var code: String?
+    // 表情模型所在目录
+    var directory: String?
+    // 图片表情对应的图象
+    var image: UIImage? {
+        // 判断表情类型
+        if type {
+           return nil
+        }
+        
+        guard let directory = directory,
+            let png = png,
+            let path = Bundle.main.path(forResource: "HMEmoticon", ofType: nil),
+            let bundle = Bundle(path: path) else {
+            return nil
+        }
+        
+        return UIImage(named: "\(directory)/\(png)", in: bundle, compatibleWith: nil)
+    }
 
     
     override var description: String {
