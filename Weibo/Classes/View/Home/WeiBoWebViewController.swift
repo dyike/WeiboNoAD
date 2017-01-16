@@ -34,6 +34,8 @@ extension WeiBoWebViewController {
         // 设置webview
         view.insertSubview(webView, belowSubview: navigationBar)
         webView.backgroundColor = UIColor.white
+        // 修复底部的黑条，在底部有透明控件的时候
+        webView.isOpaque = false
         
         // 设置contentInset
         webView.scrollView.contentInset.top = navigationBar.bounds.height
