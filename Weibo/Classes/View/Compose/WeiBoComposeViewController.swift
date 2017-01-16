@@ -20,6 +20,8 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBOutlet var titileLabel: UILabel!
     
+    // 工具栏底部约束
+    @IBOutlet weak var toolbarBottomCons: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,8 +34,18 @@ class WeiBoComposeViewController: UIViewController {
                                                object: nil)
     }
     
-    @objc func keyboardChanged() {
+    @objc func keyboardChanged(n: Notification) {
+        guard let rect = (n.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = (n.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else {
+            return
+        }
         
+        let offset = view.bounds.height - rect.origin.y
+        toolbarBottomCons.constant = offset
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     @objc func close() {
