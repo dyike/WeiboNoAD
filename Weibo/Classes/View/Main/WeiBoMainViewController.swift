@@ -278,7 +278,7 @@ extension WeiBoMainViewController {
         
         
         // 4 设置tabbar 的标题字体
-        viewController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orange], for: .highlighted)
+        viewController.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.darkGray], for: .highlighted)
         viewController.tabBarItem.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 12)], for: UIControlState(rawValue: 0))
         
         let navigation = WeiBoNavigationController(rootViewController: viewController)
