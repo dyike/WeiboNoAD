@@ -42,11 +42,11 @@
             <constraints>
                 <constraint firstItem="z0Q-mA-INk" firstAttribute="top" secondItem="H11-ps-fQo" secondAttribute="top" id="5HR-hu-dQP"/>
                 <constraint firstItem="z0Q-mA-INk" firstAttribute="leading" secondItem="H11-ps-fQo" secondAttribute="leading" id="Nla-jS-Vlb"/>
-                <constraint firstItem="YLZ-Tc-wpL" firstAttribute="top" secondItem="z0Q-mA-INk" secondAttribute="bottom" id="PFt-OY-5i6" userLabel="Toolbar.top = Text View.bottom"/>
+                <constraint firstItem="YLZ-Tc-wpL" firstAttribute="top" secondItem="z0Q-mA-INk" secondAttribute="bottom" id="PFt-OY-5i6"/>
                 <constraint firstAttribute="trailing" secondItem="YLZ-Tc-wpL" secondAttribute="trailing" id="bT7-2h-djh"/>
-                <constraint firstAttribute="leading" secondItem="YLZ-Tc-wpL" secondAttribute="leading" id="lad-tn-s9i" userLabel="Toolbar.leading = leading"/>
+                <constraint firstAttribute="leading" secondItem="YLZ-Tc-wpL" secondAttribute="leading" id="lad-tn-s9i" userLabel="Tool Bar.leading = leading"/>
                 <constraint firstAttribute="trailing" secondItem="z0Q-mA-INk" secondAttribute="trailing" id="mYg-ZD-TJf"/>
-                <constraint firstItem="YLZ-Tc-wpL" firstAttribute="bottom" secondItem="H11-ps-fQo" secondAttribute="bottom" id="n40-70-ccO"/>
+                <constraint firstAttribute="bottom" secondItem="YLZ-Tc-wpL" secondAttribute="bottom" id="n40-70-ccO" userLabel="Tool Bar Bottom Cons"/>
             </constraints>
             <point key="canvasLocation" x="137" y="227"/>
         </view>

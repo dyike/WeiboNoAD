@@ -30,22 +30,23 @@ class WeiBoComposeViewController: UIViewController {
         // 监听键盘通知
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardChanged),
-                                               name: NSNotification.Name.UITextViewTextDidChange,
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        textView.becomeFirstResponder()
     }
     
     @objc func keyboardChanged(n: Notification) {
         guard let rect = (n.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let duration = (n.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else {
-            return
+            let duration = (n.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+            else {
+                return
         }
         
         let offset = view.bounds.height - rect.origin.y
         toolbarBottomCons.constant = offset
-        
-        UIView.animate(withDuration: duration, animations: {
+        UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
-        })
+        }
     }
     
     @objc func close() {
@@ -76,7 +77,8 @@ private extension WeiBoComposeViewController {
                             ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
                             ["imageName": "compose_add_background"]]
         var items = [UIBarButtonItem]()
-        
+        // 在头部增加一个弹簧
+        items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         for item in itemSettings {
             let btn = UIButton()
             guard let imageName = item["imageName"] else {
@@ -92,8 +94,8 @@ private extension WeiBoComposeViewController {
             
             // 追加弹簧
             items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+            items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         }
-        // 删除末尾弹簧
         items.removeLast()
         
         toolBar.items = items
