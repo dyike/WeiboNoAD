@@ -32,7 +32,21 @@ class WeiBoComposeViewController: UIViewController {
                                                selector: #selector(keyboardChanged),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 激活键盘
         textView.becomeFirstResponder()
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 关闭键盘
+        textView.resignFirstResponder()
     }
     
     @objc func keyboardChanged(n: Notification) {
