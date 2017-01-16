@@ -4,6 +4,54 @@
 <array>
 	<dict>
 		<key>chs</key>
+		<string>[抱抱]</string>
+		<key>cht</key>
+		<string>[抱抱]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_baobao.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[摊手]</string>
+		<key>cht</key>
+		<string>[摊手]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_tanshou.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[二哈]</string>
+		<key>cht</key>
+		<string>[二哈]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_erha.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[马到成功]</string>
+		<key>cht</key>
+		<string>[馬到成功]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_madaochenggong.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
 		<string>[马到成功]</string>
 		<key>cht</key>
 		<string>[馬到成功]</string>
