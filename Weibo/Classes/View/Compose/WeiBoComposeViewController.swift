@@ -16,33 +16,34 @@ class WeiBoComposeViewController: UIViewController {
     //底部工具
     @IBOutlet weak var toolBar: UIToolbar!
     
+    @IBOutlet var sendButton: UIButton!
+    
+    @IBOutlet var titileLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        
+        // 监听键盘通知
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardChanged),
+                                               name: NSNotification.Name.UITextViewTextDidChange,
+                                               object: nil)
+    }
+    
+    @objc func keyboardChanged() {
+        
     }
     
     @objc func close() {
         dismiss(animated: true, completion: nil)
     }
     
-    lazy var sendButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("发布", for: [])
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        // 设置标题颜色
-        btn.setTitleColor(UIColor.white, for: [])
-        btn.setTitleColor(UIColor.gray, for: .disabled)
+    @IBAction func postStatus() {
         
-        // 设置背景图片
-        btn.setBackgroundImage(UIImage(named: "common_button_orange"), for: [])
-        btn.setBackgroundImage(UIImage(named: "common_button_orange_highlighted"), for: .highlighted)
-        btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: .disabled)
-        
-        // 设置大小
-        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
-        return btn
-    }()
+    }
+
 
 }
 
@@ -52,6 +53,39 @@ private extension WeiBoComposeViewController {
         view.backgroundColor = UIColor.white
         
         setupNavigationBar()
+        setupToolbar()
+    }
+    
+    func setupToolbar() {
+        
+        let itemSettings = [["imageName": "compose_toolbar_picture"],
+                            ["imageName": "compose_mentionbutton_background"],
+                            ["imageName": "compose_trendbutton_background"],
+                            ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
+                            ["imageName": "compose_add_background"]]
+        var items = [UIBarButtonItem]()
+        
+        for item in itemSettings {
+            let btn = UIButton()
+            guard let imageName = item["imageName"] else {
+                continue
+            }
+            let image = UIImage(named: imageName)
+            let imageHighLighted = UIImage(named: imageName + "_highlighted")
+            
+            btn.setImage(image, for: [])
+            btn.setImage(imageHighLighted, for: .highlighted)
+            btn.sizeToFit()
+            items.append(UIBarButtonItem(customView: btn))
+            
+            // 追加弹簧
+            items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+        }
+        // 删除末尾弹簧
+        items.removeLast()
+        
+        toolBar.items = items
+        
     }
     
     // 设置导航栏
@@ -59,6 +93,8 @@ private extension WeiBoComposeViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(close))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
         
+        navigationItem.titleView = titileLabel
         sendButton.isEnabled = false
+        
     }
 }

@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeiBoComposeViewController" customModule="Weibo" customModuleProvider="target">
             <connections>
+                <outlet property="sendButton" destination="xFs-3S-NBx" id="QJi-cX-U8D"/>
                 <outlet property="textView" destination="z0Q-mA-INk" id="uAk-JP-7GQ"/>
+                <outlet property="titileLabel" destination="WJg-Hz-bNd" id="fuo-DB-3gn"/>
                 <outlet property="toolBar" destination="YLZ-Tc-wpL" id="Wkr-ua-8t2"/>
                 <outlet property="view" destination="H11-ps-fQo" id="hpU-Rb-o4s"/>
             </connections>
@@ -33,9 +35,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="HYR-nd-5Ox"/>
                     </constraints>
-                    <items>
-                        <barButtonItem title="Item" id="Xfe-cf-ble"/>
-                    </items>
+                    <items/>
                 </toolbar>
             </subviews>
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,7 +48,75 @@
                 <constraint firstAttribute="trailing" secondItem="z0Q-mA-INk" secondAttribute="trailing" id="mYg-ZD-TJf"/>
                 <constraint firstAttribute="bottom" secondItem="YLZ-Tc-wpL" secondAttribute="bottom" id="n40-70-ccO"/>
             </constraints>
-            <point key="canvasLocation" x="118.5" y="-34.5"/>
+            <point key="canvasLocation" x="137" y="227"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xFs-3S-NBx">
+            <rect key="frame" x="0.0" y="0.0" width="45" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <state key="normal" title="发送" backgroundImage="common_button_orange"/>
+            <state key="disabled" backgroundImage="common_button_white_disable">
+                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted" backgroundImage="common_button_orange_highlighted"/>
+            <connections>
+                <action selector="postStatus" destination="-1" eventType="touchUpInside" id="3OM-ea-zT7"/>
+            </connections>
+            <point key="canvasLocation" x="-146.5" y="-89.5"/>
+        </button>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WJg-Hz-bNd" userLabel="发微博   做手艺">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <attributedString key="attributedText">
+                <fragment content="发微博">
+                    <attributes>
+                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <font key="NSFont" size="14" name="SimHei"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment>
+                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                    <attributes>
+                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment content="  ">
+                    <attributes>
+                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <font key="NSFont" size="2" name=".PingFangSC-Regular"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment>
+                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                    <attributes>
+                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+                <fragment content="做手艺">
+                    <attributes>
+                        <color key="NSColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
+                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                    </attributes>
+                </fragment>
+            </attributedString>
+            <nil key="highlightedColor"/>
+            <point key="canvasLocation" x="-210" y="90.5"/>
+        </label>
     </objects>
+    <resources>
+        <image name="common_button_orange" width="11" height="35"/>
+        <image name="common_button_orange_highlighted" width="11" height="35"/>
+        <image name="common_button_white_disable" width="11" height="35"/>
+    </resources>
 </document>
