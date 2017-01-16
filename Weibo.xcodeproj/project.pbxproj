@@ -29,6 +29,7 @@
 		A68D7C961E2BAD1C00508F9F /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D7C951E2BAD1C00508F9F /* Emoticon.swift */; };
 		A68D7C991E2BB8AD00508F9F /* FFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D7C981E2BB8AD00508F9F /* FFLabel.swift */; };
 		A68D7C9B1E2BC34400508F9F /* WeiBoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68D7C9A1E2BC34400508F9F /* WeiBoWebViewController.swift */; };
+		A68D7C9D1E2C3EDD00508F9F /* WeiBoComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68D7C9C1E2C3EDD00508F9F /* WeiBoComposeViewController.xib */; };
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
 		A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */; };
@@ -93,6 +94,7 @@
 		A68D7C951E2BAD1C00508F9F /* Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
 		A68D7C981E2BB8AD00508F9F /* FFLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFLabel.swift; sourceTree = "<group>"; };
 		A68D7C9A1E2BC34400508F9F /* WeiBoWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWebViewController.swift; sourceTree = "<group>"; };
+		A68D7C9C1E2C3EDD00508F9F /* WeiBoComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoComposeViewController.xib; sourceTree = "<group>"; };
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
 		A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNewFeatureView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				A66735061E29174900FCF900 /* ComposeType */,
 				A667350F1E2A57CA00FCF900 /* WeiBoComposeViewController.swift */,
+				A68D7C9C1E2C3EDD00508F9F /* WeiBoComposeViewController.xib */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				A67DDDEC1E2B5D2200F09557 /* HMEmoticon.bundle in Resources */,
 				A6FD3ECC1E097CD6009622C3 /* Assets.xcassets in Resources */,
 				A6C039001E17DEE5000C44E9 /* main.json in Resources */,
+				A68D7C9D1E2C3EDD00508F9F /* WeiBoComposeViewController.xib in Resources */,
 				A6B2ACFB1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib in Resources */,
 				A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */,
 				A6B2ACF21E2216C000A39D67 /* WeiBoWelcomeView.xib in Resources */,

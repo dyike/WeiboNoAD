@@ -10,33 +10,55 @@ import UIKit
 
 // 撰写微博视图控制器
 class WeiBoComposeViewController: UIViewController {
-
+    
+    // 文本编辑视图
+    @IBOutlet weak var textView: UITextView!
+    //底部工具
+    @IBOutlet weak var toolBar: UIToolbar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.orange
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(close))
+        setupUI()
     }
     
-    @objc private func close() {
+    @objc func close() {
         dismiss(animated: true, completion: nil)
     }
+    
+    lazy var sendButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("发布", for: [])
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        // 设置标题颜色
+        btn.setTitleColor(UIColor.white, for: [])
+        btn.setTitleColor(UIColor.gray, for: .disabled)
+        
+        // 设置背景图片
+        btn.setBackgroundImage(UIImage(named: "common_button_orange"), for: [])
+        btn.setBackgroundImage(UIImage(named: "common_button_orange_highlighted"), for: .highlighted)
+        btn.setBackgroundImage(UIImage(named: "common_button_white_disable"), for: .disabled)
+        
+        // 设置大小
+        btn.frame = CGRect(x: 0, y: 0, width: 45, height: 35)
+        return btn
+    }()
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+private extension WeiBoComposeViewController {
+    
+    func setupUI() {
+        view.backgroundColor = UIColor.white
+        
+        setupNavigationBar()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // 设置导航栏
+    func setupNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", target: self, action: #selector(close))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
+        
+        sendButton.isEnabled = false
     }
-    */
-
 }
