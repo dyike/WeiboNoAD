@@ -10,7 +10,7 @@ import Foundation
 import SDWebImage
 
 // 上拉刷新最大尝试次数
-private let maxPulluoTryTimes = 100
+private let maxPullupTryTimes = 100
 
 // 微博数据列表视图模型(微博数据处理)
 // 父类的选择：
@@ -23,7 +23,7 @@ class WeiboStatusListModel {
     
     func loadStatus(pullup: Bool, completion: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool) -> ()) {
         // 判断是否是上拉刷新，同时检查刷新错误
-        if pullup && pullupErrorTimes > maxPulluoTryTimes {
+        if pullup && pullupErrorTimes > maxPullupTryTimes {
             completion(true, false)
             return
         }
@@ -49,23 +49,25 @@ class WeiboStatusListModel {
             for dict in list ?? [] {
                 //print(dict["pic_urls"])
                 
-                // 创建微博模型,如果创建失败，继续后续的遍历
-                guard let model = WeiBoStatus.yy_model(with: dict) else {
-                    continue
-                }
+                let status = WeiBoStatus()
+                
+                status.yy_modelSet(with: dict)
+                
+                let viewModel = WeiBoStatusViewModel(model: status)
                 // 将viewmodel添加到数组
-                array.append(WeiBoStatusViewModel(model: model))
+                array.append(viewModel)
                 // print("-----\(array)")
             }
         
             // 2 拼接数据
-            // 下拉刷新，应该将结果数组拼接在数组前面
             if pullup {
                 // 上拉刷新结束后，将结果拼接在数组末尾
                 self.statusList += array
+            } else {
+                // 下拉刷新，应该将结果数组拼接在数组前面
+                self.statusList = array + self.statusList
             }
-            // 下拉刷新，应该将结果数组拼接在数组前面
-            self.statusList = array + self.statusList
+            
             // 3 判断上拉刷新的数据量
             if pullup && array.count == 0 {
                 self.pullupErrorTimes += 1
