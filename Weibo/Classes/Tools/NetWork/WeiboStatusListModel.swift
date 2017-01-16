@@ -49,17 +49,17 @@ class WeiboStatusListModel {
             for dict in list ?? [] {
                 //print(dict["pic_urls"])
                 
-                // 创建微博模型,如果创建失败，继续后续的遍历
-                guard let model = WeiBoStatus.yy_model(with: dict) else {
-                    continue
-                }
+                let status = WeiBoStatus()
+                
+                status.yy_modelSet(with: dict)
+                
+                let viewModel = WeiBoStatusViewModel(model: status)
                 // 将viewmodel添加到数组
-                array.append(WeiBoStatusViewModel(model: model))
+                array.append(viewModel)
                 // print("-----\(array)")
             }
         
             // 2 拼接数据
-            // 上拉刷新，应该将结果数组拼接在数组前面
             if pullup {
                 // 上拉刷新结束后，将结果拼接在数组末尾
                 self.statusList += array
