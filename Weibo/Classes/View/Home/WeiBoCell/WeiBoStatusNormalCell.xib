@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="479"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="654-Ik-2u3" id="Jp7-f5-Knp">
-                <rect key="frame" x="0.0" y="0.0" width="385" height="478"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="478.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJd-5h-sNz" userLabel="顶部视图">
@@ -33,23 +33,17 @@
                             <constraint firstAttribute="height" constant="34" id="UfY-Dn-i5f"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCK-3F-46c" userLabel="微博Id">
-                        <rect key="frame" x="57" y="28" width="37.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.95294117647058818" green="0.24313725490196078" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common_icon_membership_level1" translatesAutoresizingMaskIntoConstraints="NO" id="AEH-bO-dj2" userLabel="会员图标">
-                        <rect key="frame" x="98.5" y="30" width="14" height="14"/>
+                        <rect key="frame" x="98.5" y="26.5" width="14" height="14"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Le-X0-FHh" userLabel="时间">
-                        <rect key="frame" x="57" y="46" width="27" height="12"/>
+                        <rect key="frame" x="57" y="46" width="26.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" red="1" green="0.42352941176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="1" green="0.52260249853134155" blue="0.034246642142534256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-TR-faj" userLabel="来源">
-                        <rect key="frame" x="92" y="46" width="27" height="12"/>
+                        <rect key="frame" x="91.5" y="46.5" width="26.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -143,6 +137,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCK-3F-46c" userLabel="微博Id">
+                        <rect key="frame" x="57" y="24" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.95294117647058818" green="0.24313725490196078" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="QJd-5h-sNz" secondAttribute="trailing" id="4Bm-ef-bts"/>
@@ -150,7 +150,7 @@
                     <constraint firstItem="EdH-1L-EIX" firstAttribute="centerY" secondItem="pfb-wB-RLH" secondAttribute="bottom" constant="-4" id="BkQ-D1-JQP"/>
                     <constraint firstItem="QJd-5h-sNz" firstAttribute="leading" secondItem="Jp7-f5-Knp" secondAttribute="leading" id="Cgl-Nm-g31"/>
                     <constraint firstItem="KBb-Z4-clS" firstAttribute="top" secondItem="Qwu-J8-Xpl" secondAttribute="bottom" id="DVG-FO-NZG"/>
-                    <constraint firstItem="eCK-3F-46c" firstAttribute="top" secondItem="pfb-wB-RLH" secondAttribute="top" constant="4" id="FM0-Fg-JZe"/>
+                    <constraint firstItem="eCK-3F-46c" firstAttribute="top" secondItem="pfb-wB-RLH" secondAttribute="top" id="FM0-Fg-JZe"/>
                     <constraint firstItem="8Le-X0-FHh" firstAttribute="leading" secondItem="eCK-3F-46c" secondAttribute="leading" id="Fq4-xh-F57"/>
                     <constraint firstItem="QJd-5h-sNz" firstAttribute="top" secondItem="Jp7-f5-Knp" secondAttribute="top" id="Nhb-bU-Mec"/>
                     <constraint firstItem="pfb-wB-RLH" firstAttribute="top" secondItem="QJd-5h-sNz" secondAttribute="bottom" constant="12" id="Niv-8B-raB"/>
