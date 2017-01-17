@@ -18,7 +18,7 @@ class EmoticonManager {
     
     // 表情素材的 bundle
     lazy var bundle: Bundle = {
-        let path = Bundle.main.path(forResource: "HMEmoticon.bundle", ofType: nil)
+        let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil)
         
         return Bundle(path: path!)!
     }()
@@ -87,7 +87,7 @@ extension EmoticonManager {
 private extension EmoticonManager {
     func loadPackages() {
         // 读取emotions.plist
-        guard let path = Bundle.main.path(forResource: "HMEmoticon.bundle", ofType: nil),
+        guard let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil),
             let bundle = Bundle(path: path),
             let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
             let array = NSArray(contentsOfFile: plistPath) as? [[String: String]],

@@ -4,6 +4,18 @@
 <array>
 	<dict>
 		<key>chs</key>
+		<string>[舔屏]</string>
+		<key>cht</key>
+		<string>[舔屏]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_tian.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
 		<string>[抱抱]</string>
 		<key>cht</key>
 		<string>[抱抱]</string>
