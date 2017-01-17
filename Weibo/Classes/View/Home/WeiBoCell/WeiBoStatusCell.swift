@@ -26,7 +26,6 @@ class WeiBoStatusCell: UITableViewCell {
             //设置被转发微博的文字
             retweetedLabel?.attributedText = viewModel?.retweetedAttrText
             
-            
             // 微博昵称
             nameLabel.text = viewModel?.status.user?.screen_name            
             
