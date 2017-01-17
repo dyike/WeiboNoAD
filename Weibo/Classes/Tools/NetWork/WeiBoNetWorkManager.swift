@@ -37,7 +37,7 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
     }
     
     // 专门负责拼接， token 的网络请求方法
-    func tokenRequest(method: WeiBoHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) {
+    func tokenRequest(method: WeiBoHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, name: String? = nil, data: Data? = nil, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool) -> ()) {
         //处理tocken字典
         // 0判断token是否为nil
         guard let token = userAccount.access_token else {
@@ -58,7 +58,15 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
         parameters!["access_token"] = token as AnyObject?
         
         // 调用request发起真正的请求
-        request(URLString: URLString, parameters: parameters!, completion: completion)
+        
+        if let name = name, let data = data {
+            upload(URLString: URLString, parameters: parameters, name: name, data: data, completion: completion)
+        
+        } else {
+            request(method: method, URLString: URLString, parameters: parameters!, completion: completion)
+        }
+        
+        
     }
     
     // 用一个函数封装get、post
@@ -86,5 +94,39 @@ class WeiBoNetWorkManager: AFHTTPSessionManager {
             post(URLString, parameters: parameters, progress: nil, success: success, failure: failure)
         }
     
+    }
+    
+    func upload(URLString: String, parameters: [String: AnyObject]?, name: String, data: Data, completion: @escaping (_ json: AnyObject?, _ isSuccess: Bool)->()) {
+        
+        post(URLString, parameters: parameters, constructingBodyWith: { (formData) in
+            
+            // 创建 formData
+            /**
+             1. data: 要上传的二进制数据
+             2. name: 服务器接收数据的字段名
+             3. fileName: 保存在服务器的文件名，大多数服务器，现在可以乱写
+             很多服务器，上传图片完成后，会生成缩略图，中图，大图...
+             4. mimeType: 告诉服务器上传文件的类型，如果不想告诉，可以使用 application/octet-stream
+             image/png image/jpg image/gif
+             */
+            formData.appendPart(withFileData: data, name: name, fileName: "xxx", mimeType: "application/octet-stream")
+            
+        }, progress: nil, success: { (_, json) in
+            completion(json as AnyObject?, true)
+        }) { (task, error) in
+            
+            if (task?.response as? HTTPURLResponse)?.statusCode == 403 {
+                print("Token 过期了")
+                
+                // 发送通知，提示用户再次登录(本方法不知道被谁调用，谁接收到通知，谁处理！)
+                NotificationCenter.default.post(
+                    name: NSNotification.Name(rawValue: WeiBoUserShouldLoginNotification),
+                    object: "bad token")
+            }
+            
+            print("网络请求错误 \(error)")
+            
+            completion(nil, false)
+        }
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 袁 峰. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK - 封装微博网络请求方法
 extension WeiBoNetWorkManager {
@@ -102,3 +102,35 @@ extension WeiBoNetWorkManager {
         
     }
 }
+
+// 发布微博
+extension WeiBoNetWorkManager {
+    func postStatus(statusText: String, image: UIImage?, completion: @escaping (_ ruesult: [String: AnyObject], _ isSuccess: Bool) -> ()) -> () {
+        
+        let urlString: String
+        if image == nil {
+            urlString = "https://api.weibo.com/2/statuses/update.json"
+        } else {
+            urlString = "https://upload.api.weibo.com/2/statuses/upload.json"
+        }
+        
+        let params = ["status": statusText]
+        
+        var name: String?
+        var data: Data?
+        
+        if image != nil {
+            name = "pic"
+            data = UIImagePNGRepresentation(image!)
+        }
+        
+        tokenRequest(method: .POST, URLString: urlString, parameters: params as [String : AnyObject]?, name: name, data: data) { (json, isSuccess) in
+            completion(json as? [String: AnyObject] ?? [:], isSuccess)
+        }
+        
+    }
+}
+
+
+
+
