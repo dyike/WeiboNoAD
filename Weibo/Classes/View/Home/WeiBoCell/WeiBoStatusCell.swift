@@ -28,7 +28,8 @@ class WeiBoStatusCell: UITableViewCell {
             
             
             // 微博昵称
-            nameLabel.text = viewModel?.status.user?.screen_name
+            nameLabel.text = viewModel?.status.user?.screen_name            
+            
             // 设置会员等级 - 直接获取属性，不需要计算
             memberIconView.image = viewModel?.memberIcon
             // 认证

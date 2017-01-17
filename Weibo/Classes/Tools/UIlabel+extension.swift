@@ -15,4 +15,19 @@ extension UILabel {
         self.textColor = color
         self.font = UIFont(name: "sytem", size: fontSize)
     }
+    
+    // 改变行间距
+//    func changeLineSpace(space:CGFloat) {
+//        if self.text == nil || self.text == "" {
+//            return
+//        }
+//        let text = self.text
+//        let attributedString = NSMutableAttributedString.init(string: text!)
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineSpacing = space
+//        attributedString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: .init(location: 0, length: (text?.length())!))
+//        self.attributedText = attributedString
+//        self.sizeToFit()
+//    }
+    
 }
