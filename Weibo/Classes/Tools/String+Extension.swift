@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 extension String {
     
     /// 从当前字符串中，提取链接和文本
@@ -31,4 +32,7 @@ extension String {
         
         return (link, text)
     }
+    
+
+    
 }

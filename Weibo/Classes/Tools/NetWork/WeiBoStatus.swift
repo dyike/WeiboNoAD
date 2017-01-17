@@ -31,7 +31,8 @@ class WeiBoStatus: NSObject {
     var retweeted_status: WeiBoStatus?
     
     // 微博发布时间
-    var created_at: String?
+    var created_at: Date?
+
     // 微博来源
     var source: String? {
         didSet {

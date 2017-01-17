@@ -71,13 +71,6 @@ class WeiBoComposeViewController: UIViewController {
     }
 }
 
-extension WeiBoComposeViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        sendButton.isEnabled = textView.hasText
-    }
-}
-
-
 
 private extension WeiBoComposeViewController {
     
