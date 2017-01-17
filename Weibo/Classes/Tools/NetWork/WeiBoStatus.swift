@@ -31,12 +31,13 @@ class WeiBoStatus: NSObject {
     var retweeted_status: WeiBoStatus?
     
     // 微博发布时间
-    var created_at: String?
+    var created_at: Date?
+
     // 微博来源
     var source: String? {
         didSet {
             // 重新计算来源，并保存
-            source = "来自 " + ((source?.getHref()?.text) ?? "不显示的客户端")
+            source = "来自" + ((source?.getHref()?.text) ?? "...")
         }
     }
     

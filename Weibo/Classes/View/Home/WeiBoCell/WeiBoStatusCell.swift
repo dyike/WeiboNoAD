@@ -26,9 +26,9 @@ class WeiBoStatusCell: UITableViewCell {
             //设置被转发微博的文字
             retweetedLabel?.attributedText = viewModel?.retweetedAttrText
             
-            
             // 微博昵称
-            nameLabel.text = viewModel?.status.user?.screen_name
+            nameLabel.text = viewModel?.status.user?.screen_name            
+            
             // 设置会员等级 - 直接获取属性，不需要计算
             memberIconView.image = viewModel?.memberIcon
             // 认证
@@ -48,7 +48,7 @@ class WeiBoStatusCell: UITableViewCell {
             // 设置来源
             sourceLabel.text = viewModel?.status.source
             // 发布时间
-            timeLabel.text = viewModel?.status.created_at
+            timeLabel.text = (viewModel?.status.created_at?.dateByString())! as String
 
         }
     }

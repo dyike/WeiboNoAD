@@ -32,7 +32,7 @@ class Emoticon: NSObject {
         
         guard let directory = directory,
             let png = png,
-            let path = Bundle.main.path(forResource: "HMEmoticon.bundle", ofType: nil),
+            let path = Bundle.main.path(forResource: "Emoticons.bundle", ofType: nil),
             let bundle = Bundle(path: path) else {
                 return nil
         }

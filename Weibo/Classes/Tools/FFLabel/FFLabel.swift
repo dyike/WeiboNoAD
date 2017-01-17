@@ -84,7 +84,7 @@ public class FFLabel: UILabel {
     }
     
     /// use regex check all link ranges
-    private let patterns = ["[a-zA-Z]*://[a-zA-Z0-9/\\.]*", "#.*?#", "@[\\u4e00-\\u9fa5a-zA-Z0-9_-]*"]
+    private let patterns = ["[a-zA-Z]*://[a-zA-Z0-9/\\.]*", "#.*?#", "@[\\u4e00-\\u9fa5a-zA-Z0-9_-]*", "全文："]
     private func regexLinkRanges(_ attrString: NSAttributedString) {
         linkRanges.removeAll()
         let regexRange = NSRange(location: 0, length: attrString.string.characters.count)

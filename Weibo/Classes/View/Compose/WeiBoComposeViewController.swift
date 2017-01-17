@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 // 撰写微博视图控制器
 class WeiBoComposeViewController: UIViewController {
@@ -32,7 +33,20 @@ class WeiBoComposeViewController: UIViewController {
                                                selector: #selector(keyboardChanged),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 激活键盘
         textView.becomeFirstResponder()
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 关闭键盘
+        textView.resignFirstResponder()
     }
     
     @objc func keyboardChanged(n: Notification) {
@@ -55,10 +69,37 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBAction func postStatus() {
         
+        guard let text = textView.text else {
+            return
+        }
+        
+        let image: UIImage? = nil //UIImage(named: "avatar_default_big")
+        WeiBoNetWorkManager.shared.postStatus(statusText: text, image: image) { (result, isSuccess) in
+            SVProgressHUD.setDefaultStyle(.dark)
+            
+            let message = isSuccess ? "发送成功" : "网络错误"
+            
+            SVProgressHUD.showInfo(withStatus: message)
+            // 成功 关闭当前窗口
+            if isSuccess {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                    SVProgressHUD.setDefaultStyle(.light)
+                    self.close()
+                })
+            }
+        }
     }
-
-
 }
+
+
+extension WeiBoComposeViewController: UITextViewDelegate {
+    
+    /// 文本视图文字变化
+    func textViewDidChange(_ textView: UITextView) {
+        sendButton.isEnabled = textView.hasText
+    }
+}
+
 
 private extension WeiBoComposeViewController {
     
