@@ -44,7 +44,6 @@ class WeiBoComposeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         // 关闭键盘
         textView.resignFirstResponder()
     }
@@ -70,9 +69,15 @@ class WeiBoComposeViewController: UIViewController {
     @IBAction func postStatus() {
         
     }
-
-
 }
+
+extension WeiBoComposeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        sendButton.isEnabled = textView.hasText
+    }
+}
+
+
 
 private extension WeiBoComposeViewController {
     
