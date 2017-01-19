@@ -25,8 +25,9 @@ class EmoticonInputView: UIView {
     
     override func awakeFromNib() {
         collectionView.backgroundColor = UIColor.white
-        let nib = UINib(nibName: "EmoticonCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: cellId)
+//        let nib = UINib(nibName: "EmoticonCell", bundle: nil)
+//        collectionView.register(nib, forCellWithReuseIdentifier: cellId)
+        collectionView.register(EmoticonCell.self, forCellWithReuseIdentifier: cellId)
     }
 
 }
@@ -38,12 +39,14 @@ extension EmoticonInputView: UICollectionViewDataSource {
     
     // 返回每个分组中表情页的数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return EmoticonManager.shared.packages[section].numberOfPage
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! EmoticonCell
-        cell.label.text = "\(indexPath.item)"
+        
+        cell.emoticons = EmoticonManager.shared.packages[indexPath.section].emoticon(page: indexPath.item)
+        
         return cell
     }
 }
