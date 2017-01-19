@@ -12,6 +12,8 @@
 		A653C7D91E2EE7B500BB0D9A /* EmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */; };
 		A653C7DB1E2EE82600BB0D9A /* EmoticonInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653C7DA1E2EE82600BB0D9A /* EmoticonInputView.xib */; };
 		A653C7DD1E2EEB9B00BB0D9A /* EmoticonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7DC1E2EEB9B00BB0D9A /* EmoticonToolbar.swift */; };
+		A653C7DF1E303A5B00BB0D9A /* EmoticonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653C7DE1E303A5B00BB0D9A /* EmoticonCell.xib */; };
+		A653C7E11E303A9900BB0D9A /* EmoticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7E01E303A9900BB0D9A /* EmoticonCell.swift */; };
 		A66734F51E23E31900FCF900 /* WeiBoStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734F41E23E31900FCF900 /* WeiBoStatusPictureView.swift */; };
 		A66734F71E2461C200FCF900 /* WeiBoStatusPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66734F61E2461C200FCF900 /* WeiBoStatusPicture.swift */; };
 		A66734FB1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */; };
@@ -82,6 +84,8 @@
 		A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonInputView.swift; sourceTree = "<group>"; };
 		A653C7DA1E2EE82600BB0D9A /* EmoticonInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonInputView.xib; sourceTree = "<group>"; };
 		A653C7DC1E2EEB9B00BB0D9A /* EmoticonToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonToolbar.swift; sourceTree = "<group>"; };
+		A653C7DE1E303A5B00BB0D9A /* EmoticonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonCell.xib; sourceTree = "<group>"; };
+		A653C7E01E303A9900BB0D9A /* EmoticonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonCell.swift; sourceTree = "<group>"; };
 		A66734F41E23E31900FCF900 /* WeiBoStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoStatusPictureView.swift; sourceTree = "<group>"; };
 		A66734F61E2461C200FCF900 /* WeiBoStatusPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoStatusPicture.swift; path = Weibo/Classes/View/Home/WeiBoCell/WeiBoStatusPicture.swift; sourceTree = SOURCE_ROOT; };
 		A66734FA1E25A91C00FCF900 /* WeiBoStatusRetweetedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoStatusRetweetedCell.xib; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */,
 				A653C7DA1E2EE82600BB0D9A /* EmoticonInputView.xib */,
 				A653C7DC1E2EEB9B00BB0D9A /* EmoticonToolbar.swift */,
+				A653C7DE1E303A5B00BB0D9A /* EmoticonCell.xib */,
+				A653C7E01E303A9900BB0D9A /* EmoticonCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				A6B2ACFB1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib in Resources */,
 				A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */,
 				A6B2ACF21E2216C000A39D67 /* WeiBoWelcomeView.xib in Resources */,
+				A653C7DF1E303A5B00BB0D9A /* EmoticonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +652,7 @@
 				A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */,
 				A66735081E29179300FCF900 /* WeiBoComposeTypeView.swift in Sources */,
 				A6B2AD051E23CE9700A39D67 /* WeiBoStatusToolBar.swift in Sources */,
+				A653C7E11E303A9900BB0D9A /* EmoticonCell.swift in Sources */,
 				A6FD3EEB1E09FD14009622C3 /* WeiBoDiscoverViewController.swift in Sources */,
 				A6FD3F051E101050009622C3 /* TitleButton.swift in Sources */,
 				A6FD3EF01E0A02AB009622C3 /* Bundle+Extension.swift in Sources */,

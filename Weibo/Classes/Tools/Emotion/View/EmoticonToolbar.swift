@@ -41,6 +41,23 @@ private extension EmoticonToolbar {
             btn.setTitleColor(UIColor.darkGray, for: .highlighted)
             btn.setTitleColor(UIColor.darkGray, for: .selected)
             
+            let imageName = "compose_emotion_table_\(p.bgImageName ?? "")_normal"
+            let imageNameHL = "compose_emotion_table_\(p.bgImageName ?? "")_selected"
+            var image = UIImage(named: imageName, in: manager.bundle, compatibleWith: nil)
+            var imageHL = UIImage(named: imageNameHL, in: manager.bundle, compatibleWith: nil)
+            
+            let size = image?.size ?? CGSize()
+            let inset = UIEdgeInsets(top: size.height * 0.5,
+                                     left: size.width * 0.5,
+                                     bottom: size.height * 0.5,
+                                     right: size.width * 0.5)
+            image = image?.resizableImage(withCapInsets: inset)
+            imageHL = imageHL?.resizableImage(withCapInsets: inset)
+            
+            btn.setBackgroundImage(image, for: [])
+            btn.setBackgroundImage(imageHL, for: .highlighted)
+            btn.setBackgroundImage(imageHL, for: .selected)
+            
             btn.sizeToFit()
             
             addSubview(btn)
