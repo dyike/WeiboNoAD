@@ -89,6 +89,16 @@ class WeiBoComposeViewController: UIViewController {
             }
         }
     }
+    
+    // 切换表情键盘
+    @objc func emoticonKeyboard() {
+        let emoticonKeyboardView = EmoticonInputView.inputView()
+    
+        textView.inputView = (textView.inputView == nil) ? emoticonKeyboardView : nil
+        
+        textView.reloadInputViews()
+    }
+    
 }
 
 
@@ -131,6 +141,12 @@ private extension WeiBoComposeViewController {
             btn.setImage(image, for: [])
             btn.setImage(imageHighLighted, for: .highlighted)
             btn.sizeToFit()
+            
+            if let actionName = item["actionName"] {
+                btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
+            }
+            
+            
             items.append(UIBarButtonItem(customView: btn))
             
             // 追加弹簧
