@@ -14,6 +14,9 @@ class EmoticonPackage: NSObject {
     
     // 表情包分组名
     var groupName: String?
+    
+    var bgImageName: String?
+    
     // 表情包目录，从目录下加载info.plist可以创建表情模型数组
     var directory: String? {
         didSet {
@@ -41,6 +44,25 @@ class EmoticonPackage: NSObject {
     // 懒加载表情模型的空数组
     // 使用懒加载可以避免后续的解包
     lazy var emoticons = [Emoticon]()
+    
+    var numberOfPage: Int {
+        return (emoticons.count - 1) / 20 + 1
+    }
+    
+    // 从懒加载的表情包中，按照Page截取最多20个表情模型数组
+    func emoticon(page: Int) -> [Emoticon] {
+        let count = 20
+        let location = page * count
+        var length = count
+        // 判断数组是否越界
+        if location + length > emoticons.count {
+            length = emoticons.count - location
+        }
+        
+        let range = NSRange(location: location, length: length)
+        let subArray = (emoticons as NSArray).subarray(with: range)
+        return subArray as! [Emoticon]
+    }
     
     override var description: String {
         return yy_modelDescription()

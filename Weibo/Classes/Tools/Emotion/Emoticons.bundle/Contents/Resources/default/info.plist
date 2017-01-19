@@ -4,18 +4,6 @@
 <array>
 	<dict>
 		<key>chs</key>
-		<string>[带着微博去旅行]</string>
-		<key>cht</key>
-		<string>[带着微博去旅行]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>eventtravel.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
 		<string>[广告]</string>
 		<key>cht</key>
 		<string>[廣告]</string>

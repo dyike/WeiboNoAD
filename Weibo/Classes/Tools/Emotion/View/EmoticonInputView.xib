@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="XAf-bE-e2o" customClass="EmoticonInputView" customModule="Weibo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tl8-mS-3g8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lgb-xp-gsb" customClass="EmoticonLayout" customModule="Weibo" customModuleProvider="target">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="XAf-bE-e2o" id="fBX-mr-e7R"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPH-sB-voe" userLabel="底部工具栏" customClass="EmoticonToolbar" customModule="Weibo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="213" width="375" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="yxE-Tp-QnG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LPH-sB-voe" secondAttribute="trailing" id="8sW-fb-4uI"/>
+                <constraint firstAttribute="trailing" secondItem="tl8-mS-3g8" secondAttribute="trailing" id="Kap-MY-LUV"/>
+                <constraint firstItem="LPH-sB-voe" firstAttribute="top" secondItem="tl8-mS-3g8" secondAttribute="bottom" id="bPL-um-rJt"/>
+                <constraint firstAttribute="bottom" secondItem="LPH-sB-voe" secondAttribute="bottom" id="cJ0-Dc-krN"/>
+                <constraint firstItem="tl8-mS-3g8" firstAttribute="top" secondItem="XAf-bE-e2o" secondAttribute="top" id="dJ0-A8-lOK"/>
+                <constraint firstItem="tl8-mS-3g8" firstAttribute="leading" secondItem="XAf-bE-e2o" secondAttribute="leading" id="vuW-d9-fHu"/>
+                <constraint firstItem="LPH-sB-voe" firstAttribute="leading" secondItem="XAf-bE-e2o" secondAttribute="leading" id="yvp-3p-C0F"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="tl8-mS-3g8" id="qVn-IP-BNP"/>
+                <outlet property="toolbar" destination="LPH-sB-voe" id="cIL-CT-QX2"/>
+            </connections>
+            <point key="canvasLocation" x="27.5" y="-23.5"/>
+        </view>
+    </objects>
+</document>
