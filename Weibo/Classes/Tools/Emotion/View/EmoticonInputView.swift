@@ -47,6 +47,15 @@ extension EmoticonInputView: UICollectionViewDataSource {
         
         cell.emoticons = EmoticonManager.shared.packages[indexPath.section].emoticon(page: indexPath.item)
         
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+
+extension EmoticonInputView: EmoticonCellDelegate {
+    func emoticonCellDidSelectedEmoticon(cell: EmoticonCell, em: Emoticon?) {
+        print(em)
     }
 }
