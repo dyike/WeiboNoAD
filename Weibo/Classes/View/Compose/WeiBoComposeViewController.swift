@@ -13,13 +13,41 @@ import SVProgressHUD
 class WeiBoComposeViewController: UIViewController {
     
     // 文本编辑视图
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: WeiBoComposeTextView!
     //底部工具
     @IBOutlet weak var toolBar: UIToolbar!
     
     @IBOutlet var sendButton: UIButton!
     
     @IBOutlet var titileLabel: UILabel!
+    
+    // 表情输入视图
+    lazy var emoticonView: EmoticonInputView = EmoticonInputView.inputView { [weak self] (emoticon) in
+        self?.textView.insertEmoticon(em: emoticon)
+    }
+    
+    // 返回textView对应的纯文本的字符串【将图片转换成文字】
+    var emoticonText: String {
+        // 获取textView的属性文本
+        guard let attrStr = textView.attributedText else {
+            return ""
+        }
+        
+        var result = String()
+        // 获取属性文本中的附件
+        attrStr.enumerateAttributes(in: NSRange(location: 0, length: attrStr.length), options: [], using: { (dict, range, _) in
+            if let attachment = dict["NSAttachment"] as? EmoticonAttachment {
+                result += attachment.chs ?? ""
+            } else {
+                let subStr = (attrStr.string as NSString).substring(with: range)
+                result += subStr
+            }
+        })
+        
+        print(result)
+        
+        return attrStr.string
+    }
     
     // 工具栏底部约束
     @IBOutlet weak var toolbarBottomCons: NSLayoutConstraint!
@@ -92,47 +120,11 @@ class WeiBoComposeViewController: UIViewController {
     
     // 切换表情键盘
     @objc func emoticonKeyboard() {
-        let emoticonKeyboardView = EmoticonInputView.inputView { [weak self] (emoticon) in
-            self?.insertEmoticon(em: emoticon)
-        }
-    
-        textView.inputView = (textView.inputView == nil) ? emoticonKeyboardView : nil
+        
+        textView.inputView = (textView.inputView == nil) ? emoticonView : nil
         
         textView.reloadInputViews()
     }
-    
-    func insertEmoticon(em: Emoticon?) {
-        // em == nil 是删除按钮
-        guard let em = em else {
-            // 删除文本
-            textView.deleteBackward()
-            return
-        }
-        
-        if let emoji = em.emoji, let textRange = textView.selectedTextRange {
-        
-            textView.replace(textRange, withText: emoji)
-            return
-        }
-        
-        let imageText = em.imageText(font: textView.font!)
-        // 修复图像越来越小
-//        let imageText = NSMutableAttributedString(attributedString: em.imageText(font: textView.font!))
-//        imageText.addAttributes([NSFontAttributeName: textView.font!], range: NSRange(location: 0, length: 1))
-        // 获取当前textView属性文本
-        let attrStrM = NSMutableAttributedString(attributedString: textView.attributedText)
-        
-        // 将图像的属性文本插入到当前的光标位置
-        attrStrM.replaceCharacters(in: textView.selectedRange, with: imageText)
-        
-        let range = textView.selectedRange
-    
-        // 设置文本
-        textView.attributedText = attrStrM
-        // 恢复光标的位置
-        textView.selectedRange = NSRange(location: range.location + 1, length: range.length)
-    }
-    
     
 }
 

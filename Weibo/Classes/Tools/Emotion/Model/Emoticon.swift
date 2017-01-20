@@ -62,9 +62,9 @@ class Emoticon: NSObject {
             return NSAttributedString(string: "")
         }
         // 创建文本附件
-        let attachment = NSTextAttachment()
+        let attachment = EmoticonAttachment()
         // 记录属性文本文字
-        // attachment.chs = chs
+        attachment.chs = chs
         
         attachment.image = image
         
