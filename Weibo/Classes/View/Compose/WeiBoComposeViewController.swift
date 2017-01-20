@@ -92,12 +92,44 @@ class WeiBoComposeViewController: UIViewController {
     
     // 切换表情键盘
     @objc func emoticonKeyboard() {
-        let emoticonKeyboardView = EmoticonInputView.inputView()
+        let emoticonKeyboardView = EmoticonInputView.inputView { [weak self] (emoticon) in
+            self?.insertEmoticon(em: emoticon)
+        }
     
         textView.inputView = (textView.inputView == nil) ? emoticonKeyboardView : nil
         
         textView.reloadInputViews()
     }
+    
+    func insertEmoticon(em: Emoticon?) {
+        // em == nil 是删除按钮
+        guard let em = em else {
+            // 删除文本
+            textView.deleteBackward()
+            return
+        }
+        
+        if let emoji = em.emoji, let textRange = textView.selectedTextRange {
+        
+            textView.replace(textRange, withText: emoji)
+            return
+        }
+        
+        let imageText = em.imageText(font: textView.font!)
+        // 获取当前textView属性文本
+        let attrStrM = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        // 将图像的属性文本插入到当前的光标位置
+        attrStrM.replaceCharacters(in: textView.selectedRange, with: imageText)
+        
+        let range = textView.selectedRange
+    
+        // 设置文本
+        textView.attributedText = attrStrM
+        // 恢复光标的位置
+        textView.selectedRange = NSRange(location: range.location + 1, length: range.length)
+    }
+    
     
 }
 
@@ -137,12 +169,18 @@ private extension WeiBoComposeViewController {
             }
             let image = UIImage(named: imageName)
             let imageHighLighted = UIImage(named: imageName + "_highlighted")
-            let imageSelected = UIImage(named: "half_compose_icon_keyboard")
             
             btn.setImage(image, for: [])
             btn.setImage(imageHighLighted, for: .highlighted)
-            btn.setImage(imageSelected, for: .selected)
+            
             btn.sizeToFit()
+            
+            let imageSelected = UIImage(named: "half_compose_icon_keyboard")
+            let imageSelectedHL = UIImage(named: "half_compose_icon_keyboard_highlighted")
+            if btn.isSelected {
+                btn.setImage(imageSelected, for: [])
+                btn.setImage(imageSelectedHL, for: .highlighted)
+            }
             
             if let actionName = item["actionName"] {
                 btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)

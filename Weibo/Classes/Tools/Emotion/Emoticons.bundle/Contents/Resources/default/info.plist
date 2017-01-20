@@ -172,6 +172,18 @@
 	</dict>
 	<dict>
 		<key>chs</key>
+		<string>[污]</string>
+		<key>cht</key>
+		<string>[污]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_wu.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
 		<string>[吃元宵]</string>
 		<key>cht</key>
 		<string>[吃元宵]</string>

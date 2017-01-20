@@ -35,6 +35,9 @@ private extension EmoticonToolbar {
         
         for p in manager.packages {
             let btn = UIButton()
+//            let imageEmoticon = "compose_emotion_table_\(p.imageName ?? "")"
+//            var image = UIImage(named: imageEmoticon, in: manager.bundle, compatibleWith: nil)
+            
             btn.setTitle(p.groupName, for: [])
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             btn.setTitleColor(UIColor.white, for: [])

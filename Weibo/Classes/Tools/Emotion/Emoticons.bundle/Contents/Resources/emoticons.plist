@@ -7,6 +7,8 @@
 		<string>最近</string>
 		<key>bgImageName</key>
 		<string>left</string>
+		<key>imageName</key>
+		<string>recent</string>
 	</dict>
 	<dict>
 		<key>groupName</key>
@@ -15,6 +17,8 @@
 		<string>default</string>
 		<key>bgImageName</key>
 		<string>mid</string>
+		<key>imageName</key>
+		<string>default</string>
 	</dict>
 	<dict>
 		<key>groupName</key>
@@ -23,6 +27,8 @@
 		<string>emoji</string>
 		<key>bgImageName</key>
 		<string>mid</string>
+		<key>imageName</key>
+		<string>emoji</string>
 	</dict>
 	<dict>
 		<key>groupName</key>
@@ -31,6 +37,8 @@
 		<string>lxh</string>
 		<key>bgImageName</key>
 		<string>right</string>
+		<key>imageName</key>
+		<string>hot</string>
 	</dict>
 </array>
 </plist>
