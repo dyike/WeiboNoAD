@@ -21,6 +21,9 @@ class EmoticonCell: UICollectionViewCell {
                 // 1 取出按钮 
                 if let btn = contentView.subviews[i] as? UIButton {
                     btn.setImage(em.image, for: [])
+                    
+                    btn.setTitle(em.emoji, for: [])
+                    
                     btn.isHidden = false
                 }
             }
@@ -64,8 +67,10 @@ private extension EmoticonCell {
             let y = CGFloat(row) * height
             btn.frame = CGRect(x: x, y: y, width: width, height: height)
             
-            //btn.backgroundColor = UIColor.red
             contentView.addSubview(btn)
+            
+            //设置按钮字体大小
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
         }
     }
 }
