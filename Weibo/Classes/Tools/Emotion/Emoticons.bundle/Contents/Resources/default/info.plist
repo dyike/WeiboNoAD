@@ -4,6 +4,114 @@
 <array>
 	<dict>
 		<key>chs</key>
+		<string>[二哈]</string>
+		<key>cht</key>
+		<string>[二哈]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_erha.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[舔屏]</string>
+		<key>cht</key>
+		<string>[舔屏]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_tian.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[抱抱]</string>
+		<key>cht</key>
+		<string>[抱抱]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_baobao.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[摊手]</string>
+		<key>cht</key>
+		<string>[摊手]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_tanshou.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[偷笑]</string>
+		<key>cht</key>
+		<string>[偷笑]</string>
+		<key>gif</key>
+		<string>d_touxiao.gif</string>
+		<key>png</key>
+		<string>d_touxiao.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[笑cry]</string>
+		<key>cht</key>
+		<string>[笑cry]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_xiaoku.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[doge]</string>
+		<key>cht</key>
+		<string>[doge]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_doge.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[喵喵]</string>
+		<key>cht</key>
+		<string>[喵喵]</string>
+		<key>gif</key>
+		<string></string>
+		<key>png</key>
+		<string>d_miao.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
+		<string>[哼]</string>
+		<key>cht</key>
+		<string>[哼]</string>
+		<key>gif</key>
+		<string>d_heng.gif</string>
+		<key>png</key>
+		<string>d_heng.png</string>
+		<key>type</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>chs</key>
 		<string>[广告]</string>
 		<key>cht</key>
 		<string>[廣告]</string>
@@ -64,78 +172,6 @@
 	</dict>
 	<dict>
 		<key>chs</key>
-		<string>[舔屏]</string>
-		<key>cht</key>
-		<string>[舔屏]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_tian.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[抱抱]</string>
-		<key>cht</key>
-		<string>[抱抱]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_baobao.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[摊手]</string>
-		<key>cht</key>
-		<string>[摊手]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_tanshou.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[二哈]</string>
-		<key>cht</key>
-		<string>[二哈]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_erha.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[马到成功]</string>
-		<key>cht</key>
-		<string>[馬到成功]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_madaochenggong.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[马到成功]</string>
-		<key>cht</key>
-		<string>[馬到成功]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_madaochenggong.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
 		<string>[吃元宵]</string>
 		<key>cht</key>
 		<string>[吃元宵]</string>
@@ -143,18 +179,6 @@
 		<string></string>
 		<key>png</key>
 		<string>d_chitangyuan.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[马上有对象]</string>
-		<key>cht</key>
-		<string>[馬上有對象]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_duixiang.png</string>
 		<key>type</key>
 		<string>0</string>
 	</dict>
@@ -328,18 +352,6 @@
 	</dict>
 	<dict>
 		<key>chs</key>
-		<string>[哼]</string>
-		<key>cht</key>
-		<string>[哼]</string>
-		<key>gif</key>
-		<string>d_heng.gif</string>
-		<key>png</key>
-		<string>d_heng.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
 		<string>[可爱]</string>
 		<key>cht</key>
 		<string>[可愛]</string>
@@ -407,54 +419,6 @@
 		<string>d_qian.gif</string>
 		<key>png</key>
 		<string>d_qian.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[偷笑]</string>
-		<key>cht</key>
-		<string>[偷笑]</string>
-		<key>gif</key>
-		<string>d_touxiao.gif</string>
-		<key>png</key>
-		<string>d_touxiao.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[笑cry]</string>
-		<key>cht</key>
-		<string>[笑cry]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_xiaoku.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[doge]</string>
-		<key>cht</key>
-		<string>[doge]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_doge.png</string>
-		<key>type</key>
-		<string>0</string>
-	</dict>
-	<dict>
-		<key>chs</key>
-		<string>[喵喵]</string>
-		<key>cht</key>
-		<string>[喵喵]</string>
-		<key>gif</key>
-		<string></string>
-		<key>png</key>
-		<string>d_miao.png</string>
 		<key>type</key>
 		<string>0</string>
 	</dict>

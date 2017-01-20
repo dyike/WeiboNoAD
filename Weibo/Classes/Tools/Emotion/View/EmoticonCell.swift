@@ -96,9 +96,7 @@ private extension EmoticonCell {
         
         let removeButton = contentView.subviews.last as! UIButton
         let image = UIImage(named: "compose_emotion_delete", in: EmoticonManager.shared.bundle, compatibleWith: nil)
-        let imageHL = UIImage(named: "compose_emotion_delete_highlighted", in: EmoticonManager.shared.bundle, compatibleWith: nil)
         removeButton.setImage(image, for: [])
-        removeButton.setImage(imageHL, for: .highlighted)
         
     }
 }

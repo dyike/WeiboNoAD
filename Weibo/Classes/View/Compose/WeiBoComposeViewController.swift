@@ -137,9 +137,11 @@ private extension WeiBoComposeViewController {
             }
             let image = UIImage(named: imageName)
             let imageHighLighted = UIImage(named: imageName + "_highlighted")
+            let imageSelected = UIImage(named: "half_compose_icon_keyboard")
             
             btn.setImage(image, for: [])
             btn.setImage(imageHighLighted, for: .highlighted)
+            btn.setImage(imageSelected, for: .selected)
             btn.sizeToFit()
             
             if let actionName = item["actionName"] {
