@@ -116,6 +116,9 @@ class WeiBoComposeViewController: UIViewController {
         }
         
         let imageText = em.imageText(font: textView.font!)
+        // 修复图像越来越小
+//        let imageText = NSMutableAttributedString(attributedString: em.imageText(font: textView.font!))
+//        imageText.addAttributes([NSFontAttributeName: textView.font!], range: NSRange(location: 0, length: 1))
         // 获取当前textView属性文本
         let attrStrM = NSMutableAttributedString(attributedString: textView.attributedText)
         
