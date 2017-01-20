@@ -17,6 +17,8 @@ class EmoticonPackage: NSObject {
     
     var bgImageName: String?
     
+    var imageName: String?
+    
     // 表情包目录，从目录下加载info.plist可以创建表情模型数组
     var directory: String? {
         didSet {

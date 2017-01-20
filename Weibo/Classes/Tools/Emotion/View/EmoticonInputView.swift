@@ -17,9 +17,16 @@ class EmoticonInputView: UIView {
     
     @IBOutlet weak var toolbar: UIView!
     
-    class func inputView() -> EmoticonInputView {
+    // 选中表情回调闭包属性
+    fileprivate var selectedEmoticonCallBack: ((_ emoticon: Emoticon?) -> ())?
+    
+    
+    class func inputView(selectedEmoticon: @escaping (_ emoticon: Emoticon?) -> ()) -> EmoticonInputView {
         let nib = UINib(nibName: "EmoticonInputView", bundle: nil)
         let v = nib.instantiate(withOwner: nil, options: nil)[0] as! EmoticonInputView
+        
+        v.selectedEmoticonCallBack = selectedEmoticon
+        
         return v
     }
     
@@ -47,6 +54,17 @@ extension EmoticonInputView: UICollectionViewDataSource {
         
         cell.emoticons = EmoticonManager.shared.packages[indexPath.section].emoticon(page: indexPath.item)
         
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+
+extension EmoticonInputView: EmoticonCellDelegate {
+    func emoticonCellDidSelectedEmoticon(cell: EmoticonCell, em: Emoticon?) {
+        
+        // 执行闭包，选中的表情
+        selectedEmoticonCallBack?(em)
     }
 }

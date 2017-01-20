@@ -8,7 +8,15 @@
 
 import UIKit
 
+
+@objc protocol EmoticonCellDelegate: NSObjectProtocol {
+    func emoticonCellDidSelectedEmoticon(cell: EmoticonCell, em: Emoticon?)
+}
+
 class EmoticonCell: UICollectionViewCell {
+    
+    // 代理
+    weak var delegate: EmoticonCellDelegate?
     
     var emoticons: [Emoticon]? {
         didSet {
@@ -16,11 +24,16 @@ class EmoticonCell: UICollectionViewCell {
             for v in contentView.subviews {
                 v.isHidden = true
             }
+            // 显示最后一个删除按钮
+            contentView.subviews.last?.isHidden = false
             // 2 遍历表情数组模型，设置按钮图象
             for (i, em) in (emoticons ?? []).enumerated() {
                 // 1 取出按钮 
                 if let btn = contentView.subviews[i] as? UIButton {
                     btn.setImage(em.image, for: [])
+                    
+                    btn.setTitle(em.emoji, for: [])
+                    
                     btn.isHidden = false
                 }
             }
@@ -38,9 +51,16 @@ class EmoticonCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        setupUI()
+    @objc func selectedEmoticonButton(button: UIButton) {
+        let tag = button.tag
+        var em: Emoticon?
+        // 每一个最多20个表情。0-19
+        if tag < 20 {
+            em = emoticons?[tag]
+        }
+        delegate?.emoticonCellDidSelectedEmoticon(cell: self, em: em)
     }
+    
 }
 
 private extension EmoticonCell {
@@ -64,8 +84,19 @@ private extension EmoticonCell {
             let y = CGFloat(row) * height
             btn.frame = CGRect(x: x, y: y, width: width, height: height)
             
-            //btn.backgroundColor = UIColor.red
             contentView.addSubview(btn)
+            
+            //设置按钮字体大小
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
+            
+            // 设置按钮的tag
+            btn.tag = i
+            btn.addTarget(self, action: #selector(selectedEmoticonButton), for: .touchUpInside)
         }
+        
+        let removeButton = contentView.subviews.last as! UIButton
+        let image = UIImage(named: "compose_emotion_delete", in: EmoticonManager.shared.bundle, compatibleWith: nil)
+        removeButton.setImage(image, for: [])
+        
     }
 }

@@ -13,13 +13,18 @@ import SVProgressHUD
 class WeiBoComposeViewController: UIViewController {
     
     // 文本编辑视图
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: WeiBoComposeTextView!
     //底部工具
     @IBOutlet weak var toolBar: UIToolbar!
     
     @IBOutlet var sendButton: UIButton!
     
     @IBOutlet var titileLabel: UILabel!
+    
+    // 表情输入视图
+    lazy var emoticonView: EmoticonInputView = EmoticonInputView.inputView { [weak self] (emoticon) in
+        self?.textView.insertEmoticon(em: emoticon)
+    }
     
     // 工具栏底部约束
     @IBOutlet weak var toolbarBottomCons: NSLayoutConstraint!
@@ -69,9 +74,8 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBAction func postStatus() {
         
-        guard let text = textView.text else {
-            return
-        }
+        // 获取发送到服务器的表情图片文字字符串
+        let text = textView.emoticonText
         
         let image: UIImage? = nil //UIImage(named: "avatar_default_big")
         WeiBoNetWorkManager.shared.postStatus(statusText: text, image: image) { (result, isSuccess) in
@@ -92,9 +96,8 @@ class WeiBoComposeViewController: UIViewController {
     
     // 切换表情键盘
     @objc func emoticonKeyboard() {
-        let emoticonKeyboardView = EmoticonInputView.inputView()
-    
-        textView.inputView = (textView.inputView == nil) ? emoticonKeyboardView : nil
+        
+        textView.inputView = (textView.inputView == nil) ? emoticonView : nil
         
         textView.reloadInputViews()
     }
@@ -140,7 +143,15 @@ private extension WeiBoComposeViewController {
             
             btn.setImage(image, for: [])
             btn.setImage(imageHighLighted, for: .highlighted)
+            
             btn.sizeToFit()
+            
+            let imageSelected = UIImage(named: "half_compose_icon_keyboard")
+            let imageSelectedHL = UIImage(named: "half_compose_icon_keyboard_highlighted")
+            if btn.isSelected {
+                btn.setImage(imageSelected, for: [])
+                btn.setImage(imageSelectedHL, for: .highlighted)
+            }
             
             if let actionName = item["actionName"] {
                 btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)

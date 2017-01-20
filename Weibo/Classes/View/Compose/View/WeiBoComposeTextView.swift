@@ -22,10 +22,71 @@ class WeiBoComposeTextView: UITextView {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc fileprivate func textChanged(n: Notification) {
+    @objc fileprivate func textChanged() {
         placeholderLabel.isHidden = self.hasText
     }
 
+}
+// 表情键盘专属方法
+extension WeiBoComposeTextView {
+    
+    // 返回textView对应的纯文本的字符串【将图片转换成文字】
+    var emoticonText: String {
+        // 获取textView的属性文本
+        guard let attrStr = attributedText else {
+            return ""
+        }
+        
+        var result = String()
+        // 获取属性文本中的附件
+        attrStr.enumerateAttributes(in: NSRange(location: 0, length: attrStr.length), options: [], using: { (dict, range, _) in
+            if let attachment = dict["NSAttachment"] as? EmoticonAttachment {
+                result += attachment.chs ?? ""
+            } else {
+                let subStr = (attrStr.string as NSString).substring(with: range)
+                result += subStr
+            }
+        })
+        
+        return result
+    }
+    
+    
+    func insertEmoticon(em: Emoticon?) {
+        // em == nil 是删除按钮
+        guard let em = em else {
+            // 删除文本
+            deleteBackward()
+            return
+        }
+        
+        if let emoji = em.emoji, let textRange = selectedTextRange {
+            
+            replace(textRange, withText: emoji)
+            return
+        }
+        
+        let imageText = em.imageText(font: font!)
+        // 修复图像越来越小
+        // 获取当前textView属性文本
+        let attrStrM = NSMutableAttributedString(attributedString: attributedText)
+        
+        // 将图像的属性文本插入到当前的光标位置
+        attrStrM.replaceCharacters(in: selectedRange, with: imageText)
+        
+        let range = selectedRange
+        
+        // 设置文本
+        attributedText = attrStrM
+        // 恢复光标的位置
+        selectedRange = NSRange(location: range.location + 1, length: range.length)
+        
+        // 让代理执行文本变化方法
+        delegate?.textViewDidChange?(self)
+        
+        // 执行当前对象的文本变化
+        textChanged()
+    }
 }
 
 private extension WeiBoComposeTextView {
