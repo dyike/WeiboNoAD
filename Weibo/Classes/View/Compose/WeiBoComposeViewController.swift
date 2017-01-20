@@ -26,29 +26,6 @@ class WeiBoComposeViewController: UIViewController {
         self?.textView.insertEmoticon(em: emoticon)
     }
     
-    // 返回textView对应的纯文本的字符串【将图片转换成文字】
-    var emoticonText: String {
-        // 获取textView的属性文本
-        guard let attrStr = textView.attributedText else {
-            return ""
-        }
-        
-        var result = String()
-        // 获取属性文本中的附件
-        attrStr.enumerateAttributes(in: NSRange(location: 0, length: attrStr.length), options: [], using: { (dict, range, _) in
-            if let attachment = dict["NSAttachment"] as? EmoticonAttachment {
-                result += attachment.chs ?? ""
-            } else {
-                let subStr = (attrStr.string as NSString).substring(with: range)
-                result += subStr
-            }
-        })
-        
-        print(result)
-        
-        return attrStr.string
-    }
-    
     // 工具栏底部约束
     @IBOutlet weak var toolbarBottomCons: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -97,9 +74,8 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBAction func postStatus() {
         
-        guard let text = textView.text else {
-            return
-        }
+        // 获取发送到服务器的表情图片文字字符串
+        let text = textView.emoticonText
         
         let image: UIImage? = nil //UIImage(named: "avatar_default_big")
         WeiBoNetWorkManager.shared.postStatus(statusText: text, image: image) { (result, isSuccess) in
