@@ -38,7 +38,7 @@ extension SQLiteManager {
             for dict in array {
                 guard let statusId = dict["idstr"] as? String,
                 // 将字典序列化二进制数据
-                    let jsonData = JSONSerialization.data(withJSONObject: dict, options: []) else {
+                    let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
                         continue
                 }
                 
@@ -62,11 +62,11 @@ extension SQLiteManager {
         sql += "ORDER BY statusId DESC LIMIT 20;"
         
         let array = execRecordSet(sql: sql)
-        var result = [[String: AnyObject]]
+        var result = [[String: AnyObject]]()
         
         for dict in array {
             guard let jsonData = dict["status"] as? Data,
-                let json = JSONSerialization.data(withJSONObject: jsonData, options: []) as? [String: AnyObject] else {
+                let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: AnyObject] else {
                 continue
             }
             result.append(json ?? [:])
@@ -97,10 +97,12 @@ private extension SQLiteManager {
     
     // 执行sql，返回一个字典的数据
     func execRecordSet(sql: String) -> [[String: AnyObject]] {
+        var result = [[String: AnyObject]]()        
         queue.inDatabase { (db) in
             guard let res = db?.executeQuery(sql, withArgumentsIn: []) else {
                 return
             }
+            
             while res.next() {
                 // 列数
                 let colCount = res.columnCount()
@@ -111,12 +113,10 @@ private extension SQLiteManager {
                         continue
                     }
                     
-//                    print("\(name) - \(value)")
-                    result.append([name: value])
+                    result.append([name: value as AnyObject])
                 }
             }
         }
-        
         return result
     }
 }
