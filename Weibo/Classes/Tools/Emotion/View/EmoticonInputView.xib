@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tl8-mS-3g8">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tl8-mS-3g8">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lgb-xp-gsb" customClass="EmoticonLayout" customModule="Weibo" customModuleProvider="target">
@@ -26,8 +26,14 @@
                     </collectionViewFlowLayout>
                     <connections>
                         <outlet property="dataSource" destination="XAf-bE-e2o" id="fBX-mr-e7R"/>
+                        <outlet property="delegate" destination="XAf-bE-e2o" id="uju-Si-Dgb"/>
                     </connections>
                 </collectionView>
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="DJQ-TR-hjn">
+                    <rect key="frame" x="184" y="184" width="7" height="37"/>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="currentPageIndicatorTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </pageControl>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPH-sB-voe" userLabel="底部工具栏" customClass="EmoticonToolbar" customModule="Weibo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="213" width="375" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,9 +46,11 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="LPH-sB-voe" secondAttribute="trailing" id="8sW-fb-4uI"/>
                 <constraint firstAttribute="trailing" secondItem="tl8-mS-3g8" secondAttribute="trailing" id="Kap-MY-LUV"/>
+                <constraint firstItem="LPH-sB-voe" firstAttribute="top" secondItem="DJQ-TR-hjn" secondAttribute="bottom" constant="-8" id="NwZ-sp-2mi"/>
                 <constraint firstItem="LPH-sB-voe" firstAttribute="top" secondItem="tl8-mS-3g8" secondAttribute="bottom" id="bPL-um-rJt"/>
                 <constraint firstAttribute="bottom" secondItem="LPH-sB-voe" secondAttribute="bottom" id="cJ0-Dc-krN"/>
                 <constraint firstItem="tl8-mS-3g8" firstAttribute="top" secondItem="XAf-bE-e2o" secondAttribute="top" id="dJ0-A8-lOK"/>
+                <constraint firstItem="DJQ-TR-hjn" firstAttribute="centerX" secondItem="XAf-bE-e2o" secondAttribute="centerX" id="dXh-tO-7Wk"/>
                 <constraint firstItem="tl8-mS-3g8" firstAttribute="leading" secondItem="XAf-bE-e2o" secondAttribute="leading" id="vuW-d9-fHu"/>
                 <constraint firstItem="LPH-sB-voe" firstAttribute="leading" secondItem="XAf-bE-e2o" secondAttribute="leading" id="yvp-3p-C0F"/>
             </constraints>
@@ -50,6 +58,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="tl8-mS-3g8" id="qVn-IP-BNP"/>
+                <outlet property="pageControl" destination="DJQ-TR-hjn" id="fLz-KZ-kyM"/>
                 <outlet property="toolbar" destination="LPH-sB-voe" id="cIL-CT-QX2"/>
             </connections>
             <point key="canvasLocation" x="27.5" y="-23.5"/>

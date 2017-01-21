@@ -15,7 +15,9 @@ class EmoticonInputView: UIView {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var toolbar: UIView!
+    @IBOutlet weak var toolbar: EmoticonToolbar!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
     
     // 选中表情回调闭包属性
     fileprivate var selectedEmoticonCallBack: ((_ emoticon: Emoticon?) -> ())?
@@ -35,8 +37,57 @@ class EmoticonInputView: UIView {
 //        let nib = UINib(nibName: "EmoticonCell", bundle: nil)
 //        collectionView.register(nib, forCellWithReuseIdentifier: cellId)
         collectionView.register(EmoticonCell.self, forCellWithReuseIdentifier: cellId)
+        // 设置工具栏代理
+        toolbar.delegate = self
     }
 
+}
+
+extension EmoticonInputView: EmoticonToolbarDelegate {
+    func emoticonToolbarDidSelectedItemIndex(toolbar: EmoticonToolbar, index: Int) {
+        // 让collectionView发生滚动,每个分组的第0页
+        let indexPath = IndexPath(item: 0, section: index)
+        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        
+        // 设置按钮的选中状态
+        toolbar.selectedIndex = index
+    }
+}
+
+extension EmoticonInputView: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 1. 获取中心点
+        var center = scrollView.center
+        center.x += scrollView.contentOffset.x
+        
+        // 2. 获取当前显示的 cell 的 indexPath
+        let paths = collectionView.indexPathsForVisibleItems
+        // 3. 判断中心点在哪一个 indexPath 上，在哪一个页面上
+        var targetIndexPath: IndexPath?
+        for indexPath in paths {
+            
+            // 1> 根据 indexPath 获得 cell
+            let cell = collectionView.cellForItem(at: indexPath)
+            // 2> 判断中心点位置
+            if cell?.frame.contains(center) == true {
+                targetIndexPath = indexPath
+                
+                break
+            }
+        }
+        guard let target = targetIndexPath else {
+            return
+        }
+        
+        // 4. 判断是否找到 目标的 indexPath
+        // indexPath.section => 对应的就是分组
+        toolbar.selectedIndex = target.section
+        
+        // 5. 设置分页控件
+        // 总页数，不同的分组，页数不一样
+        pageControl.numberOfPages = collectionView.numberOfItems(inSection: target.section)
+        pageControl.currentPage = target.item
+    }
 }
 
 extension EmoticonInputView: UICollectionViewDataSource {

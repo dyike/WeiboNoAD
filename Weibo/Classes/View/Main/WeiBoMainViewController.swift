@@ -46,8 +46,6 @@ class WeiBoMainViewController: UITabBarController {
     
     // MARK: 监听方法
     @objc func userLogin(n: Notification) {
-        print("用户登录通知\(n)")
-        
         var deadline = DispatchTime.now()
         
         // 判断n.object是否有值，如果有值，提示用户重新登录
@@ -94,6 +92,8 @@ class WeiBoMainViewController: UITabBarController {
             }
             let vc = cls.init()
             let nav = UINavigationController(rootViewController: vc)
+            // 让导航控制器强行更新约束
+            nav.view.layoutIfNeeded()
             self.present(nav, animated: true) {
                 v?.removeFromSuperview()
             }

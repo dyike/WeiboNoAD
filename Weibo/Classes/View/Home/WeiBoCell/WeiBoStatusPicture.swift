@@ -11,7 +11,7 @@ import UIKit
 // 微博配图
 class WeiBoStatusPicture: NSObject {
     // 缩略图地址
-    var thumbnail_pic: String?
+    var thumbnail_pic: String? 
     
     
     override var description: String {
