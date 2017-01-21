@@ -87,7 +87,7 @@ private extension SQLiteManager {
         // FMDB 内部的队列是串行队列，同步执行
         queue.inDatabase { (db) in
             if db?.executeStatements(sql) == true {
-                print("创表成功")
+//                print("创表成功")
             } else {
                 print("创表失败")
             }
