@@ -9,6 +9,8 @@
 import Foundation
 import FMDB
 
+
+private let maxDBCacheTime: TimeInterval = 5 * 24 * 60 * 60
 class SQLiteManager {
     static let shared = SQLiteManager()
     
@@ -24,8 +26,28 @@ class SQLiteManager {
         queue = FMDatabaseQueue(path: path)
         
         createTable()
+        
+        // 注册通知 - 监听应用程序进入后台
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(clearDBCache),
+                                               name: NSNotification.Name.UIApplicationDidEnterBackground,
+                                               object: nil)
 
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    @objc func clearDBCache() {
+        let dateString = Date.dateString(delta: maxDBCacheTime)
+        
+        print(dateString)
+        
+    }
+    
+    
 }
 
 extension SQLiteManager {
