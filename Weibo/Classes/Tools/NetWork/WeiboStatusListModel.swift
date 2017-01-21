@@ -33,6 +33,9 @@ class WeiboStatusListModel {
         // max_id 上拉，取出数组的最后一条微博
         let max_id = !pullup ? 0 : (statusList.last?.status.id ?? 0)
         
+        
+//        WeiBoStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+//        }
         // 发起网络请求，加载微博数据
         WeiBoNetWorkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             // 0 判断网络请求是否成功

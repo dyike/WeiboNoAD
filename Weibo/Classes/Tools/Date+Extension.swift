@@ -8,15 +8,16 @@
 
 import Foundation
 
+// 不要频繁的创建释放
+private let dateFormatter = DateFormatter()
 
 extension Date {
     
     struct DateStatic {
         static let formatterFullDate: DateFormatter = {
-            let formatterFullDate = DateFormatter()
-            formatterFullDate.dateFormat = "yy-m-d"
-            formatterFullDate.locale = NSLocale.current
-            return formatterFullDate
+            dateFormatter.dateFormat = "yy-m-d"
+            dateFormatter.locale = NSLocale.current
+            return dateFormatter
         }()
     }
     
@@ -36,6 +37,16 @@ extension Date {
         } else {
             return DateStatic.formatterFullDate.string(from: self)
         }
+    }
+    
+    
+    
+    
+    static func dateString(delta: TimeInterval) -> String {
+        let date = Date(timeIntervalSinceNow: delta)
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: date)
     }
     
 }

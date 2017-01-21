@@ -8,7 +8,22 @@
 
 import UIKit
 
+@objc protocol EmoticonToolbarDelegate: NSObjectProtocol {
+    func emoticonToolbarDidSelectedItemIndex(toolbar: EmoticonToolbar, index: Int)
+}
+
 class EmoticonToolbar: UIView {
+    
+    weak var delegate: EmoticonToolbarDelegate?
+    
+    var selectedIndex: Int = 0 {
+        didSet {
+            for btn in subviews as! [UIButton] {
+                btn.isSelected = false
+            }
+            (subviews[selectedIndex] as! UIButton).isSelected = true
+        }
+    }
 
     override func awakeFromNib() {
         setupUI()
@@ -25,6 +40,12 @@ class EmoticonToolbar: UIView {
             btn.frame = rect.offsetBy(dx: CGFloat(idx) * width, dy: 0)
         }
     }
+    
+    @objc fileprivate func clickItem(button: UIButton) {
+        // 通知代理执行协议方法
+        delegate?.emoticonToolbarDidSelectedItemIndex(toolbar: self, index: button.tag)
+        
+    }
 }
 
 
@@ -33,7 +54,7 @@ private extension EmoticonToolbar {
     func setupUI() {
         let manager = EmoticonManager.shared
         
-        for p in manager.packages {
+        for (i, p) in manager.packages.enumerated() {
             let btn = UIButton()
 //            let imageEmoticon = "compose_emotion_table_\(p.imageName ?? "")"
 //            var image = UIImage(named: imageEmoticon, in: manager.bundle, compatibleWith: nil)
@@ -64,7 +85,12 @@ private extension EmoticonToolbar {
             btn.sizeToFit()
             
             addSubview(btn)
+            
+            btn.tag = i
+            btn.addTarget(self, action: #selector(clickItem), for: .touchUpInside)
         }
+        
+        (subviews[0] as! UIButton).isSelected = true
         
     }
 }

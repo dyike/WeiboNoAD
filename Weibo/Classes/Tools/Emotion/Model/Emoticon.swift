@@ -33,6 +33,8 @@ class Emoticon: NSObject {
     }
     var emoji: String?
     
+    var times: Int = 0
+    
     // 表情模型所在目录
     var directory: String?
     // 图片表情对应的图象

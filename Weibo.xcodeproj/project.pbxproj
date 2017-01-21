@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */; };
+		A61F7DB21E32ECC5001ED467 /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = A61F7DB11E32ECC5001ED467 /* status.sql */; };
+		A61F7DB41E33461A001ED467 /* WeiBoStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61F7DB31E33461A001ED467 /* WeiBoStatusListDAL.swift */; };
+		A638CA231E32D8EF006641CB /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A638CA221E32D8EF006641CB /* SQLiteManager.swift */; };
+		A638CA251E33866F006641CB /* EmoticonTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A638CA241E33866F006641CB /* EmoticonTipView.swift */; };
 		A6479A391E1D3047002C6A0B /* WeiBoUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6479A381E1D3047002C6A0B /* WeiBoUserAccount.swift */; };
 		A653C7D91E2EE7B500BB0D9A /* EmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */; };
 		A653C7DB1E2EE82600BB0D9A /* EmoticonInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653C7DA1E2EE82600BB0D9A /* EmoticonInputView.xib */; };
 		A653C7DD1E2EEB9B00BB0D9A /* EmoticonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7DC1E2EEB9B00BB0D9A /* EmoticonToolbar.swift */; };
-		A653C7DF1E303A5B00BB0D9A /* EmoticonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A653C7DE1E303A5B00BB0D9A /* EmoticonCell.xib */; };
 		A653C7E11E303A9900BB0D9A /* EmoticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7E01E303A9900BB0D9A /* EmoticonCell.swift */; };
 		A653C7E31E30F9F800BB0D9A /* EmoticonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7E21E30F9F800BB0D9A /* EmoticonLayout.swift */; };
 		A653C7E51E32431200BB0D9A /* EmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7E41E32431200BB0D9A /* EmoticonAttachment.swift */; };
@@ -82,11 +85,14 @@
 /* Begin PBXFileReference section */
 		5E147C76114FB007E5A6986A /* Pods-Weibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo/Pods-Weibo.debug.xcconfig"; sourceTree = "<group>"; };
 		A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoTitleButton.swift; sourceTree = "<group>"; };
+		A61F7DB11E32ECC5001ED467 /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
+		A61F7DB31E33461A001ED467 /* WeiBoStatusListDAL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeiBoStatusListDAL.swift; path = Weibo/Classes/Tools/SQLite/WeiBoStatusListDAL.swift; sourceTree = SOURCE_ROOT; };
+		A638CA221E32D8EF006641CB /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		A638CA241E33866F006641CB /* EmoticonTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonTipView.swift; sourceTree = "<group>"; };
 		A6479A381E1D3047002C6A0B /* WeiBoUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoUserAccount.swift; sourceTree = "<group>"; };
 		A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonInputView.swift; sourceTree = "<group>"; };
 		A653C7DA1E2EE82600BB0D9A /* EmoticonInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonInputView.xib; sourceTree = "<group>"; };
 		A653C7DC1E2EEB9B00BB0D9A /* EmoticonToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonToolbar.swift; sourceTree = "<group>"; };
-		A653C7DE1E303A5B00BB0D9A /* EmoticonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmoticonCell.xib; sourceTree = "<group>"; };
 		A653C7E01E303A9900BB0D9A /* EmoticonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonCell.swift; sourceTree = "<group>"; };
 		A653C7E21E30F9F800BB0D9A /* EmoticonLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonLayout.swift; sourceTree = "<group>"; };
 		A653C7E41E32431200BB0D9A /* EmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonAttachment.swift; sourceTree = "<group>"; };
@@ -176,6 +182,15 @@
 			name = TitileButton;
 			sourceTree = "<group>";
 		};
+		A638CA211E32D8DB006641CB /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				A638CA221E32D8EF006641CB /* SQLiteManager.swift */,
+				A61F7DB11E32ECC5001ED467 /* status.sql */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
 		A6479A371E1D3024002C6A0B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,9 +205,9 @@
 				A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */,
 				A653C7DA1E2EE82600BB0D9A /* EmoticonInputView.xib */,
 				A653C7DC1E2EEB9B00BB0D9A /* EmoticonToolbar.swift */,
-				A653C7DE1E303A5B00BB0D9A /* EmoticonCell.xib */,
 				A653C7E01E303A9900BB0D9A /* EmoticonCell.swift */,
 				A653C7E21E30F9F800BB0D9A /* EmoticonLayout.swift */,
+				A638CA241E33866F006641CB /* EmoticonTipView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,10 +394,11 @@
 		A6FD3ED81E09FB1A009622C3 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A638CA211E32D8DB006641CB /* SQLite */,
+				A6C039011E189A85000C44E9 /* NetWork */,
 				A68D7C971E2BB88100508F9F /* FFLabel */,
 				A67DDDEA1E2B5A7D00F09557 /* Emotion */,
 				A66734FC1E27BE7800FCF900 /* RefreshControl */,
-				A6C039011E189A85000C44E9 /* NetWork */,
 				A6FD3EFA1E0EC1D9009622C3 /* Additions */,
 				A6FD3EEE1E0A0266009622C3 /* Extension */,
 				A6C0390A1E1A9702000C44E9 /* WeiBoCommon.swift */,
@@ -457,6 +473,7 @@
 			children = (
 				A6C039081E190368000C44E9 /* WeiboStatusListModel.swift */,
 				A6B2ACFE1E227BED00A39D67 /* WeiBoStatusViewModel.swift */,
+				A61F7DB31E33461A001ED467 /* WeiBoStatusListDAL.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -588,9 +605,9 @@
 				A6C039001E17DEE5000C44E9 /* main.json in Resources */,
 				A68D7C9D1E2C3EDD00508F9F /* WeiBoComposeViewController.xib in Resources */,
 				A6B2ACFB1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib in Resources */,
+				A61F7DB21E32ECC5001ED467 /* status.sql in Resources */,
 				A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */,
 				A6B2ACF21E2216C000A39D67 /* WeiBoWelcomeView.xib in Resources */,
-				A653C7DF1E303A5B00BB0D9A /* EmoticonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +672,7 @@
 				A68C4DBF1E14879F00CEECA4 /* UIlabel+extension.swift in Sources */,
 				A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */,
 				A6AA0A851E2DF42700DF53E6 /* Date+Extension.swift in Sources */,
+				A638CA251E33866F006641CB /* EmoticonTipView.swift in Sources */,
 				A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */,
 				A66735081E29179300FCF900 /* WeiBoComposeTypeView.swift in Sources */,
 				A6B2AD051E23CE9700A39D67 /* WeiBoStatusToolBar.swift in Sources */,
@@ -664,6 +682,7 @@
 				A6FD3EF01E0A02AB009622C3 /* Bundle+Extension.swift in Sources */,
 				A6C0390F1E1A9A46000C44E9 /* WeiboDemoViewController.swift in Sources */,
 				A653C7E51E32431200BB0D9A /* EmoticonAttachment.swift in Sources */,
+				A638CA231E32D8EF006641CB /* SQLiteManager.swift in Sources */,
 				A6FD3EFE1E0FF3A3009622C3 /* UIButton+Extension.swift in Sources */,
 				A6C0390B1E1A9702000C44E9 /* WeiBoCommon.swift in Sources */,
 				A66734F71E2461C200FCF900 /* WeiBoStatusPicture.swift in Sources */,
@@ -681,6 +700,7 @@
 				A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */,
 				A6B2ACF91E2269EC00A39D67 /* WeiBoStatusCell.swift in Sources */,
 				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
+				A61F7DB41E33461A001ED467 /* WeiBoStatusListDAL.swift in Sources */,
 				A6B2AD011E23047400A39D67 /* UIImageView+WebImage.swift in Sources */,
 				A653C7DD1E2EEB9B00BB0D9A /* EmoticonToolbar.swift in Sources */,
 				A68D7CA01E2D90CB00508F9F /* WeiBoComposeTextView.swift in Sources */,
