@@ -10,7 +10,8 @@ import Foundation
 import FMDB
 
 
-private let maxDBCacheTime: TimeInterval = 5 * 24 * 60 * 60
+private let maxDBCacheTime: TimeInterval = -60
+
 class SQLiteManager {
     static let shared = SQLiteManager()
     
@@ -43,7 +44,12 @@ class SQLiteManager {
     @objc func clearDBCache() {
         let dateString = Date.dateString(delta: maxDBCacheTime)
         
-        print(dateString)
+        let sql = "DELETE FROM weibo_status WHERE createTime < ?;"
+        queue.inDatabase { (db) in
+            if db?.executeUpdate(sql, withArgumentsIn: [dateString]) == true {
+                print("删除了\(db?.changes())条数据")
+            }
+        }
         
     }
     
