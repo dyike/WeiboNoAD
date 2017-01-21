@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */; };
+		A61F7DB21E32ECC5001ED467 /* status.sql in Resources */ = {isa = PBXBuildFile; fileRef = A61F7DB11E32ECC5001ED467 /* status.sql */; };
 		A638CA231E32D8EF006641CB /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A638CA221E32D8EF006641CB /* SQLiteManager.swift */; };
 		A6479A391E1D3047002C6A0B /* WeiBoUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6479A381E1D3047002C6A0B /* WeiBoUserAccount.swift */; };
 		A653C7D91E2EE7B500BB0D9A /* EmoticonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */; };
@@ -83,6 +84,7 @@
 /* Begin PBXFileReference section */
 		5E147C76114FB007E5A6986A /* Pods-Weibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo/Pods-Weibo.debug.xcconfig"; sourceTree = "<group>"; };
 		A61EF1701E2137D800FA0655 /* WeiBoTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoTitleButton.swift; sourceTree = "<group>"; };
+		A61F7DB11E32ECC5001ED467 /* status.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.sql; sourceTree = "<group>"; };
 		A638CA221E32D8EF006641CB /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		A6479A381E1D3047002C6A0B /* WeiBoUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoUserAccount.swift; sourceTree = "<group>"; };
 		A653C7D81E2EE7B500BB0D9A /* EmoticonInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonInputView.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				A638CA221E32D8EF006641CB /* SQLiteManager.swift */,
+				A61F7DB11E32ECC5001ED467 /* status.sql */,
 			);
 			path = SQLite;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				A6C039001E17DEE5000C44E9 /* main.json in Resources */,
 				A68D7C9D1E2C3EDD00508F9F /* WeiBoComposeViewController.xib in Resources */,
 				A6B2ACFB1E226A0C00A39D67 /* WeiBoStatusNormalCell.xib in Resources */,
+				A61F7DB21E32ECC5001ED467 /* status.sql in Resources */,
 				A6FD3ECA1E097CD6009622C3 /* Main.storyboard in Resources */,
 				A6B2ACF21E2216C000A39D67 /* WeiBoWelcomeView.xib in Resources */,
 				A653C7DF1E303A5B00BB0D9A /* EmoticonCell.xib in Resources */,
