@@ -34,11 +34,10 @@ class WeiboStatusListModel {
         let max_id = !pullup ? 0 : (statusList.last?.status.id ?? 0)
         
         
-        WeiBoStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (list, isSuccess) in
-                        
+//        WeiBoStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (list, isSuccess) in
 //        }
-//        // 发起网络请求，加载微博数据
-//        WeiBoNetWorkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
+        // 发起网络请求，加载微博数据
+        WeiBoNetWorkManager.shared.statusList(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             // 0 判断网络请求是否成功
             if !isSuccess {
                 // 直接回调返回
