@@ -26,6 +26,26 @@ class EmoticonManager {
     private init() {
         loadPackages()
     }
+    
+    func recentEmoticon(em: Emoticon) {
+        // 增加表情的使用次数
+        em.times += 1
+        // 判断是否记录了该表情，如果没有记录添加记录
+        if !packages[0].emoticons.contains(em) {
+            packages[0].emoticons.append(em)
+        }
+        // 根据使用次数排序，使用次数高的靠前
+//        packages[0].emoticons.sort { (em1, em2) -> Bool in
+//            return em1.times > em2.times
+//        }
+        packages[0].emoticons.sort { $0.times > $1.times }
+        
+        // 判断表情数组是否超出20，如果超出，删除末尾
+        if packages[0].emoticons.count > 20 {
+            packages[0].emoticons.removeSubrange(20..<packages[0].emoticons.count)
+        }
+        
+    }
 }
 
 // MARK - 表情符号处理 查找表情图片

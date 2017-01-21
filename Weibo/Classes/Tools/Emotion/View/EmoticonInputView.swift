@@ -66,5 +66,20 @@ extension EmoticonInputView: EmoticonCellDelegate {
         
         // 执行闭包，选中的表情
         selectedEmoticonCallBack?(em)
+        
+        // 添加最近使用的表情
+        guard let em = em else {
+            return
+        }
+        // 最近分组，不刷新数据
+        let indexPath = collectionView.indexPathsForVisibleItems[0]
+        if indexPath.section == 0 {
+            return
+        }
+        EmoticonManager.shared.recentEmoticon(em: em)
+        // 刷新数据
+        var indexSet = IndexSet()
+        indexSet.insert(0)
+        collectionView.reloadSections(indexSet)
     }
 }
