@@ -113,10 +113,6 @@ class WeiBoComposeViewController: UIViewController {
     
     @objc func picPicker() {
         
-        // textView.inputView = (textView.inputView == nil) ? picPickerView : nil
-        
-//        textView.reloadInputViews()
-        
         picPickerViewBottomCons.constant = UIScreen.main.bounds.height * 0.2
         
         UIView.animate(withDuration: 0.5) { () -> Void in

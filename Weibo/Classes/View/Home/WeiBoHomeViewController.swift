@@ -33,11 +33,17 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     }
     
     @objc private func browserPhoto(n: Notification) {
-//        guard let selectedIndex = n.userInfo?[WeiBoStatusCellBrowserPhotoSelectedIndexKey] as? Int,
-//            let urls = n.userInfo?[WeiBoStatusCellBrowserPhotoURLsKey] as? [String],
-//            let imageViewList = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
-//            return
-//        }
+        
+        guard let selectedIndex = n.userInfo?[WeiBoStatusCellBrowserPhotoSelectedIndexKey] as? Int,
+            let urls = n.userInfo?[WeiBoStatusCellBrowserPhotoURLsKey] as? [String],
+            let imageViewList = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
+                return
+        }
+        // 创建控制器
+        let photoBrowser = WeiBoPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
+        
+        // 以modal的形式弹出控制器
+        present(photoBrowser, animated: true, completion: nil)
         
     }
     
