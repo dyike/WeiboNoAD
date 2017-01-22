@@ -36,9 +36,10 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
         
         guard let selectedIndex = n.userInfo?[WeiBoStatusCellBrowserPhotoSelectedIndexKey] as? Int,
             let urls = n.userInfo?[WeiBoStatusCellBrowserPhotoURLsKey] as? [String],
-            let imageViewList = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
+            let _ = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
                 return
         }
+        print(selectedIndex)
         // 创建控制器
         let photoBrowser = WeiBoPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
         
