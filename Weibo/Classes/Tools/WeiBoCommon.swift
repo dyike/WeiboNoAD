@@ -34,8 +34,11 @@ let WeiBoStatusPictureViewWidth = UIScreen.main.bounds.width - 2 * WeiBoStatusPi
 // 每个item的宽度
 let WeiBoStatusPictureItemWidth = (WeiBoStatusPictureViewWidth - 2 * WeiBoStatusPictureViewInnerMargin) / 3
 
-
+// 图片浏览通知
 let WeiBoStatusCellBrowserPhotoNotification = "WeiBoStatusCellBrowserPhotoNotification"
 let WeiBoStatusCellBrowserPhotoSelectedIndexKey = "WeiBoStatusCellBrowserPhotoSelectedIndexKey"
 let WeiBoStatusCellBrowserPhotoURLsKey = "WeiBoStatusCellBrowserPhotoURLsKey"
 let WeiBoStatusCellBrowserPhotoImageViewsKey = "WeiBoStatusCellBrowserPhotoImageViewsKey"
+
+// 选择照片的通知常量
+let WeiBoPicPickerAddPhoto = "WeiBoPicPickerAddPhoto"
