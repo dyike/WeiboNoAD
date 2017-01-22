@@ -42,8 +42,6 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
         // 创建控制器
         let photoBrowser = WeiBoPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
         
-        photoBrowser.modalPresentationStyle = .custom
-        
         // 以modal的形式弹出控制器
         present(photoBrowser, animated: true, completion: nil)
         
