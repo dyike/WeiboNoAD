@@ -47,10 +47,10 @@ extension WeiBoPicPickerCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // 创建cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: picPickerCell, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: picPickerCell, for: indexPath) as! WeiBoPicPickerViewCell
         
         // 设置cell数据
-        cell.backgroundColor = UIColor.red
+        cell.image = (indexPath.item <= images.count - 1) ? images[indexPath.item] : nil
         
         return cell
     }

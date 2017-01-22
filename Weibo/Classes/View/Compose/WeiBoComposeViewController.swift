@@ -136,6 +136,16 @@ class WeiBoComposeViewController: UIViewController {
         present(ipc, animated: true, completion: nil)
     }
     
+    @objc func removePhoto(note: NSNotification) {
+        guard let image = note.object as? UIImage,
+            let index = images.index(of: image) else {
+            return
+        }
+        
+        images.remove(at: index)
+        picPickerView.images = images
+    }
+    
 }
 
 // MARK - UIImagePickerController的代理方法
@@ -246,6 +256,11 @@ private extension WeiBoComposeViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(addPhoto),
                                                name: NSNotification.Name(rawValue: WeiBoPicPickerAddPhoto),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(removePhoto),
+                                               name: NSNotification.Name(rawValue: WeiBoPicPickerRemovePhoto),
                                                object: nil)
         
     }

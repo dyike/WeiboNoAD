@@ -42,3 +42,4 @@ let WeiBoStatusCellBrowserPhotoImageViewsKey = "WeiBoStatusCellBrowserPhotoImage
 
 // 选择照片的通知常量
 let WeiBoPicPickerAddPhoto = "WeiBoPicPickerAddPhoto"
+let WeiBoPicPickerRemovePhoto = "WeiBoPicPickerRemovePhoto"
