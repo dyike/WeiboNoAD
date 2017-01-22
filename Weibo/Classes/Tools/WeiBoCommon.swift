@@ -33,3 +33,9 @@ let WeiBoStatusPictureViewInnerMargin: CGFloat = 3
 let WeiBoStatusPictureViewWidth = UIScreen.main.bounds.width - 2 * WeiBoStatusPictureViewOutterMargin
 // 每个item的宽度
 let WeiBoStatusPictureItemWidth = (WeiBoStatusPictureViewWidth - 2 * WeiBoStatusPictureViewInnerMargin) / 3
+
+
+let WeiBoStatusCellBrowserPhotoNotification = "WeiBoStatusCellBrowserPhotoNotification"
+let WeiBoStatusCellBrowserPhotoSelectedIndexKey = "WeiBoStatusCellBrowserPhotoSelectedIndexKey"
+let WeiBoStatusCellBrowserPhotoURLsKey = "WeiBoStatusCellBrowserPhotoURLsKey"
+let WeiBoStatusCellBrowserPhotoImageViewsKey = "WeiBoStatusCellBrowserPhotoImageViewsKey"

@@ -77,6 +77,39 @@ class WeiBoStatusPictureView: UIView {
     override func awakeFromNib() {
         setupUI()
     }
+    
+    
+    @objc func tapImageView(tap: UITapGestureRecognizer) {
+        
+        guard let iv = tap.view,
+            let picURLs = viewModel?.picURLs else {
+            return
+        }
+        var selectedIndex = iv.tag
+        
+        // 针对四张处理
+        if picURLs.count == 4 && selectedIndex > 1 {
+            selectedIndex -= 1
+        }
+        
+        
+        let urls = (picURLs as NSArray).value(forKey: "thumbnail_pic") as! [String]
+        
+        var imageViewList = [UIImageView]()
+        for iv in subviews as! [UIImageView] {
+            if iv.isHidden {
+                imageViewList.append(iv)
+            }
+        }
+        NotificationCenter.default.post(
+            name: NSNotification.Name(rawValue: WeiBoStatusCellBrowserPhotoNotification),
+            object: self,
+            userInfo: [
+                WeiBoStatusCellBrowserPhotoURLsKey: urls,
+                WeiBoStatusCellBrowserPhotoSelectedIndexKey: selectedIndex,
+                WeiBoStatusCellBrowserPhotoImageViewsKey: imageViewList
+            ])
+    }
 }
 
 
@@ -104,6 +137,13 @@ extension WeiBoStatusPictureView {
             let dy = row * (WeiBoStatusPictureItemWidth + WeiBoStatusPictureViewInnerMargin)
             iv.frame = rect.offsetBy(dx: dx, dy: dy)
             addSubview(iv)
+            
+            // 让imageView能够接受用户交互
+            iv.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapImageView))
+            iv.addGestureRecognizer(tap)
+            // 设置imageView的tag
+            iv.tag = i
         }
     }
 }
