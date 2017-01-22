@@ -33,11 +33,11 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     }
     
     @objc private func browserPhoto(n: Notification) {
-        guard let selectedIndex = n.userInfo?[WeiBoStatusCellBrowserPhotoSelectedIndexKey] as? Int,
-            let urls = n.userInfo?[WeiBoStatusCellBrowserPhotoURLsKey] as? [String],
-            let imageViewList = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
-            return
-        }
+//        guard let selectedIndex = n.userInfo?[WeiBoStatusCellBrowserPhotoSelectedIndexKey] as? Int,
+//            let urls = n.userInfo?[WeiBoStatusCellBrowserPhotoURLsKey] as? [String],
+//            let imageViewList = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
+//            return
+//        }
         
     }
     

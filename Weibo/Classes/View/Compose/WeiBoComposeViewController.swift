@@ -23,8 +23,8 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBOutlet weak var picPickerView: WeiBoPicPickerCollectionView!
     
-    // 高度约束
-    @IBOutlet weak var picPickerViewHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var picPickerViewBottomCons: NSLayoutConstraint!
+
     
     // 表情输入视图
     lazy var emoticonView: EmoticonInputView = EmoticonInputView.inputView { [weak self] (emoticon) in
@@ -85,7 +85,8 @@ class WeiBoComposeViewController: UIViewController {
         // 获取发送到服务器的表情图片文字字符串
         let text = textView.emoticonText
         
-        let image: UIImage? = nil //UIImage(named: "avatar_default_big")
+        //let image: UIImage? = nil
+        let image = images.first
         WeiBoNetWorkManager.shared.postStatus(statusText: text, image: image) { (result, isSuccess) in
             SVProgressHUD.setDefaultStyle(.dark)
             
@@ -111,10 +112,13 @@ class WeiBoComposeViewController: UIViewController {
     }
     
     @objc func picPicker() {
-        // 退出键盘
-        textView.resignFirstResponder()
         
-        picPickerViewHeightCons.constant = UIScreen.main.bounds.height * 0.7
+        // textView.inputView = (textView.inputView == nil) ? picPickerView : nil
+        
+//        textView.reloadInputViews()
+        
+        picPickerViewBottomCons.constant = UIScreen.main.bounds.height * 0.2
+        
         UIView.animate(withDuration: 0.5) { () -> Void in
             self.view.layoutIfNeeded()
         }

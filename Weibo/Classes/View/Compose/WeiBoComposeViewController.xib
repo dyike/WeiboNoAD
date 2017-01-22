@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeiBoComposeViewController" customModule="Weibo" customModuleProvider="target">
             <connections>
                 <outlet property="picPickerView" destination="WFH-5V-JQy" id="PPf-1a-OkR"/>
-                <outlet property="picPickerViewHeightCons" destination="W0J-z6-ZpW" id="HC3-6t-aB8"/>
+                <outlet property="picPickerViewBottomCons" destination="W0J-z6-ZpW" id="LU1-Yk-Zda"/>
                 <outlet property="sendButton" destination="xFs-3S-NBx" id="QJi-cX-U8D"/>
                 <outlet property="textView" destination="z0Q-mA-INk" id="uAk-JP-7GQ"/>
                 <outlet property="titileLabel" destination="WJg-Hz-bNd" id="fuo-DB-3gn"/>
@@ -37,7 +37,7 @@
                 </textView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WFH-5V-JQy" customClass="WeiBoPicPickerCollectionView" customModule="Weibo" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="623" width="375" height="0.0"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.89734090449060833" green="0.89619094903374752" blue="0.91627780650050761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" id="W0J-z6-ZpW"/>
                     </constraints>
@@ -58,7 +58,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="YLZ-Tc-wpL" firstAttribute="top" secondItem="WFH-5V-JQy" secondAttribute="bottom" id="0Ic-v0-cz8"/>
+                <constraint firstItem="WFH-5V-JQy" firstAttribute="bottom" secondItem="YLZ-Tc-wpL" secondAttribute="top" id="0Ic-v0-cz8"/>
                 <constraint firstItem="z0Q-mA-INk" firstAttribute="top" secondItem="H11-ps-fQo" secondAttribute="top" id="5HR-hu-dQP"/>
                 <constraint firstAttribute="trailing" secondItem="WFH-5V-JQy" secondAttribute="trailing" id="FdP-H6-o5y"/>
                 <constraint firstItem="WFH-5V-JQy" firstAttribute="leading" secondItem="H11-ps-fQo" secondAttribute="leading" id="Mhz-UM-Ptd"/>

@@ -29,8 +29,8 @@ class WeiBoPicPickerCollectionView: UICollectionView {
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
         
-        let uiNibName = UINib(nibName: "WeiBoPicPickerViewCell", bundle: nil)
-        register(uiNibName, forCellWithReuseIdentifier: picPickerCell)
+        let nibName = UINib(nibName: "WeiBoPicPickerViewCell", bundle: nil)
+        register(nibName, forCellWithReuseIdentifier: picPickerCell)
         dataSource = self
         
         // 设置collectionView的内边距
