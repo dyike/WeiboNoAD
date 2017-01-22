@@ -48,6 +48,7 @@
 		A698FC8C1E1E8BCF001EA725 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */; };
 		A6AA0A851E2DF42700DF53E6 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AA0A841E2DF42700DF53E6 /* Date+Extension.swift */; };
 		A6ADDA791E34BB7D007503AD /* WeiBoPhotoBrowserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADDA781E34BB7D007503AD /* WeiBoPhotoBrowserViewCell.swift */; };
+		A6ADDA7B1E34CD3B007503AD /* WeiBoProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6ADDA7A1E34CD3B007503AD /* WeiBoProgressView.swift */; };
 		A6B2ACEC1E220A0D00A39D67 /* WeiBoWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */; };
 		A6B2ACEE1E220A7700A39D67 /* WeiBoNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */; };
 		A6B2ACF21E2216C000A39D67 /* WeiBoWelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6B2ACF11E2216C000A39D67 /* WeiBoWelcomeView.xib */; };
@@ -130,6 +131,7 @@
 		A698FC8B1E1E8BCF001EA725 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		A6AA0A841E2DF42700DF53E6 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		A6ADDA781E34BB7D007503AD /* WeiBoPhotoBrowserViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoPhotoBrowserViewCell.swift; sourceTree = "<group>"; };
+		A6ADDA7A1E34CD3B007503AD /* WeiBoProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoProgressView.swift; sourceTree = "<group>"; };
 		A6B2ACEB1E220A0D00A39D67 /* WeiBoWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoWelcomeView.swift; sourceTree = "<group>"; };
 		A6B2ACED1E220A7700A39D67 /* WeiBoNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiBoNewFeatureView.swift; sourceTree = "<group>"; };
 		A6B2ACF11E2216C000A39D67 /* WeiBoWelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiBoWelcomeView.xib; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				A60EC3051E349867008A1856 /* WeiBoPhotoBrowserController.swift */,
 				A6ADDA781E34BB7D007503AD /* WeiBoPhotoBrowserViewCell.swift */,
+				A6ADDA7A1E34CD3B007503AD /* WeiBoProgressView.swift */,
 			);
 			path = WeiBoPhoto;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 				A6FD3EE71E09FCD8009622C3 /* WeiBoHomeViewController.swift in Sources */,
 				A67DDDEE1E2B5D9300F09557 /* EmoticonManager.swift in Sources */,
 				A68D7C9B1E2BC34400508F9F /* WeiBoWebViewController.swift in Sources */,
+				A6ADDA7B1E34CD3B007503AD /* WeiBoProgressView.swift in Sources */,
 				A61EF1711E2137D800FA0655 /* WeiBoTitleButton.swift in Sources */,
 				A6B2ACF91E2269EC00A39D67 /* WeiBoStatusCell.swift in Sources */,
 				A6FD3EED1E09FD31009622C3 /* WeiBoProfileViewController.swift in Sources */,
