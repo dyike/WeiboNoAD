@@ -29,7 +29,7 @@ extension UIButton {
     convenience init(title: String, fontSize: CGFloat, normalColor: UIColor, highlightedColor: UIColor, backgroundImageName: String) {
         self.init()
         setTitle(title, for: .normal)
-        titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
+        titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         setTitleColor(normalColor, for: .normal)
         setTitleColor(highlightedColor, for: .highlighted)
         if backgroundImageName != "" {
@@ -42,9 +42,18 @@ extension UIButton {
         // 实例化
         self.init()
         setTitle(title, for: .normal)
-        titleLabel?.font = UIFont(name: "Helvetica", size: fontSize)
+        titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         setTitleColor(normalColor, for: .normal)
         setTitleColor(highlightedColor, for: .highlighted)
+        sizeToFit()
+    }
+    
+    convenience init(title: String, fontSize: CGFloat, normalColor: UIColor) {
+        // 实例化
+        self.init()
+        setTitle(title, for: .normal)
+        backgroundColor = normalColor
+        titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         sizeToFit()
     }
 }
