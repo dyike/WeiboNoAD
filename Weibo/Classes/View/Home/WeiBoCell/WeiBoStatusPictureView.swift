@@ -62,7 +62,7 @@ class WeiBoStatusPictureView: UIView {
                 iv.setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
                 
                 // 是否是 gif
-//                iv.subviews[0].isHidden = (((url.thumbnail_pic ?? "") as NSString).pathExtension.lowercased() != "gif")
+                iv.subviews[0].isHidden = (((url.thumbnail_pic ?? "") as NSString).pathExtension.lowercased() != "gif")
                 
                 // 显示图像
                 iv.isHidden = false
@@ -144,6 +144,43 @@ extension WeiBoStatusPictureView {
             iv.addGestureRecognizer(tap)
             // 设置imageView的tag
             iv.tag = i
+            
+            addGifView(iv: iv)
         }
     }
+    
+    private func addGifView(iv: UIImageView) {
+        let gifImageView = UIImageView(image: UIImage(named: "timeline_image_gif"))
+        iv.addSubview(gifImageView)
+        
+        // 自动布局
+        gifImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        iv.addConstraint(NSLayoutConstraint(
+            item: gifImageView,
+            attribute: .right,
+            relatedBy: .equal,
+            toItem: iv,
+            attribute: .right,
+            multiplier: 1.0,
+            constant: 0))
+        iv.addConstraint(NSLayoutConstraint(
+            item: gifImageView,
+            attribute: .bottom,
+            relatedBy: .equal,
+            toItem: iv,
+            attribute: .bottom,
+            multiplier: 1.0,
+            constant: 0))
+    }
 }
+
+
+
+
+
+
+
+
+
+
