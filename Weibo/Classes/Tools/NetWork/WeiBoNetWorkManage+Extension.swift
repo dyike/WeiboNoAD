@@ -121,7 +121,8 @@ extension WeiBoNetWorkManager {
         
         if image != nil {
             name = "pic"
-            data = UIImagePNGRepresentation(image!)
+//            data = UIImagePNGRepresentation(image!)
+            data = UIImageJPEGRepresentation(image!, 0.5)
         }
         
         tokenRequest(method: .POST, URLString: urlString, parameters: params as [String : AnyObject]?, name: name, data: data) { (json, isSuccess) in

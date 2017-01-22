@@ -18,8 +18,34 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     // 列表视图模型
     lazy var listViewModel = WeiboStatusListModel()
     
-    // 微博数据数组
-//    lazy var statusList = [String]()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(browserPhoto),
+            name: NSNotification.Name(rawValue: WeiBoStatusCellBrowserPhotoNotification),
+            object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func browserPhoto(n: Notification) {
+        guard let selectedIndex = n.userInfo?[WeiBoStatusCellBrowserPhotoSelectedIndexKey] as? Int,
+            let urls = n.userInfo?[WeiBoStatusCellBrowserPhotoURLsKey] as? [String],
+            let _ = n.userInfo?[WeiBoStatusCellBrowserPhotoImageViewsKey] as? [UIImageView] else {
+                return
+        }
+
+        // 创建控制器
+        let photoBrowser = WeiBoPhotoBrowserController(selectedIndex: selectedIndex, urls: urls)
+        
+        // 以modal的形式弹出控制器
+        present(photoBrowser, animated: true, completion: nil)
+        
+    }
     
     override func loadData() {
         

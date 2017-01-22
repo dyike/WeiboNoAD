@@ -21,10 +21,17 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBOutlet var titileLabel: UILabel!
     
+    @IBOutlet weak var picPickerView: WeiBoPicPickerCollectionView!
+    
+    @IBOutlet weak var picPickerViewBottomCons: NSLayoutConstraint!
+
+    
     // 表情输入视图
     lazy var emoticonView: EmoticonInputView = EmoticonInputView.inputView { [weak self] (emoticon) in
         self?.textView.insertEmoticon(em: emoticon)
     }
+    
+    lazy var images: [UIImage] = [UIImage]()
     
     // 工具栏底部约束
     @IBOutlet weak var toolbarBottomCons: NSLayoutConstraint!
@@ -33,11 +40,7 @@ class WeiBoComposeViewController: UIViewController {
         
         setupUI()
         
-        // 监听键盘通知
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardChanged),
-                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
-                                               object: nil)
+        setupNotifications()
         
     }
     
@@ -52,6 +55,11 @@ class WeiBoComposeViewController: UIViewController {
         super.viewWillDisappear(animated)
         // 关闭键盘
         textView.resignFirstResponder()
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func keyboardChanged(n: Notification) {
@@ -77,7 +85,8 @@ class WeiBoComposeViewController: UIViewController {
         // 获取发送到服务器的表情图片文字字符串
         let text = textView.emoticonText
         
-        let image: UIImage? = nil //UIImage(named: "avatar_default_big")
+        //let image: UIImage? = nil
+        let image = images.first
         WeiBoNetWorkManager.shared.postStatus(statusText: text, image: image) { (result, isSuccess) in
             SVProgressHUD.setDefaultStyle(.dark)
             
@@ -102,7 +111,61 @@ class WeiBoComposeViewController: UIViewController {
         textView.reloadInputViews()
     }
     
+    @objc func picPicker() {
+        
+        picPickerViewBottomCons.constant = UIScreen.main.bounds.height * 0.2
+        
+        UIView.animate(withDuration: 0.5) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    
+    @objc func addPhoto() {
+        // 判断数据源是否可用
+        if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            return
+        }
+        // 创建照片选择控制器
+        let ipc = UIImagePickerController()
+        // 设置照片源
+        ipc.sourceType = .photoLibrary
+        // 设置代理
+        ipc.delegate = self
+        
+        present(ipc, animated: true, completion: nil)
+    }
+    
+    @objc func removePhoto(note: NSNotification) {
+        guard let image = note.object as? UIImage,
+            let index = images.index(of: image) else {
+            return
+        }
+        
+        images.remove(at: index)
+        picPickerView.images = images
+    }
+    
 }
+
+// MARK - UIImagePickerController的代理方法
+extension WeiBoComposeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // 获取选中的照片
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        images.append(image)
+        
+        // 展示照片
+        picPickerView.images = images
+        
+        // 退出选择控制器
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+}
+
 
 
 extension WeiBoComposeViewController: UITextViewDelegate {
@@ -125,7 +188,7 @@ private extension WeiBoComposeViewController {
     
     func setupToolbar() {
         
-        let itemSettings = [["imageName": "compose_toolbar_picture"],
+        let itemSettings = [["imageName": "compose_toolbar_picture", "actionName": "picPicker"],
                             ["imageName": "compose_mentionbutton_background"],
                             ["imageName": "compose_trendbutton_background"],
                             ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonKeyboard"],
@@ -177,6 +240,28 @@ private extension WeiBoComposeViewController {
         
         navigationItem.titleView = titileLabel
         sendButton.isEnabled = false
+        
+    }
+    
+    // 设置监听通知
+    func setupNotifications() {
+        
+        // 监听键盘通知
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardChanged),
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
+        
+        // 监听添加图片的通知
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(addPhoto),
+                                               name: NSNotification.Name(rawValue: WeiBoPicPickerAddPhoto),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(removePhoto),
+                                               name: NSNotification.Name(rawValue: WeiBoPicPickerRemovePhoto),
+                                               object: nil)
         
     }
 }

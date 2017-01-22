@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeiBoComposeViewController" customModule="Weibo" customModuleProvider="target">
             <connections>
+                <outlet property="picPickerView" destination="WFH-5V-JQy" id="PPf-1a-OkR"/>
+                <outlet property="picPickerViewBottomCons" destination="W0J-z6-ZpW" id="LU1-Yk-Zda"/>
                 <outlet property="sendButton" destination="xFs-3S-NBx" id="QJi-cX-U8D"/>
                 <outlet property="textView" destination="z0Q-mA-INk" id="uAk-JP-7GQ"/>
                 <outlet property="titileLabel" destination="WJg-Hz-bNd" id="fuo-DB-3gn"/>
@@ -33,6 +35,19 @@
                         <outlet property="delegate" destination="-1" id="SfM-W5-jDw"/>
                     </connections>
                 </textView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WFH-5V-JQy" customClass="WeiBoPicPickerCollectionView" customModule="Weibo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="623" width="375" height="0.0"/>
+                    <color key="backgroundColor" red="0.89734090449060833" green="0.89619094903374752" blue="0.91627780650050761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="W0J-z6-ZpW"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dkh-mV-J7R">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-Tc-wpL">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <constraints>
@@ -43,7 +58,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="WFH-5V-JQy" firstAttribute="bottom" secondItem="YLZ-Tc-wpL" secondAttribute="top" id="0Ic-v0-cz8"/>
                 <constraint firstItem="z0Q-mA-INk" firstAttribute="top" secondItem="H11-ps-fQo" secondAttribute="top" id="5HR-hu-dQP"/>
+                <constraint firstAttribute="trailing" secondItem="WFH-5V-JQy" secondAttribute="trailing" id="FdP-H6-o5y"/>
+                <constraint firstItem="WFH-5V-JQy" firstAttribute="leading" secondItem="H11-ps-fQo" secondAttribute="leading" id="Mhz-UM-Ptd"/>
                 <constraint firstItem="z0Q-mA-INk" firstAttribute="leading" secondItem="H11-ps-fQo" secondAttribute="leading" id="Nla-jS-Vlb"/>
                 <constraint firstItem="YLZ-Tc-wpL" firstAttribute="top" secondItem="z0Q-mA-INk" secondAttribute="bottom" id="PFt-OY-5i6"/>
                 <constraint firstAttribute="trailing" secondItem="YLZ-Tc-wpL" secondAttribute="trailing" id="bT7-2h-djh"/>
