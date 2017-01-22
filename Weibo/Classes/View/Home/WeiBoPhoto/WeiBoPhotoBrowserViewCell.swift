@@ -9,6 +9,11 @@
 import UIKit
 import SDWebImage
 
+
+protocol WeiBoPhotoBrowserViewCellDelegate: NSObjectProtocol {
+    func imageViewClick()
+}
+
 class WeiBoPhotoBrowserViewCell: UICollectionViewCell {
     var picURL: String? {
         didSet {
@@ -16,6 +21,7 @@ class WeiBoPhotoBrowserViewCell: UICollectionViewCell {
         }
     }
     
+    var delegate: WeiBoPhotoBrowserViewCellDelegate?
     
     lazy var scrollView: UIScrollView = UIScrollView()
     
@@ -45,9 +51,20 @@ extension WeiBoPhotoBrowserViewCell {
         
         progressView.isHidden = true
         progressView.backgroundColor = UIColor.clear
+        
+        // 监听imageView的点击
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(imageViewClick))
+        imageView.addGestureRecognizer(tapGes)
+        imageView.isUserInteractionEnabled = true
+        
     }
 }
 
+extension WeiBoPhotoBrowserViewCell {
+    @objc func imageViewClick() {
+        delegate?.imageViewClick()
+    }
+}
 
 extension WeiBoPhotoBrowserViewCell {
     

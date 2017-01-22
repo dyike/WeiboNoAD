@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 private let WeiBoPhotoBrowserCell = "WeiBoPhotoBrowserCell"
 
@@ -38,7 +39,7 @@ class WeiBoPhotoBrowserController: UIViewController {
 
         setupUI()
         // 滚动对应的图片
-        //collectionView.scrollToItem(at: selectedIndex, at: .left, animated: false)
+        // collectionView.scrollToItem(at: selectedIndex, at: .left, animated: false)
     }
 
 }
@@ -77,7 +78,22 @@ extension WeiBoPhotoBrowserController {
     }
     
     @objc func save() {
-        print("保存")
+        let cell = collectionView.visibleCells.first as! WeiBoPhotoBrowserViewCell
+        guard let image = cell.imageView.image else {
+                return
+        }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSave), nil)
+    }
+    
+    @objc private func imageSave(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+        var showInfo = ""
+        if error != nil {
+            showInfo = "保存失败"
+        } else {
+            showInfo = "保存成功"
+        }
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.showInfo(withStatus: showInfo)
     }
 }
 
@@ -92,8 +108,16 @@ extension WeiBoPhotoBrowserController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeiBoPhotoBrowserCell, for: indexPath) as! WeiBoPhotoBrowserViewCell
         // 设置cell数据
         cell.picURL = urls[indexPath.item]
+         cell.delegate = self
         
         return cell
+    }
+}
+
+
+extension WeiBoPhotoBrowserController: WeiBoPhotoBrowserViewCellDelegate {
+    func imageViewClick() {
+        close()
     }
 }
 
