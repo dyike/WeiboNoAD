@@ -21,13 +21,17 @@ class WeiBoComposeViewController: UIViewController {
     
     @IBOutlet var titileLabel: UILabel!
     
-    // 高度约束    
+    @IBOutlet weak var picPickerView: WeiBoPicPickerCollectionView!
+    
+    // 高度约束
     @IBOutlet weak var picPickerViewHeightCons: NSLayoutConstraint!
     
     // 表情输入视图
     lazy var emoticonView: EmoticonInputView = EmoticonInputView.inputView { [weak self] (emoticon) in
         self?.textView.insertEmoticon(em: emoticon)
     }
+    
+    lazy var images: [UIImage] = [UIImage]()
     
     // 工具栏底部约束
     @IBOutlet weak var toolbarBottomCons: NSLayoutConstraint!
@@ -140,7 +144,15 @@ extension WeiBoComposeViewController: UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // 获取选中的照片
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        images.append(image)
+        
         // 展示照片
+        picPickerView.images = images
+        
+        // 退出选择控制器
+        picker.dismiss(animated: true, completion: nil)
+        
     }
 }
 

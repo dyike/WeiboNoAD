@@ -13,6 +13,12 @@ private let margin: CGFloat = 12
 
 
 class WeiBoPicPickerCollectionView: UICollectionView {
+    
+    var images: [UIImage] = [UIImage]() {
+        didSet {
+            reloadData()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +41,7 @@ class WeiBoPicPickerCollectionView: UICollectionView {
 
 extension WeiBoPicPickerCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return images.count + 1
     }
 
     

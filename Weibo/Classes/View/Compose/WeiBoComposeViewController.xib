@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeiBoComposeViewController" customModule="Weibo" customModuleProvider="target">
             <connections>
+                <outlet property="picPickerView" destination="WFH-5V-JQy" id="PPf-1a-OkR"/>
                 <outlet property="picPickerViewHeightCons" destination="W0J-z6-ZpW" id="HC3-6t-aB8"/>
                 <outlet property="sendButton" destination="xFs-3S-NBx" id="QJi-cX-U8D"/>
                 <outlet property="textView" destination="z0Q-mA-INk" id="uAk-JP-7GQ"/>
