@@ -40,6 +40,7 @@ class WeiBoPhotoBrowserController: UIViewController {
         setupUI()
         // 滚动对应的图片
         // collectionView.scrollToItem(at: selectedIndex, at: .left, animated: false)
+        collectionView.selectItem(at: IndexPath(item: selectedIndex, section: 0), animated: false, scrollPosition: .left)
     }
 
 }
