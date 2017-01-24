@@ -26,7 +26,7 @@ extension Date {
         let now = Date()
         let delta = now.timeIntervalSince1970 - self.timeIntervalSince1970;
         
-        if delta < 60 * 3 {
+        if delta < 60 {
             return "刚刚"
         } else if delta < 60 * 60 {
             return "\(Int(delta / 60))分钟前"
@@ -38,9 +38,6 @@ extension Date {
             return DateStatic.formatterFullDate.string(from: self)
         }
     }
-    
-    
-    
     
     static func dateString(delta: TimeInterval) -> String {
         let date = Date(timeIntervalSinceNow: delta)
