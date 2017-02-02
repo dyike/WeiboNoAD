@@ -18,6 +18,9 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
     // 列表视图模型
     lazy var listViewModel = WeiboStatusListModel()
     
+    // 提示标签
+    lazy var tipLabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,12 +55,14 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
         listViewModel.loadStatus(pullup: self.isPullUp) { (isSuccess, shouldRefresh) in
             // 结束刷新
             self.refreshControl?.endRefreshing()
-            // 恢复上来刷新标记
+            // self.showTipLabel(count: self.listViewModel.statusList.count)
+            // 恢复上拉刷新标记
             self.isPullUp = false
             // 刷新表格
             if shouldRefresh {
                self.tableView?.reloadData()
             }
+            
         }
         
     }
@@ -67,6 +72,22 @@ class WeiBoHomeViewController: WeiBoBaseViewController {
         let vc = WeiBoHomeViewController()
         // push 的动作是 nav 做的
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    private func showTipLabel(count: Int) {
+        tipLabel.isHidden = false
+        tipLabel.text = count == 0 ? "没有新微博" : "\(count)条新微博"
+        
+        UIView.animate(withDuration: 1.0, animations: { () -> Void in
+            self.tipLabel.frame.origin.y = 44
+        }) { (_) -> Void in
+            UIView.animate(withDuration: 1.0, delay: 1.5, options: [], animations: { () -> Void in
+                self.tipLabel.frame.origin.y = 10
+            }, completion: { (_) -> Void in
+                self.tipLabel.isHidden = true
+            })
+        }
     }
 
 }
@@ -139,6 +160,8 @@ extension WeiBoHomeViewController {
         tableView?.separatorStyle = .none
         
         setupNavTitle()
+        
+        //setupTipLabel()
     }
     
     // 设置导航栏标题
@@ -154,5 +177,20 @@ extension WeiBoHomeViewController {
     @objc func clickTitleButton(btn: UIButton) {
         // 设置选中状态
         btn.isSelected = !btn.isSelected
+    }
+    
+    
+    private func setupTipLabel() {
+        navigationController?.navigationBar.insertSubview(tipLabel, at: 0)
+        //view.addSubview(tipLabel)
+        
+        tipLabel.frame = CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: 32)
+        
+        tipLabel.backgroundColor = UIColor.orange
+        tipLabel.textColor = UIColor.white
+        tipLabel.font = UIFont.systemFont(ofSize: 14)
+        tipLabel.textAlignment = .center
+        tipLabel.isHidden = true
+        
     }
 }
