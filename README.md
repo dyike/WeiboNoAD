@@ -1,8 +1,8 @@
 ## WeiBoNoAD——非官方的微博客户端
 
 ### 先看两个截图
-[未登录](https://raw.githubusercontent.com/dyike/WeiboNoAD/master/img/weibo1.png)
-[timeline](https://raw.githubusercontent.com/dyike/WeiboNoAD/master/img/weibo2.png)
+![未登录](https://raw.githubusercontent.com/dyike/WeiboNoAD/master/img/weibo1.png)
+![timeline](https://raw.githubusercontent.com/dyike/WeiboNoAD/master/img/weibo2.png)
 
 ### 为什么要写这个项目？
 
