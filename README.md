@@ -1,5 +1,9 @@
 ## WeiBoNoAD——非官方的微博客户端
 
+### 先看两个截图
+[未登录](https://raw.githubusercontent.com/dyike/WeiboNoAD/master/img/weibo1.png)
+[timeline](https://raw.githubusercontent.com/dyike/WeiboNoAD/master/img/weibo2.png)
+
 ### 为什么要写这个项目？
 
 * 作为一个曾经微博的实习生，虽然最后入职上出现了小问题，内心对微博还是很有感情。
